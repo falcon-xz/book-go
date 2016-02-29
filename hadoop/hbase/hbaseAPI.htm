@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>hbase API</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+<h4>hbase API</h4>
+<ul style=" list-style-type: decimal;">
+	<li>
+	SCAN:扫描器</br>
+	缓存:旨在减少client向server端的RPC次数</br>
+	行缓存caching:一个KeyValue为一行</br>
+	列缓存batch:相同rowkey，family的列数</br>
+	如：</br>
+	rowkey  family/column value</br>
+	1	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cf1/t1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</br>
+	2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cf1/t1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</br>
+	2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cf1/t2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</br>
+	2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cf1/t3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</br>
+	3	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cf1/t1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</br>
+	
+	caching batch rpc </br>
+	1	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5+(1)</br>
+	2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3+(1)</br>
+	1	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4+(1)</br>
+	2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2+(1)</br>
+	1	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3+(1)</br>
+	2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2+(1)</br>
+	3	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1+(1)</br>
+	(1)为确认扫描完成的RPC
+	
+	</li>
+	<br/>
+	
+
+
+</ul>
+</body>
+
+</html>
