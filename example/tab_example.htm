@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>oracle</title>
+<link rel="stylesheet" type="text/css" href=""/>
+<script type="text/javascript" charset="utf-8" src=""></script>
+<style>
+li {
+	float:left;
+	width:10%;
+ 	border:solid 1px #c8c8c8; 
+	font-family:'宋体'; 
+	font-size:12px; 
+	text-align:center; 
+	height:20px;
+	cursor:pointer;
+	border-right-style: outset; 
+	border-bottom-style: outset; 
+	padding-top: 8px;
+	}
+.content{
+	border-style: dotted;
+	border-width: 1px;
+	border-color: inherit;
+	margin-top: 10px;
+	width:95%;
+	margin-left: 3.35%;
+	height:100%
+}
+.content.stateHidden{
+	display:none;
+}
+
+
+</style>
+</head>
+
+<body onload="javascript:init()">
+<div id="hole" style="width:95%;  ">
+	
+	<ul style="list-style: none;">
+		<li>一</li>
+		<li>二</li>
+		<li>三</li>
+	</ul>
+	<br/>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+</div>
+<script>
+var lis = document.getElementsByTagName("li");
+var divs = document.getElementById("hole").getElementsByTagName("div");
+function init(){
+	//初始化区
+	for(var i=0;i<lis.length;i++){
+		if(i==0){
+			lis[i].style.background = "#CCFFFF" ;
+			divs[i].className = "content" ;
+		}else{
+			divs[i].className = "content stateHidden" ;
+		}
+		allevent(lis[i]);
+		
+	}
+	
+}	
+//事件区
+function allevent(obj){
+	obj.setAttribute("onmouseover","limouseover(this)");
+	obj.setAttribute("onmouseout","limouseout(this)");
+	obj.setAttribute("onclick","liclick(this)");
+}
+
+function limouseover(obj){
+	obj.style.background = "#CCFFFF" ;
+	obj.style.cursor = "hand" ;
+}
+function limouseout(obj){
+	obj.style.background = "" ;
+}
+function liclick(obj){
+	for(var i=0;i<lis.length;i++){
+		allevent(lis[i]);
+		lis[i].style.background = "" ;
+		divs[i].className = "content stateHidden" ;
+	}
+	obj.setAttribute("onmouseout","");
+	obj.style.background = "#CCFFFF" ;
+	for(var i=0;i<lis.length;i++){
+		
+		if(lis[i].style.background == "#ccffff"){
+			divs[i].className = "content" ;
+		}		
+	}
+
+}
+
+</script>
+</body>
+</html>

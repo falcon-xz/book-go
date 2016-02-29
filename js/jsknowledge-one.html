@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js 知识一</title>
+</head>
+<script language="javascript">
+function aone(id){
+	if(id=="id1") {
+		document.getElementById(id).innerText="<p style=\"color:red\">hello</p>";
+	}
+	else {
+		document.getElementById(id).innerHTML="<p style=\"color:red\">hello</p>";
+	}
+}
+</script>
+<body>
+<h4>javascript</h4>
+<ul style="text-decoration: underline; list-style-type: decimal;">
+	<li>div 换行问题：<br/>某行增加div，不换行并居右，可以使用浮动 style="float:right;";如下:
+	<p style="float:left">某行</p><div style="float:right">div层内</div>
+	<p>但是会覆盖第二行的内容,必须使用其他标签，如&lt;p&gt;&lt;/p&gt;</p>	
+	多个div并排 可以采用 float:left 之后的div依次浮动：
+	<div style="background-color:#CCCCFF;height:40px; padding-top: 10px;">
+	
+	&lt;div style=&quot;width:7px;float:left;background-color:##66CCFF;height:70px 
+	&quot;&gt;&lt;/div&gt; (多媒体坐席特殊名单需求)</div>
+	</li>
+	
+	<li>
+	
+	<p>innerText和innerHTML区别</p>
+	<table>
+	<tr>
+	<td>
+	<a id="id1" href="#" onclick="aone('id1')">innerText</a> 
+	</td>
+	</tr><tr>
+	<td>
+	<a id="id2" href="#" onclick="aone('id2')">innerHTML</a>
+	</td>
+	</tr>
+	</table>
+	<p>都替换为了&lt;p style=&quot;color:red&quot;&gt;hello&lt;/p&gt;。</p>
+	</li>
+	<li>
+		a)
+		&lt;frameset&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;frame&gt;&lt;/frame&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;frame&gt;&lt;/frame&gt;<br />
+&nbsp;&nbsp;&nbsp; &lt;/frameset&gt;<br />	
+		b)&lt;iframe&gt;&lt;/iframe&gt;<br />
+		c)父页面访问子页面 document.getElementById("frameId").contentWindow.document<br />
+		d）子页面访父页面 window.parent.frames["frameName"] 只能通过name属性<br />
+		</li>
+</ul>
+
+</body>
+
+</html>

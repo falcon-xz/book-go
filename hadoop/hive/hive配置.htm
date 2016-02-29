@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>hive配置</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+<h4>系统配置</h4>
+<ul style=" list-style-type: decimal;">
+	
+	<li>desc tableName, desc formatted tableName ,show create table tableName 查看表信息</br>
+	</li>
+	</br>
+	<li>desc function map 查看函数信息</br>
+	</li>
+</ul>
+</br>
+<h4>hive</h4>
+<ul style=" list-style-type: decimal;">
+	
+	<li></br>
+	</li>
+	</br>
+	<li></br>
+	</li>
+</ul>
+
+<h4>hive配置</h4>
+	<table class="table">
+		<tr>
+			<td style="width:30%;color:red;">&nbsp;&nbsp;&nbsp;&nbsp;所有基本配置
+			</td>
+			<td style="width:65%;color:red;">org.apache.hadoop.hive.conf.HiveConf</td>
+		</tr>
+		<tr>
+			<td style="width:30%">--显示字段名称
+			</td>
+			<td style="width:65%">set hive.cli.print.header=true;</td>
+		</tr>
+		<tr>
+			<td style="width:30%">--显示当前数据库名
+			</td>
+			<td style="width:65%">set hive.cli.print.current.db=true;</td>
+		</tr>
+		<tr>
+			<td style="width:30%">--查询块大小
+			</td>
+			<td style="width:65%">set dfs.block.size;</td>
+		</tr>
+		<tr>
+			<td style="width:30%">--设置reducer数量
+			</td>
+			<td style="width:65%">set hive.exec.reducers.bytes.per.reducer=xxx字节;  每个reducer处理的字节数<br/>
+								  set mapred.reduce.tasks=xx ;  xx个reducer数</td>
+		</tr>
+		<tr>
+			<td style="width:30%">--查询单表列数据不走MR
+			</td>
+			<td style="width:65%">set hive.fetch.task.conversion=more;</td>
+		</tr>
+		<tr>
+			<td style="width:30%">
+			--关于动态分区<br/>
+			--开启动态分区功能<br/>
+			--设置分区列<span style="color:red">全部是动态</span>的<br/>
+			--设置一个dml允许创建的分区数量的最大值 default 1000<br/>
+			--设置一个mapper reducer允许创建的分区数量的最大值 default 100<br/>
+			--设置全局创建的最大文件数<br/>
+			</td>
+			<td style="width:65%">
+			set hive.exec.dynamic.partition=true;<br/>
+			set hive.exec.dynamic.partition.mode=nonstrict ;<br/>
+			set hive.exec.max.dynamic.partitions=10000;<br/>
+			set hive.exec.max.dynamic.partitions.pernode=1000 ;<br/>
+			set hive.exec.max.created.files=100000;
+			</td>
+		</tr>
+		<tr>
+			<td style="width:30%">
+			小文件合并<br/>
+			</td>
+			<td style="width:65%">
+			<a href="hive优化.htm">见优化实例</a><br/>
+			
+			</td>
+		</tr>
+		
+</table>
+
+<h4>导数据</h4>
+<ul style=" list-style-type: decimal;">
+	<li>
+	<a href="../../other/inputdata.sql">下载hive导数据</a>
+	</li>
+</ul>
+</body>
+
+</html>

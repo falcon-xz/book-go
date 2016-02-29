@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js 知识一</title>
+</head>
+<script language="javascript">
+function aone(id){
+	if(id=="id1") {
+		document.getElementById(id).innerText="<p style=\"color:red\">hello</p>";
+	}
+	else {
+		document.getElementById(id).innerHTML="<p style=\"color:red\">hello</p>";
+	}
+}
+</script>
+<body>
+<h4>javascript</h4>
+<ul style="text-decoration: underline; list-style-type: decimal;">
+		
+	<li>异步载入外部执行脚本：
+	<br/>
+	&lt;script&gt;<br />
+	function loadasync(url){<br />
+&nbsp;&nbsp;&nbsp; //找到head标签 取第一个<br />
+&nbsp;&nbsp;&nbsp; var head = document.getElementsByTagName(&quot;head&quot;)[0];<br />
+&nbsp;&nbsp;&nbsp; //创建一个script标签<br />
+&nbsp;&nbsp;&nbsp; var script = document.createElement(&quot;script&quot;);<br />
+&nbsp;&nbsp;&nbsp; //设置src 路径<br />
+&nbsp;&nbsp;&nbsp; script.src = url ;<br />
+&nbsp;&nbsp;&nbsp; //给head标签 增加一个子标签<br />
+&nbsp;&nbsp;&nbsp; head.appendChild(script);<br />
+	}<br />
+	&lt;/script&gt;</li>
+	
+	<li>
+	
+	获得链接参数<br/>
+	<table>
+	<tr>
+	<td>jsp:</td>
+	<td>window.location.search.substring(1)</td>
+	</tr>
+	<tr>
+	<td>servlet:</td>
+	<td>request.getQueryString()</td>
+	</tr>
+
+	</table>
+	均获得<span style="color:red">客户端跳转 ？</span>之后的内容
+		</li>
+		<li>select 下拉框过滤 :必须注意select.options.length动态变化<br/>
+<select name="selectName" >
+	<option value="asdfe">一十一asdfe18</option>
+	<option value="asfe">二十asfe27</option>
+	<option value="xn">三九xn36</option>
+	<option value="hm">四八hm45</option>
+	<option value="utu">五七utu54</option>
+	<option value="iip">六六iip63</option>
+	<option value="mm">七五mm72</option>
+	<option value="urr">八四urr81</option>
+	<option value="ww">九三ww910</option>
+	<option value="qww">十二qww109</option>
+	<option value="rrt">十一一rrt118</option>
+</select>
+<input type="text" onkeyup="" onpropertychange="javascript:ss(this)" >
+<script type="text/javascript">
+var options = document.getElementsByName("selectName")[0].options ;
+var arrayOptions = new Array(options.length) ;
+for(var i=0;i<options.length;i++){
+	arrayOptions[i] = [options[i].value+"-"+options[i].innerHTML] ;
+}
+function ss(obj){
+	resetSelect() ;
+	var value = obj.value;
+	var select = document.getElementsByName("selectName")[0] ;
+	var selectOptions = select.options ;
+	//由于select 下options动态删除 导致select.options对象的长度动态变化
+	//使用正向循环的时候会产生跳号  使用反向OK
+	for(var i=selectOptions.length-1;i>=0;i--){
+		var simpleOption = selectOptions[i] ;
+		var simpleOptionHTML = simpleOption.innerHTML ;
+		if(simpleOptionHTML.indexOf(value)<0){
+			select.remove(simpleOption.index) ;
+		}
+		
+	}
+}
+//在删除select 下 option 的时候 select.options对象的长度动态变化
+function resetSelect(){
+	var select = document.getElementsByName("selectName")[0] ;
+	var selectOptions = select.options ;
+	var selectOptionsLength = selectOptions.length ;
+	for(var i=0;i<selectOptionsLength;i++){
+		select.remove(0) ;
+	}
+	for(var i=0;i<arrayOptions.length;i++){
+		//数组中对象使用时需要转型
+		var simpleArray = arrayOptions[i].toString() ;
+		var value = simpleArray.split('-')[0] ;
+		var text = simpleArray.split('-')[1] ;
+		select.add(new Option(text,value)) ;
+	}
+}
+</script>
+		
+		
+		</li>
+		<li>
+		将字符串编码成HTML格式
+		<br/>
+		<div style="float:left;width:45%">
+		<textarea style="width:98%;" rows="7" name="textareaName">转换1：&amp;
+		转换2：<input type="button" value="转换2"></input>
+		
+		
+		</textarea>
+		<br/>
+		<input type="button" value="不转换" onclick="javascript:changeHTML(1)" />
+		<input type="button" value="转换成HTML" onclick="javascript:changeHTML(2)" />
+		</div>
+		<div style="float:right;width:45%">
+		<div id="textareaDiv"></div>
+		</div>
+		<script>
+		function changeHTML(obj){
+			var textareaContent = document.getElementsByName("textareaName")[0].value ;
+			if(obj==2){
+				textareaContent = encodeHTML(textareaContent) ;
+			}
+			//alert(textareaContent );
+			document.getElementById("textareaDiv").innerHTML = textareaContent  ;
+			
+		}
+		/**
+ * 将字符串编码成HTML格式
+ * @param words string,字符串
+ * @return string,转换后的字符串
+ */
+function encodeHTML(words)
+{
+    if ( words == null || words == '' )
+    {
+        return "";
+    }
+
+    //提前将&转换，否则，后面转换后，就会在把转换后的&再转换一遍
+    words = words.replace(/\&/g, '&amp;');
+
+    while( words.indexOf('>') > -1
+     || words.indexOf('<') > -1
+     || words.indexOf('\'') > -1
+     || words.indexOf('\"') > -1)
+    {
+        words = words.replace('<','&lt;');
+        words = words.replace('>','&gt;');
+        words = words.replace('\'','&acute;');
+        words = words.replace('\´','&acute;');
+        words = words.replace('\"','&quot;');
+    }
+
+    while(words.indexOf('\n') > -1)
+    {
+        words = words.replace('\n','<BR>');
+    }
+
+    return words;
+}
+		</script>
+		</li>
+
+</ul>
+
+</body>
+
+</html>

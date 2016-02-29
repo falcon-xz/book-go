@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>linux</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+<h4>压缩</h4>
+<ul style="text-decoration: underline; list-style-type: decimal;">
+	<li>tar方式:<br/>
+	压缩&nbsp; tar&nbsp; -zcvf&nbsp; name.tar&nbsp; \目录<br/>
+	解压&nbsp; tar&nbsp; -xvf&nbsp; name.tar <br/>
+	</li>
+	
+	<li>zip方式:<br/>
+	压缩&nbsp; zip&nbsp; –r&nbsp; name.zip&nbsp; \目录<br/>
+	解压&nbsp; unzip&nbsp; name.zip <br/>
+	</li>
+
+
+</ul>
+<h4>基本配置</h4>
+	<table class="table">
+		<tr>
+			<td style="width:20%">版本信息</td>
+			<td style="width:75%">cat /proc/version</td>
+		</tr>
+		<tr>
+			<td style="width:20%">root用户环境变量配置</td>
+			<td style="width:75%">cat /etc/profile</td>
+		</tr>
+		<tr>
+			<td style="width:20%">其他用户环境变量</td>
+			<td style="width:75%">cat ~/.bash_profile</td>
+		</tr>
+		<tr>
+			<td style="width:20%">磁盘挂载目录配置</td>
+			<td style="width:75%">cat /etc/fstab</td>
+		</tr>
+		<tr>
+			<td style="width:20%">主机IP映射关系</td>
+			<td style="width:75%">cat /etc/hosts</td>
+		</tr>
+		<tr>
+			<td style="width:20%">IP配置</td>
+			<td style="width:75%">cat /etc/sysconfig/network-scripts/ifcfg-etho</td>
+		</tr>
+		<tr>
+			<td style="width:20%">网络情况</td>
+			<td style="width:75%">cat /etc/sysconfig/network</td>
+		</tr>
+		<tr>
+			<td style="width:20%">网卡信息（各个版本不一致）</td>
+			<td style="width:75%">cat /etc/udev/rules.d/xx-xx.rules</td>
+		</tr>
+			</table>
+<h4>创建用户</h4>		
+<table class="table">
+		<tr>
+			<td style="width:20%">增加用户组</td>
+			<td style="width:75%">groupadd -g 3000 cloudadmin</td>
+		</tr>
+		<tr>
+			<td style="width:20%">增加用户并指定组</td>
+			<td style="width:75%">useradd -u 3001 -g cloudadmin hadoop</td>
+		</tr>
+		<tr>
+			<td style="width:20%"> 修改目录所属组</td>
+			<td style="width:75%">chown -R hadoop:cloudadmin /hadoop</td>
+		</tr>
+		<tr>
+			<td style="width:20%">修改hadoop用户密码</td>
+			<td style="width:75%">passwd hadoop</td>
+		</tr>
+		
+</table>
+<h4>逻辑卷</h4>		
+<table class="table">
+		<tr>
+			<td style="width:20%">初始化物理卷</td>
+			<td style="width:75%">fdisk -l 查看未分配的磁盘<br/>
+								  pvcreate /dev/sdb(空闲磁盘)	<br/>
+								  pvdisplay 查看		
+			</td>
+		</tr>
+		<tr>
+			<td style="width:20%">初始化物理卷组</td>
+			<td style="width:75%">vgcreate vg名称 /dev/sdb<br/>
+								  vgdisplay 查看
+			</td>
+		</tr>
+		<tr>
+			<td style="width:20%">初始化逻辑卷</td>
+			<td style="width:75%">lvcreate -L 5G -n lv名称 vg名称 （将物理卷组加入到逻辑卷）<br/>
+								  lvdisplay 查看</td>
+		</tr>
+		<tr>
+			<td style="width:20%">格式化逻辑分区</td>
+			<td style="width:75%">mkfs -t ext4 /dev/vg名称/lv名称</td>
+		</tr>
+		<tr>
+			<td style="width:20%">挂载磁盘
+			</td>
+			<td style="width:75%">mount /dev/vg名称/lv名称 路径</td>
+		</tr>
+		<tr>
+			<td style="width:20%">磁盘长挂/etc/fstab
+			</td>
+			<td style="width:75%">/dev/vg名称/lv名称	   路径   磁盘初始化类型	defaults	1	1<br/>
+								  /dev/vg/lv01	   /hadoop   ext4	defaults	1	1		
+			</td>
+		</tr>
+</table>
+
+<h4>操作</h4>
+<table class="table">
+		
+		<tr>
+			<td style="width:20%"> rm -rf</td>
+			<td style="width:75%">删除</td>
+		</tr>
+		<tr>
+			<td style="width:20%">ls -a/ll -a<br/>ll -R path</td>
+			<td style="width:75%">查所有文件<br/>查看所有文件（包括子文件）</td>
+		</tr>
+		<tr>
+			<td style="width:20%">touch</td>
+			<td style="width:75%">创建文件</td>
+		</tr>
+		<tr>
+			<td style="width:20%">cat</td>
+			<td style="width:75%">查看文件</td>
+		</tr>
+		<tr>
+			<td style="width:20%">echo "ss"&quot; &gt;&gt; /etc/profile</td>
+			<td style="width:75%">添加ss到/etc/profile尾部</td>
+		</tr>
+		<tr>
+			<td style="width:20%">du -sk ./*</td>
+			<td style="width:75%">看当前目录的尺寸</td>
+		</tr>
+		<tr>
+			<td style="width:20%">find . -name 文件名</td>
+			<td style="width:75%">查询文件</td>
+		</tr>
+		<tr>
+			<td style="width:20%">locale</td>
+			<td style="width:75%">查字符集</td>
+		</tr>
+		<tr>
+			<td style="width:20%">scp -r 位置 IP:/位置</td>
+			<td style="width:75%">远程发送代码</td>
+		</tr>
+		<tr>
+			<td style="width:20%">vi</td>
+			<td style="width:75%">编辑文件 o下一行  i 插入 dd删除本行 dw删除前面的空格  <br/>
+								  :set nu 设置行号 u撤销  :e! 恢复文档初始状态<br/>
+								  /搜索 n 下一个 
+			</td>
+		</tr>
+		<tr>
+			<td style="width:20%">free -m</td>
+			<td style="width:75%">内存M为单位</td>
+		</tr>
+		<tr>
+			<td style="width:20%">top</td>
+			<td style="width:75%">服务器性能<br/>
+								  cat /proc/cpuinfo | grep c 看CPU
+			</td>
+		</tr>
+		<tr>
+			<td style="width:20%">df -kh</td>
+			<td style="width:75%">磁盘使用情况<br/>
+								  cat /proc/meminfo | grep M
+			</td>
+		</tr>
+		<tr>
+			<td style="width:20%">ps -ef |grep redis</td>
+			<td style="width:75%">查看包含redis字符串的进程 信息</td>
+		</tr>
+		<tr>
+			<td style="width:20%">netstat -anp | grep port | wc -l</td>
+			<td style="width:75%">获得所有链接信息（TCP/UDP/SOCKET） wc -l:连接数</td>
+		</tr>
+		<tr>
+			<td style="width:20%">jps</td>
+			<td style="width:75%">jdk1.5之后查看java进程</td>
+		</tr>
+
+</table>
+<h4>系统配置</h4>
+<table class="table">
+		<tr>
+			<td style="width:20%">添加环境变量
+			</td>
+			<td style="width:75%">vi /etc/profile或者vi ~/.bash_profile<br/>
+								  export JAVA_HOME=/usr/local/java7<br/>
+								  export PATH=\$JAVA_HOME/bin:\$PATH<br/>
+								  source /etc/profile 或者 ~/.bash_profile
+								  </td>
+		</tr>
+		<tr>
+			<td style="width:20%">chkconfig --list|grep 服务</td>
+			<td style="width:75%"> --level   等级0表示：表示关机<br/>
+     								 等级1表示：单用户模式<br/>
+      								 等级2表示：无网络连接的多用户命令行模式<br/>
+     								 等级3表示：有网络连接的多用户命令行模式<br/>
+      								 等级4表示：不可用<br/>
+      								 等级5表示：带图形界面的多用户模式<br/>
+      								 等级6表示：重新启动<br/>
+      								 chkconfig  iptables/ip6tables   on/off
+     		 </td>
+		</tr>
+		<tr>
+			<td style="width:20%">vi /etc/inittab</td>
+			<td style="width:75%">#   0 - halt (Do NOT set initdefault to this)          停止(不设initdefault这个)<br/>
+								  #   1 - Single user mode              单用户模式<br/>
+								  #   2 - Multiuser, without NFS       多用户,没有NFS(相当于没有网络的3)<br/>
+								  #   3 - Full multiuser mode            充分多用户模式<br/>
+								  #   4 - unused              空闲<br/>
+								  #   5 - X11      图形界面<br/>
+								  #   6 - reboot (Do NOT set initdefault to this)    重启(不设initdefault这个)<br/>
+								  id:3:initdefault:   ----修改这里的参数
+			</td>
+		</tr>
+		<tr>
+			<td style="width:20%">服务启停状态</td>
+			<td style="width:75%">service 服务名 status或者/etc/init.d/服务名 start </td>
+		</tr>
+		<tr>
+			<td style="width:20%">kill杀掉进程 </td>
+			<td style="width:75%">kill 9 进程名 或者 killall 服务名</td>
+		</tr>
+</table>
+
+</body>
+
+</html>
