@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>hbase元数据</title>
+<title>hbase原理</title>
 <style>
 .table{
 	
@@ -20,7 +20,19 @@
 </head>
 
 <body>
-<h4>hbase元数据</h4>
+<h4>hbase元数据 zookeeper</h4>
+<ul style=" list-style-type: none;">
+	<li>1.通过client访问hbase0.98.15，首先通过zookeeper找到mete所在regionserver地址<br/>
+		2.在mete中查找region的寻址入口，查看hbase的schema和table的元数据，在/hbase/data/$NAMESPACE/$TABLENAME/.tabledesc/.tableinfo.000000001 文件里
+	</li>
+	<br/>
+	
+
+
+</ul>
+
+
+<h4>hbase元数据 hdfs</h4>
 <ul style=" list-style-type: decimal;">
 	<li>0.96版本之后的数据结构 hdfs 上
 		<table class="table" style="font-size:small">
@@ -59,19 +71,50 @@
 			</tr>
 		</table>
 		
-		
-		
-		
-		
-		
-		
-		
+
 	</li>
 	<br/>
 	
 
 
 </ul>
+
+
+<h4>hbase 存储结构</h4>
+<ul style=" list-style-type: decimal;">
+	<li>Rowkey:在hfile中rowkey保存为字节数组，按字典序排序（升序）存储<br/><br/>
+		Cell:由rowkey,family,column,version确定的一个存储单元<br/><br/>
+		KeyValue:最小的存储单元，一个keyvalue为一列，为字节数组存储。<br/>
+			包括RowKeyLength、RowKey、ColumnFamilyLength、ColumnFamily、Qualifier、TimeStamp、Type（PUT操作）、Value<br/>
+			并记录偏移量信息。
+	</li>
+	<br/>
+	
+	<li>region:设计20-200个region ,每个存放5-20G的数据量
+	</li>
+	<br/>
+
+</ul>
+
+<h4>hbase regionserver split process</h4>
+<ul style=" list-style-type: none;">
+	<li>
+	1.regionserver获得一个共享读锁，防止table schema被修改，在/hbase下创建znode（标示路径/regionName），并设置成分裂状态<br/>
+	2.在分裂region目录创建.splits文件目录。下线需要分裂的region，之后在.splits下创建分裂区域 A,B<br/>
+	3.拆分存储文件，创建存储文件的引用文件<br/>
+	4.hdfs创建实际目录，并参考分裂区域A、B<br/>
+	5.regionserver发送put数据给meta表，更新表和分裂region的信息，成功：父region被拆分，失败：清除脏数据<br/>
+	6.regionserver并行打开两个分裂区域region A、B<br/>
+	7.现在分裂region及分裂后的两个region都上线，client会发现新的region,并更新缓存。regionserver更新/hbase下znode状态，分裂完成<br/>
+	8.在分裂region的数据重写入分裂区域A、B 且无引用关系后，master的GC 会删除分裂region<br/>
+		
+		
+
+		
+	</li>
+	<br/>
+</ul>
+
 </body>
 
 </html>
