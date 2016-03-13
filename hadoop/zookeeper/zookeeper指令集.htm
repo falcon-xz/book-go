@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zookeeper指令集</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+<h4>zookeeper指令集</h4>
+<ul style=" list-style-type: none;">
+	<li>
+		<table class="table" style="font-size:small">
+			
+			<tr>
+				<td style="width:30%;">zkServer.sh start</td>
+				<td style="width:70%;">启动zookeeper 读取$ZOOKEEPER_HOME/conf/zoo.cfg 配置文件</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zkServer.sh status</td>
+				<td style="width:70%;">zookeeper状态 leader/follower</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zkCli.sh -server ip:port</td>
+				<td style="width:70%;">连接指定集群 否则连接本地2181端口 <br/>
+									   进入后类似linux，可以使用如ls / 查看目录结构，可以使用tab提示<br/>
+									   create/delete  创建/删除znode<br/>
+									   get path 查看文件</td>
+			</tr>
+			
+			
+			<tr>
+				<td style="width:30%;">4字命令:<br/>
+				conf <br/>
+				cons <br/><br/>
+				dump <br/>
+				envi <br/>
+				reqs <br/>
+				ruok <br/>
+				stat <br/>
+				wchs <br/>
+				wchc <br/>
+				wchp <br/>
+				
+				</td>
+				<td style="width:70%;">进入$ZOOKEEPER_HOME/bin 目录:<br/>
+				echo conf | nc ip port： 输出相关服务配置的详细信息<br/>
+				echo cons | nc ip port：列出所有连接到服务器的客户端的完全的连接 / 会话的详细信息。包括“接受 / 发送”的包数量、会话 id 、操作延迟、最后的操作执行等等信息。<br/>
+				echo dump | nc ip port：列出未经处理的会话和临时节点<br/>
+				echo envi | nc ip port：输出关于服务环境的详细信息<br/>
+				echo reqs | nc ip port：列出未经处理的请求<br/>
+				echo ruok | nc ip port：测试服务是否处于正确状态。如果确实如此，那么服务返回“imok ”，否则不做任何相应<br/>
+				echo stat | nc ip port：输出关于性能和连接的客户端的列表<br/>
+				echo wchs | nc ip port：列出服务器 watch 的详细信息<br/>
+				echo wchc | nc ip port：通过 session 列出服务器 watch 的详细信息，它的输出是一个与watch 相关的会话的列表<br/>
+				echo wchp | nc ip port：通过路径列出服务器 watch 的详细信息。它输出一个与 session相关的路径<br/>
+				
+				</td>
+			</tr>
+			
+		</table>
+		
+
+	</li>
+	<br/>
+	
+
+
+</ul>
+
+
+<h4>zookeeper 存放其他组件的元数据</h4>
+<ul style=" list-style-type: decimal;">
+	<li>结构：逻辑目录存储，每个路径存储json数据 包括创建时间，修改时间，是否含有子文件等信息<br/>
+	</li>
+	<br/>
+
+	<li>hbase元数据：table,namespace，meta-region-server等信息<br/>
+	</li>
+	<br/>
+	
+	<li>kafka元数据：consumers,brokers等信息<br/>
+	</li>
+	<br/>
+
+</ul>
+
+</body>
+
+</html>
