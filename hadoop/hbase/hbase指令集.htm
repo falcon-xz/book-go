@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>hbase指令集</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+
+<h4>hbase指令集</h4>
+<ul style=" list-style-type: none;">
+	<li>
+		<table class="table" style="font-size:small">
+			
+			<tr>
+				<td style="width:30%;">查看hfile内容 </td>
+				<td style="width:70%;">hbase hfile -v -p -f $PATH</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">增加表级coprocessor(必须在启动前加入jar包)$类全路径 为必填 
+				其他可以空</td>
+				<td style="width:70%;">disable &#39;$tableName';<br/>
+								alter '$tableName',METHOD=>'table_att','$name'=>'$jarpath|$类全路径|$序列号|$权限(SYSTEM/USER)'<br/>
+								alter '$tableName',METHOD=>'table_att_unset&#39;,NAME 
+	=&gt; &#39;$name&#39;<br/>
+				enable '$tableName'</td>
+			</tr>
+			<tr>
+				<td style="width:30%;"> 进入hbase zookeeper控制台</td>
+				<td style="width:70%;">hbase zkcli </td>
+			</tr>
+			<tr>
+				<td style="width:30%;">查看hbase表概要 </td>
+				<td style="width:70%;">hbase hbck</td>
+			</tr>
+			<tr>
+				<td style="width:30%;"></td>
+				<td style="width:70%;"></td>
+			</tr>
+			<tr>
+				<td style="width:30%;"></td>
+				<td style="width:70%;"></td>
+			</tr>
+			<tr>
+				<td style="width:30%;"></td>
+				<td style="width:70%;"></td>
+			</tr>
+
+		</table>
+		
+
+	</li>
+	<br/>
+	
+
+
+</ul>
+
+
+</body>
+
+</html>

@@ -137,11 +137,7 @@
 <br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;2.表描述region 处理一张表的所有region<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hbase shell方式:<br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disable '$tableName';<br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alter '$tableName',METHOD=>'table_att','$name'=>'$jarpath|$类全路径|$序列号|$权限(SYSTEM/USER)'<br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter '$tableName',METHOD=>'table_att_unset&#39;,NAME 
-	=&gt; &#39;$name&#39;<br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enable '$tableName'<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="hbase指令集.htm">详见hbase指令集.htm</a><br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代码方式:<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hbaseadmin获得htabledescriptor;addcoprocessor(&quot;$类全路径&quot;)和remove(&quot;$类全路径&quot;)<br/>
 	
