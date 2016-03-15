@@ -20,27 +20,24 @@
 </head>
 
 <body>
-<h4>hbase元数据 zookeeper</h4>
+<h4>hbase 0.98 元数据 zookeeper</h4>
 <ul style=" list-style-type: decimal;">
-	<li>启动hbase时，hbase会把元数据存储在zookeeper下，master注册路径为$zk_path/hbase/master;
-		regionserver注册路径为$zk_path/hbase/meta-region-server、$zk_path/hbase/rs
+	<li>启动hbase时，依次启动线程1.读取配置文件,2链接zookeeper,3启动master,4启动regionserver<br/>
+		hbase会把元数据存储在zookeeper下:<br/>
+		在hdfs上新建功能目录及建系统表 'hbase:meta'<br/>
+		master注册路径为$zk_path/hbase/master;<br/>
+		备用master注册路径为$zk_path/hbase/backup-master;<br/>
+		meta表注册路径为$zk_path/hbase/meta-region-server;<br/>
+		regionserver注册路径为$zk_path/hbase/rs<br/>
+		
 	</li>
-	<li>
+	<li>client访问hbase region时,读取hbase配置文件,找到hbase在hdfs上的路径<br/>
+		读取zookeeper下的$zk_path/hbase/meta-region-server<br/>
+		读取meta表,找到region在meta表里的信息（寻址入口等）
 	</li>
-	<li>
+	<li>去region所在机器上的block拿数据
 	</li>
-	<li>
-	</li>
-	<li>
-	</li>
-	<li>
-	</li>
-	<li>
-	</li>
-	<li>1.通过client访问hbase0.98.15，首先链接zookeeper找到保存在zookeeper上的元数据(mete所在regionserver地址)<br/>
-		2.在mete中查找region的寻址入口，查看hbase的schema和table的元数据，在/hbase/data/$NAMESPACE/$TABLENAME/.tabledesc/.tableinfo.000000001 文件里
-	</li>
-	<br/>
+		<br/>
 	
 
 
@@ -112,20 +109,30 @@
 </ul>
 
 <h4>hbase regionserver split process</h4>
-<ul style=" list-style-type: none;">
+<ul style=" list-style-type: decimal;">
 	<li>
-	1.regionserver获得一个共享读锁，防止table schema被修改，在/hbase下创建znode（标示路径/regionName），并设置成分裂状态<br/>
-	2.在分裂region目录创建.splits文件目录。下线需要分裂的region，之后在.splits下创建分裂区域 A,B<br/>
-	3.拆分存储文件，创建存储文件的引用文件<br/>
-	4.hdfs创建实际目录，并参考分裂区域A、B<br/>
-	5.regionserver发送put数据给meta表，更新表和分裂region的信息，成功：父region被拆分，失败：清除脏数据<br/>
-	6.regionserver并行打开两个分裂区域region A、B<br/>
-	7.现在分裂region及分裂后的两个region都上线，client会发现新的region,并更新缓存。regionserver更新/hbase下znode状态，分裂完成<br/>
-	8.在分裂region的数据重写入分裂区域A、B 且无引用关系后，master的GC 会删除分裂region<br/>
-		
-		
-
-		
+	regionserver获得一个共享读锁，防止table schema被修改，在/hbase(zk下目录)下创建znode（标示路径/regionName），并设置成分裂状态<br/>
+	</li>
+	<li>
+	在分裂region目录创建.splits文件目录。下线需要分裂的region，之后在.splits下创建分裂区域 A,B<br/>
+	</li>
+	<li>
+	拆分存储文件，创建存储文件的引用文件<br/>
+	</li>
+	<li>
+	hdfs创建实际目录，并参考分裂区域A、B<br/>
+	</li>
+	<li>
+	regionserver发送put数据给meta表，更新表和分裂region的信息，成功：父region被拆分，失败：清除脏数据<br/>
+	</li>
+	<li>
+	regionserver并行打开两个分裂区域region A、B<br/>
+	</li>
+	<li>
+	现在分裂region及分裂后的两个region都上线，client会发现新的region,并更新缓存。regionserver更新/hbase下znode状态，分裂完成<br/>
+	</li>
+	<li>
+	在分裂region的数据重写入分裂区域A、B 且无引用关系后，master的GC 会删除分裂region<br/>
 	</li>
 	<br/>
 </ul>
