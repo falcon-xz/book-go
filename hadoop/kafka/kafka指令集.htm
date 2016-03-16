@@ -21,9 +21,9 @@
 
 <body>
 <h4>kafka指令集</h4>
-<ul style=" list-style-type: decimal;">
+<ul style=" list-style-type: none;">
 	<li>
-		<table class="table" style="font-size:small">
+		<table class="table" style="font-size:large;width:90%">
 			
 			<tr>
 				<td style="width:30%;">kafka-server-start.sh $KAFKA_HOME/conf/server.properties</td>
@@ -37,7 +37,14 @@
 				<td style="width:30%;">kafka-topics.sh --alter --zookeeper 10.10.0.65 --topic test --partitions 3</td>
 				<td style="width:70%;">修改zookeeper 集群管理的 kafka topic 为test 的partitions 为 3 </td>
 			</tr>
-			
+			<tr>
+				<td style="width:30%;">kafka-topics.sh --delete --zookeeper 10.10.0.65 --topic test</td>
+				<td style="width:70%;">删除zookeeper 集群管理的 kafka 名称为test的topic <br/>
+										需要在$kafka_home/conf/server.properties 添加配置  
+										<br />delete.topic.enable=true
+				</td>
+			</tr>
+
 		</table>
 		
 
