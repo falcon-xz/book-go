@@ -30,9 +30,18 @@
 				<td style="width:70%;">通过配置文件 启动一个broker 同一集群下server.properties里的brokerid 必须不一样</td>
 			</tr>
 			<tr>
+				<td style="width:30%;">&nbsp;</td>
+				<td style="width:70%;">&nbsp;</td>
+			</tr>
+			<tr>
 				<td style="width:30%;">kafka-topics.sh --describe --zookeeper 10.10.0.65</td>
 				<td style="width:70%;">查看kafka下有的topic信息</td>
 			</tr>
+			<tr>
+				<td style="width:30%;">kafka-topics.sh --create --zookeeper 10.10.0.65 --topic test --partitions 2 --replication-factor 1 </td>
+				<td style="width:70%;">zookeeper 集群管理下 创建名为test的topic 分区为2 备份为1</td>
+			</tr>
+			
 			<tr>
 				<td style="width:30%;">kafka-topics.sh --alter --zookeeper 10.10.0.65 --topic test --partitions 3</td>
 				<td style="width:70%;">修改zookeeper 集群管理的 kafka topic 为test 的partitions 为 3 </td>
@@ -43,6 +52,19 @@
 										需要在$kafka_home/conf/server.properties 添加配置  
 										<br />delete.topic.enable=true
 				</td>
+			</tr>
+			
+			<tr>
+				<td style="width:30%;">&nbsp;</td>
+				<td style="width:70%;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">kafka-console-producer.sh --broker-list 10.10.0.67:9092 --topic storm</td>
+				<td style="width:70%;">使用console打印输入的方式 往broker 下topic storm 发送信息</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">kafka-console-consumer.sh --zookeeper 10.10.0.66:2181 --topic storm</td>
+				<td style="width:70%;">使用console打印输出的方式 接受zookeeper集群中的 topic storm 的数据</td>
 			</tr>
 
 		</table>
