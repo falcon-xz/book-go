@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>hbase配置与优化</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+<h4>hbase-site.xml配置与优化</h4>
+<ul style=" list-style-type: none;">
+	<li>
+		<table border="1" style="width:95%;font-size: small">
+		<tr>
+			<td style="width:20%;text-align:center">配置项</td>
+			<td style="width:40%;text-align:center">说明</td>
+			<td style="width:20%;">优化</td>
+			<td style="width:20%;">默认</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.cluster.distributed</td>
+			<td style="width:40%;">是否使用集群方式</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">true</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.defaults.for.version.skip</td>
+			<td style="width:40%;">
+			hbase-default.xml中的hbase.defaults.for.version配置项与hbase-*.jar名中指定版本号一致性检测</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">true</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.server.thread.wakefrequency</td>
+			<td style="width:40%;">service工作的sleep间隔，毫秒<br/>
+			检测 是否需要split操作 等
+			</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">10000</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width:20%; height: 66px;">
+			hbase.hregion.majorcompaction</td>
+			<td style="width:40%; height: 66px;">
+			一个Region中的所有HStoreFile的major compactions的时间间隔</td>
+			<td style="width:20%; height: 66px;">0<br/>不使用major compactions</td>
+			<td style="width:20%; height: 66px;">
+			86400000(一天)</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hregion.majorcompaction.jitter</td>
+			<td style="width:40%;">major compact时间间隔到期参数</td>
+			<td style="width:20%;">0.5</td>
+			<td style="width:20%;">0</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hregion.max.filesize</td>
+			<td style="width:40%;">region最大的大小 split阈值</td>
+			<td style="width:20%;">21474836480(20G)</td>
+			<td style="width:20%;">268435456(256m)</td>
+		</tr>
+		<tr>
+			<td style="width:20%;"></td>
+			<td style="width:40%;"></td>
+			<td style="width:20%;"></td>
+			<td style="width:20%;"></td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hregion.memstore.flush.size</td>
+			<td style="width:40%;">当memstore的大小超过这个值的时候，会flush到磁盘</td>
+			<td style="width:20%;">134217728（128M）</td>
+			<td style="width:20%;">67108864（64M）</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hregion.memstore.block.multiplier</td>
+			<td style="width:40%;">memstore超过hbase.hregion.memstore.flush.size大小倍数会阻塞put操作，预防在put高峰期会导致的失控</td>
+			<td style="width:20%;">4</td>
+			<td style="width:20%;">2</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hregion.memstore.mslab.enabled</td>
+			<td style="width:40%;">是否启用memstore分配本地缓冲区，防止在大量写负载的时候堆的碎片过多</td>
+			<td style="width:20%;">true</td>
+			<td style="width:20%;">false</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hstore.blockingStoreFiles</td>
+			<td style="width:40%;">当一个HStore含有多于这个值的HStoreFiles(每一个memstore flush产生一个HStoreFile)的时候，会执行一个合并操作，put会阻塞直到合并完成，直到超过了hbase.hstore.blockingWaitTime的值</td>
+			<td style="width:20%;">100</td>
+			<td style="width:20%;">7</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.hstore.compactionThreshold</td>
+			<td style="width:40%;">HStoreFiles合并造成put阻塞前的预防合并措施</td>
+			<td style="width:20%;">10</td>
+			<td style="width:20%;">3</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.regionserver.global.memstore.upperLimit</td>
+			<td style="width:40%;">单个region server的全部memtores的最大值。超过这个值，一个新的update操作会被挂起，强制执行flush操作</td>
+			<td style="width:20%;">0.4</td>
+			<td style="width:20%;">0.4</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.regionserver.global.memstore.lowerLimit</td>
+			<td style="width:40%;">当强制执行flush操作的时候，当低于这个值的时候，flush会停止。默认是堆大小的 35% . 如果这个值和 hbase.regionserver.global.memstore.upperLimit 相同就意味着当update操作因为内存限制被挂起时，会尽量少的执行flush(一旦执行flush，值就会比下限要低，不再执行)</td>
+			<td style="width:20%;">0.38</td>
+			<td style="width:20%;">0.35</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hfile.block.cache.size</td>
+			<td style="width:40%;">分配给HFile/StoreFile的block cache占最大堆(-Xmx setting)的比例</td>
+			<td style="width:20%;">0.4</td>
+			<td style="width:20%;">0.2</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		
+		<tr>
+			<td style="width:20%;">zookeeper.session.timeout</td>
+			<td style="width:40%;">zookeeper连接超时时间，如regionServer宕机后的重启和恢复</td>
+			<td style="width:20%;">6000</td>
+			<td style="width:20%;">18000</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.regionserver.handler.count</td>
+			<td style="width:40%;">表接受外来请求的线程数</td>
+			<td style="width:20%;">60</td>
+			<td style="width:20%;">10</td>
+		</tr>
+		
+		<tr>
+			<td style="width:20%;">hbase.client.keyvalue.maxsize</td>
+			<td style="width:40%;">keyvalue实例最大的size，设置存储文件中单个entry大小的上界</td>
+			<td style="width:20%;">10485760(10M)</td>
+			<td style="width:20%;">10485760(10M)</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">hbase.client.scanner.caching</td>
+			<td style="width:40%;">scan一次RPC缓存条数</td>
+			<td style="width:20%;">1000</td>
+			<td style="width:20%;">1</td>
+		</tr>
+		<tr>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:40%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+			<td style="width:20%;">&nbsp;</td>
+		</tr>
+		</table>
+	
+	</li>
+	<br/>
+	
+
+
+</ul>
+
+<h4>hbase-env.sh配置</h4>
+<ul style=" list-style-type: none;">
+	<li>
+		<table border="1" style="width:95%;font-size:small">
+		<tr>
+			<td style="width:40%;text-align:center">配置项</td>
+			<td style="width:60%;text-align:center">说明</td>
+		</tr>
+		<tr>
+			<td style="width:40%;">HBASE_CONF_DIR</td>
+			<td style="width:60%;">hbase配置文件路径</td>
+		</tr>
+		<tr>
+			<td style="width:40%;">HBASE_MANAGES_ZK=false</td>
+			<td style="width:60%;">是否使用使用hbase管理zookeeper方式</td>
+		</tr>
+		<tr>
+			<td style="width:40%;"></td>
+			<td style="width:60%;"></td>
+		</tr>
+		
+		<tr>
+			<td style="width:40%;"></td>
+			<td style="width:60%;"></td>
+		</tr>
+		<tr>
+			<td style="width:40%;"></td>
+			<td style="width:60%;"></td>
+		</tr>
+		<tr>
+			<td style="width:40%;"></td>
+			<td style="width:60%;"></td>
+		</tr>
+
+
+
+		</table>
+	
+	</li>
+	<br/>
+	
+
+
+</ul>
+
+<table border="1" width="100%" id="table1" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td bgcolor="#FFCC99">参考配置</td>
+	</tr>
+	<tr>
+		<td><div><a href="../../other/conf.rar">conf.rar</a></div>
+</td>
+	</tr>
+</table>
+</body>
+
+</html>
