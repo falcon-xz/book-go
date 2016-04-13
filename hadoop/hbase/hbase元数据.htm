@@ -31,9 +31,9 @@
 		regionserver注册路径为$zk_path/hbase/rs<br/>
 		
 	</li>
-	<li>client访问hbase region时,读取hbase配置文件,找到hbase在hdfs上的路径<br/>
-		读取zookeeper下的$zk_path/hbase/meta-region-server<br/>
-		读取meta表,找到region在meta表里的信息（寻址入口等）
+	<li>client访问hbase region时,读取hbase配置文件<br/>
+		连接zookeeper，zookeeper读取$zk_path/hbase/meta-region-server<br/>
+		读取meta表,get拿regionserverinfo,scan 数据块存放位置,找寻址入口
 	</li>
 	<li>去region所在机器上的block拿数据
 	</li>
