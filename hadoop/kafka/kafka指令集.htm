@@ -103,6 +103,61 @@
 </ul>
 
 
+<h4>kafka 原理</h4>
+<ul style=" list-style-type: decimal;">
+	<li>PageCache优化：
+		<br/>
+		&nbsp;&nbsp;&nbsp;
+		Kafka重度依赖底层操作系统提供的PageCache功能。当上层有写操作时，操作系统只是将数据写入PageCache，同时标记Page属性为Dirty。
+		当读操作发生时，先从PageCache中查找，如果发生缺页才进行磁盘调度，最终返回需要的数据。实际上PageCache是把尽可能多的空闲内存都
+		当做了磁盘缓存来使用。同时如果有其他进程申请内存，回收PageCache的代价又很小，所以现代的OS（操作系统）都支持PageCache
+		<br/>
+		&nbsp;&nbsp;&nbsp;
+PageCache功能同时可以避免在JVM内部缓存数据，JVM为我们提供了强大的GC能力，同时也引入了一些问题不适用与Kafka的设计
+<br/>
+		&nbsp;&nbsp;&nbsp;
+
+如果Kafka重启，所有的In-Process Cache都会失效，而OS管理的PageCache依然可以继续使用。<br/>
+	</li>
+	<br/>
+	<li>Sendfile优化：
+		<br/>
+		传统的网络I/O<br/>
+
+		&nbsp;&nbsp;&nbsp;
+a.    OS 从硬盘把数据读到内核区的PageCache。<br/>
+&nbsp;&nbsp;&nbsp;
+
+b.    应用进程把数据从内核区Copy到用户区。<br/>
+&nbsp;&nbsp;&nbsp;
+
+c.    然后应用进程再把数据写入到Socket，数据流入内核区的Socket Buffer上。<br/>
+&nbsp;&nbsp;&nbsp;
+
+d.    OS 再把数据从Buffer中Copy到网卡的Buffer上，这样完成一次发送。<br/>
+		优化之后：<br/>
+				&nbsp;&nbsp;&nbsp;
+a.    OS 从硬盘把数据读到内核区的PageCache。<br/>
+	&nbsp;&nbsp;&nbsp; b. 应用进程把数据从内核区写入到Socket，数据流入内核区的Socket Buffer上。<br/>
+&nbsp;&nbsp;&nbsp;
+
+	c.    OS 再把数据从Buffer中Copy到网卡的Buffer上，这样完成一次发送。<br/>
+省掉应用层面<br/>
+Kafka的设计初衷是尽一切努力在内存中完成数据交换，无论是对外作为一整个消息系统，或是内部同底层操作系统的交互。<br/>
+	</li>
+	
+	
+<li>
+		<br/>
+	</li>
+	<br/>
+<li>
+		<br/>
+	</li>
+	<br/>
+
+</ul>
+
 </body>
 
 </html>
