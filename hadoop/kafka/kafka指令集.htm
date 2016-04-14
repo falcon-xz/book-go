@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -157,6 +157,36 @@ Kafka的设计初衷是尽一切努力在内存中完成数据交换，无论是
 	<br/>
 
 </ul>
+<h4>kafka tips</h4>
+<ul style=" list-style-type: decimal; font-size: 15px">
+<li>Partition的数量尽量提前预分配，虽然可以在后期动态增加Partition，但是会冒着可能破坏Message Key和Partition之间对应关系的风险
+		<br/>
+	</li>
+	<br/>
+	<li> Replica的数量不要过多，如果条件允许尽量把Replica集合内的Partition分别调整到不同的Rack
+		<br/>
+	</li>
+	<br/>
+
+<li>尽一切努力保证每次停Broker时都可以Clean Shutdown，否则问题就不仅仅是恢复服务所需时间长，还可能出现数据损坏或其他很诡异的问题
+		<br/>
+	</li>
+	<br/>
+	<li>强烈推荐使用Low level API，虽然繁琐一些，但是目前只有这个API可以对Error数据进行自定义处理，尤其是处理Broker异常或由于Unclean Shutdown导致的Corrupted Data时，否则无法Skip只能等着“坏消息”在Broker上被Rotate掉，在此期间该Replica将会一直处于不可用状态
+		<br/>
+	</li>
+	<br/>
+
+<li>
+		<br/>
+	</li>
+	<br/>
+
+
+
+</ul>
+
+
 
 </body>
 
