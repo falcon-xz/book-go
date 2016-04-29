@@ -7,7 +7,7 @@ ajax\dwr.html
 ajax\jquery ajax.html
 example\tab_example.htm
 hadoop\hbase\hbaseAPI.htm
-hadoop\hbase\hbase优化.htm
+hadoop\hbase\hbase配置与优化.htm
 hadoop\hbase\hbase元数据.htm
 hadoop\hbase\hbase指令集.htm
 hadoop\HDFS指令集.htm
@@ -16,6 +16,7 @@ hadoop\hive\hive函数.htm
 hadoop\hive\hive配置.htm
 hadoop\hive\hive优化.htm
 hadoop\hive\hive自定义函数.htm
+hadoop\kafka\kafka配置与优化.htm
 hadoop\kafka\kafka指令集.htm
 hadoop\zookeeper\zookeeper优化.htm
 hadoop\zookeeper\zookeeper指令集.htm
@@ -56,6 +57,7 @@ HHC5003: Error: Compilation failed while compiling other\业软公共 提高培训 TopEn
 工具\utils.htm
 TOC-Created-By-Easy-CHM.HHC
 Index-Created-By-Easy-CHM.HHK
+other\conf.rar
 other\UDFDemo.zip
 other\UDTFDemo.zip
 other\parse.zip
