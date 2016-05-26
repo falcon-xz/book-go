@@ -34,7 +34,7 @@
 				<td style="width:30%;">增加表级coprocessor(必须在启动前加入jar包)$类全路径 为必填 
 				其他可以空</td>
 				<td style="width:70%;">disable &#39;$tableName';<br/>
-								alter '$tableName',METHOD=>'table_att','$name'=>'$jarpath|$类全路径|$序列号|$权限(SYSTEM/USER)'<br/>
+								alter '$tableName',METHOD=>'table_att','coprocessor'=>'$jarpath|$类全路径|$序列号|$权限(SYSTEM/USER)'<br/>
 								alter '$tableName',METHOD=>'table_att_unset&#39;,NAME 
 	=&gt; &#39;$name&#39;<br/>
 				enable '$tableName'</td>
