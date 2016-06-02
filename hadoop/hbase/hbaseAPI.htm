@@ -126,9 +126,10 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;RegionObserver:提供数据操作事件hook，如put、scan、get等<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;WALObserver:提供WAL相关操作hook<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;MasterObserver:提供表操作事件hook，如createtable，modifytable等<br/>
-	Endpoint:类似oracle procedure<br/>
+	Endpoint:类似oracle procedure <br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;0.96版本之后，RPC通信协议使用google protocol buffer语言，并发式的发送RPC任务给相应机器，并返回结果，详见https://github.com/falcon-xz/hbaseWithKafka/tree/master/src/com/xz/hbase/endpoint下的类<br/>
 	<br/>
-	RegionObserver:两种部署方式 <br/>
+	协处理器:两种部署方式 <br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;1.hbase-site.xml 全局region处理<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&lt;property&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;name&gt;hbase.coprocessor.region.classes&lt;/name&gt;<br />

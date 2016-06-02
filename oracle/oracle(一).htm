@@ -638,54 +638,31 @@ end</font><font SIZE="3"> testC</font>;</br>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
 建用户、表空间
 </div>
-<div class="divnext">--查看表空间 地址<br />
-	Select * FROM DBA_DATA_FILES<br />
+<div class="divnext">
+	--创建表空间<br />
+	create tablespace $tablespaceName datafile 'F:\ORACLE\ORACLE11\ORADATA\ORCL\$tablespaceName.dbf' size 20m autoextend on;<br />
+	--查看表空间<br />
+	select * from dba_data_files t where t.tablespace_name='$tablespaceName'<br />
+	select * from dba_tablespaces t where t.tablespace_name='$tablespaceName'<br />
 	<br />
 	--创建用户<br />
-	CREATE USER ICDSOCIAL IDENTIFIED BY &quot;Admin123#&quot;<br />
-	DEFAULT TABLESPACE TBS_CSP_SOCIAL_DAT<br />
-	TEMPORARY TABLESPACE TBS_CSP_SOCIAL_TEMP<br />
-	PROFILE DEFAULT;<br />
+	create user $user identified by $pwd<br />
+	default tablespace $tablespaceName<br />
+	temporary tablespace temp<br />
+	profile DEFAULT;<br />
+	--查看用户<br />
+	select * from dba_users t where t.username='$user';<br />
+	
 	<br />
 	--授权<br />
-	GRANT CONNECT TO ICDSOCIAL; <br />
-	GRANT RESOURCE TO ICDSOCIAL;<br />
-	CREATE SESSION, ALTER SESSION,<br />
-	CREATE CLUSTER,<br />
-	CREATE PROCEDURE,<br />
-	CREATE SYNONYM,<br />
-	CREATE SEQUENCE,<br />
-	CREATE SNAPSHOT,<br />
-	CREATE TABLE,<br />
-	CREATE TRIGGER,<br />
-	CREATE TYPE, EXECUTE ANY TYPE,<br />
-	CREATE VIEW,<br />
-	SELECT ANY TABLE,<br />
-	EXECUTE ANY PROCEDURE, FORCE TRANSACTION<br />
-	TO ICDSOCIAL;<br />
-	GRANT EXECUTE ON DBMS_RANDOM TO ICDSOCIAL;<br />
-	GRANT EXECUTE ON DBMS_JOB TO ICDSOCIAL;<br />
-	GRANT UNLIMITED TABLESPACE TO ICDSOCIAL;<br />
+grant connect to $user; <br />
+grant resource to $user;<br />
+grant create session, alter session,create cluster,create procedure,create synonym,create sequence,create snapshot,create table,create trigger,create type, execute any type,create view,select any table,execute any procedure, force transactionto $user;
+grant execute on dbms_random to $user;<br />
+grant execute on dbms_job to $user;<br />
+grant unlimited tablespace to $user;<br />
 	<br />
-	<br />
-	--URSA<br />
-	/*第2步：创建数据表空间 */<br />
-	create tablespace ursa logging datafile &#39;ursa.dbf&#39; size 300m autoextend on 
-	next 50m maxsize 20480m extent management local REUSE; <br />
-	/*第3步：创建用户并指定表空间 */<br />
-	create user sdciq identified by sdciq <br />
-	default tablespace ursa ; <br />
-	/*第4步：给用户授予权限 */<br />
-	grant connect,resource,dba to sdciq; <br />
-	--XZBLOB<br />
-	/*第2步：创建数据表空间 */<br />
-	create tablespace xzblob logging datafile &#39;xzblob.dbf&#39; size 300m autoextend 
-	on next 50m maxsize 20480m extent management local; <br />
-	/*第3步：创建用户并指定表空间 */<br />
-	create user xzblob identified by xzblob <br />
-	default tablespace xzblob ; <br />
-	/*第4步：给用户授予权限 */<br />
-	grant connect,resource,dba to xzblob; <br />
+	
 </div>
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
