@@ -3,38 +3,103 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>linux</title>
+<title>linux详解</title>
 <style>
 .table{
-	
 	width:100%;
 	margin-left:10px;
-	
 }
 .table tr td{
-	
 	border:1px solid black;
 }
+
+.table2 tr td{
+	border:1px solid black;
+	text-align:center
+}
+
+
+.style1 {
+	color: #008000;
+}
+
 
 </style>
 </head>
 
 <body>
-<h4>压缩</h4>
-<ul style="text-decoration: underline; list-style-type: decimal;">
-	<li>tar方式:<br/>
-	压缩&nbsp; tar&nbsp; -zcvf&nbsp; name.tar&nbsp; \目录<br/>
-	解压&nbsp; tar&nbsp; -xvf&nbsp; name.tar <br/>
+<div>
+<!-- 检索部分 -->
+<a href="#step1">文件属性</a>
+</div>
+
+<div>
+<!-- 属性介绍 -->
+<h4 id="step1">文件属性</h4>
+<ul style="list-style-type:none;">
+	<li>	
+		<table class="table2" style="width:80%;margin-left:10px" >
+			<tr>
+				<td style="width:100%" colspan="4">文件7种类型：</td>
+			</tr>
+			<tr>
+				<td style="width:10%">d：</td>
+				<td style="width:30%">目录</td>
+				<td style="width:10%">l：</td>
+				<td style="width:30%">符号链接（指向另一个文件）</td>
+			</tr>
+			<tr>
+				<td style="width:10%">s：</td>
+				<td style="width:30%">套接字文件</td>
+				<td style="width:10%">b：</td>
+				<td style="width:30%">块设备文件</td>
+			</tr>
+			<tr>
+				<td style="width:10%">c：</td>
+				<td style="width:30%">字符设备文件</td>
+				<td style="width:10%">p：</td>
+				<td style="width:30%">命名管道文件</td>
+			</tr>
+			<tr>
+				<td style="width:10%">-：</td>
+				<td style="width:30%">普通文件，不属于以上类型</td>
+				<td style="width:10%"> </td>
+				<td style="width:30%"> </td>
+			</tr>
+
+
+		</table>
 	</li>
 	
-	<li>zip方式:<br/>
-	压缩&nbsp; zip&nbsp; –r&nbsp; name.zip&nbsp; \目录<br/>
-	解压&nbsp; unzip&nbsp; name.zip <br/>
-	</li>
-
 
 </ul>
-<h4>基本配置</h4>
+
+<h4 id="step1">匹配字符</h4>
+<ul style="list-style-type:none;">
+	<li>	
+		<table class="table2" style="width:80%;margin-left:10px" >
+						<tr>
+				<td style="width:10%">*</td>
+				<td style="width:30%">任意字符</td>
+				<td style="width:10%">？</td>
+				<td style="width:30%">单个字符</td>
+			</tr>
+			<tr>
+				<td style="width:10%">[...]/[!...]</td>
+				<td style="width:30%">匹配字符和范围</td>
+				<td style="width:10%">&nbsp;</td>
+				<td style="width:30%">&nbsp;</td>
+			</tr>
+			
+
+		</table>
+	</li>
+	
+
+</ul>
+
+
+<h4>基本配置文件</h4>
 	<table class="table">
 		<tr>
 			<td style="width:20%">版本信息</td>
@@ -68,7 +133,205 @@
 			<td style="width:20%">网卡信息（各个版本不一致）</td>
 			<td style="width:75%">cat /etc/udev/rules.d/xx-xx.rules</td>
 		</tr>
-			</table>
+</table>
+
+
+</div>
+
+<div>
+<!-- 指令介绍 -->
+<h4>权限 chmod chgrp chown id/group umask ln</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="4" style="width:15%"><span style="color:green">chmod [who] operator [permission] filename</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">who(可省略)</td>
+			<td colspan="4" rowspan="1"style="width:30%">chmod a-x filename </td>
+			<td colspan="2" rowspan="1" style="width:28%">收回所有用户执行权限</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">option 操作 + - =</td>
+			<td colspan="4" rowspan="1" style="width:30%">chmod g+w filename</td>
+			<td colspan="2" rowspan="1" style="width:28%">赋予同组用户写权限</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">permission具体权限 rwx</td>
+			<td colspan="4" rowspan="1" style="width:30%">chmod -R go+x filename</td>
+			<td colspan="2" rowspan="1" style="width:28%">赋予文件及其下所有文件 同组和其他用户的执行权限</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">chmod mode file</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">绝对模式</td>
+			<td colspan="4" rowspan="1" style="width:30%">chown 777 file</td>
+			<td colspan="2" rowspan="1" style="width:28%">赋予文件所有权限</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">group/id [username]</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">查找用户所属组 username 可省</td>
+			<td colspan="6" rowspan="1" style="width:50%">group/id username</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">umask</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">查询权限反码 </td>
+			<td colspan="6" rowspan="1" style="width:50%">002 目录-775 文件-664 <br/> 022 目录-755 文件-664</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">ln [-s] sourcePath targetPath</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">在目标目录下生成源 路径/文件 的软连接 权限为777</td>
+						<td colspan="4" rowspan="1" style="width:30%">ln [-s] /tmp /var/tmp</td>
+			<td colspan="2" rowspan="1" style="width:28%">在/var/tmp 生成了/tmp的软连接</td>
+
+		</tr>
+		
+</table>
+
+<h4>查询 find xargs</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="4" style="width:15%"><span style="color:green">find pathname -options [-print -exec -ok] filename</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">pathname</td>
+			<td colspan="4" rowspan="1"style="width:30%">find . a.txt /find / a.txt</td>
+			<td colspan="2" rowspan="1" style="width:28%">在 当前路径下/根目录 查找a.txt</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">-options<br/>
+			-name -perm(权限)<br/>
+			-mtime -newer<br/>
+			-type -size
+			</td>
+			<td colspan="4" rowspan="1" style="width:30%">find ~ -name 1.txt <br/>
+			find . -name "[a-z][0-9].txt" -print<br/><br/>
+			find / -perm 777 -print<br/>
+			find /tmp -mtime -5 -print<br/><br/>
+			find . -newer 1.txt ! 2.txt <br/><br/>
+			find . -size +1000c -print
+			</td>
+			<td colspan="2" rowspan="1" style="width:28%">在$HOME 目录下查找1.txt文件<br/>
+			在当前目录查找名字 第一位为字母 第二位为数字的文件 双引号表达式<br/>
+			查找权限为777的文件<br/>
+			在tmp目录下查找5天内的文件 +5 5天内 -5 5天前<br/>
+			查找当前目录 比1文件新且比2文件旧的文件<br/>
+			查找文件大小大于1K的文件
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">-exec </td>
+			<td colspan="4" rowspan="1" style="width:30%">
+			find . "*.sh" -exec ls -l {} \;<br/>
+			find . "*.sh" -exec {} \;<br/><br/>
+			find . -name "*.txt" -print | xargs echo ""
+			</td>
+			<td colspan="2" rowspan="1" style="width:28%">
+			-exec 执行  {} \ 代表查找结果 ls -l 表示位置<br/>
+			直接执行查找的结果 {} \;大括号 空格 斜杠 分号<br/><br/>
+			将查找的结果 输出到控制台 xargs 为find结果的批量结果</td>
+		</tr>
+				
+
+		
+</table>
+
+<h4>计划任务 后台任务</h4>		
+<table class="table">
+		
+		<tr>
+			<td colspan="3" rowspan="3" style="width:15%"><span style="color:green">crontab [-u user] -e -l -r</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">设置环境变量</td>
+			<td colspan="6" rowspan="1"style="width:58%">在用户系统文件中加入 EDITOR=vi; 
+			export EDITOR 重启 source ,存储在/var/spool/cron/$username</td>
+
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">[-u user]可省略 用户名</td>
+			<td colspan="2" rowspan="1"style="width:20%">-e edit</td>
+			<td colspan="2" rowspan="1"style="width:20%">-l list</td>
+			<td colspan="2" rowspan="1"style="width:18%">-r remove</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="2" style="width:15%"><span style="color:green">at [-f script] [-m -l -r] [time] [date]</span></td>
+		</tr>
+		
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">[-f] 脚本或者命令</td>
+			<td colspan="2" rowspan="1"style="width:20%">-m -l -r  mail/list/remove</td>
+			<td colspan="2" rowspan="1"style="width:20%">[time] 时间格式</td>
+			<td colspan="2" rowspan="1"style="width:18%">[date] 日期格式</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">&</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">command &</td>
+			<td colspan="6" rowspan="1" style="width:50%">客户端一断都断</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">nohup</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">nohup command &</td>
+			<td colspan="6" rowspan="1" style="width:50%">相当于起一个服务</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%" class="style1">ps -ef |grep xx</td>
+			<td colspan="1" rowspan="1" style="width:13%">查看后台进程</td>
+			<td colspan="4" rowspan="1" style="width:30%">ps -ef |grep redis</td>
+			<td colspan="2" rowspan="1" style="width:28%">kill -9 进程号</td>
+		</tr>
+		
+				
+</table>
+
+<h4>输入输出 echo read cat</h4>		
+<table class="table">
+		
+				<tr>
+			<td colspan="3" rowspan="2" style="width:15%" class="style1">echo -e 
+			(linux转义)</td>
+		</tr>
+		
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">\c 不换行&nbsp;</td>
+			<td colspan="2" rowspan="1"style="width:20%">\f 进纸（换行+缩进）</td>
+			<td colspan="2" rowspan="1"style="width:20%">\t tab键</td>
+			<td colspan="2" rowspan="1"style="width:18%">\n 换行</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			read</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">read 控制台输入</td>
+			<td colspan="6" rowspan="1" style="width:50%">参数使用空格分隔 参数过多全给最后一个</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">cat</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">cat file | more 分页</td>
+			<td colspan="6" rowspan="1" style="width:50%">cat &gt;3.txt 输入 CTRL+D 退出直接保存 </td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%" class="style1">sed、awk、grep 与管道</td>
+			<td colspan="1" rowspan="1" style="width:13%">查看后台进程</td>
+			<td colspan="4" rowspan="1" style="width:30%">ps -ef |grep redis</td>
+			<td colspan="2" rowspan="1" style="width:28%">kill -9 进程号</td>
+		</tr>
+		
+				
+</table>
+
+
+<h4 >压缩</h4>
+<ul style="text-decoration: underline; list-style-type: decimal;">
+	<li>tar方式:<br/>
+	压缩&nbsp; tar&nbsp; -zcvf&nbsp; name.tar&nbsp; \目录<br/>
+	解压&nbsp; tar&nbsp; -xvf&nbsp; name.tar <br/>
+	</li>
+	
+	<li>zip方式:<br/>
+	压缩&nbsp; zip&nbsp; –r&nbsp; name.zip&nbsp; \目录<br/>
+	解压&nbsp; unzip&nbsp; name.zip <br/>
+	</li>
+
+
+</ul>
 <h4>创建用户</h4>		
 <table class="table">
 		<tr>
@@ -203,7 +466,7 @@
 		</tr>
 
 </table>
-<h4>系统配置</h4>
+<h4 id="step1">系统配置</h4>
 <table class="table">
 		<tr>
 			<td style="width:20%">添加环境变量
@@ -247,7 +510,7 @@
 			<td style="width:75%">kill 9 进程名 或者 killall 服务名</td>
 		</tr>
 </table>
-
+</div>
 </body>
 
 </html>
