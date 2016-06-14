@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>hive 函数</title>
+<title>hive 语法</title>
 <style>
 .table{
 	
@@ -83,6 +83,40 @@
 	</table>
 	</li>
 
+</ul>
+
+
+
+<h4>hive表映射hbase表</h4>
+<ul style=" list-style-type: decimal;">
+	<li>创建hbase表并导入数据<br/>
+		create "hiveMapping","f1","f2"<br/>
+		put "hiveMapping","1","f1:name","xz"<br/>
+		put "hiveMapping","1","f1:age","18"<br/>
+		put "hiveMapping","1","f2:money","10"<br/>
+		put "hiveMapping","2","f2:money","15"<br/><br/>
+	</li>
+	
+	<li>创建hive外表<br/>
+		create external table hbaseMapping(<br/>
+		rowkey string,<br/>
+		name string,<br/>
+		age string,<br/>
+		money string<br/>
+		)<br/>
+		stored by 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'<br/>
+		WITH SERDEPROPERTIES ("hbase.columns.mapping"=":key,f1:name,f1:age,f2:money")<br/>
+		TBLPROPERTIES("hbase.table.name"="hiveMapping")<br/>
+		//stored by 使用hive提供hbase数据处理类<br/>
+		//WITH SERDEPROPERTIES 使用序列化对象处理映射关系 :key 代表rowkey ","分割<br/>
+		//TBLPROPERTIES 使用表属性映射hbase中的哪张表 （不写默认与hive表同名）<br/><br/>
+	</li>
+	
+	<li>查询结果<br/>
+		1		xz		18		10<br/>
+		2	NULL	NULL	15<br/>
+		<br/>
+	</li>
 </ul>
 </body>
 
