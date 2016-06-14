@@ -98,6 +98,31 @@
 
 </ul>
 
+<h4 id="step1">正则表达式</h4>
+<ul style="list-style-type:none;">
+	<li>	
+		<table class="table2" style="width:80%;margin-left:10px" >
+						<tr>
+				<td style="width:10%">*</td>
+				<td style="width:30%">任意字符</td>
+				<td style="width:10%">？</td>
+				<td style="width:30%">单个字符</td>
+			</tr>
+			<tr>
+				<td style="width:10%">[...]/[!...]</td>
+				<td style="width:30%">匹配字符和范围</td>
+				<td style="width:10%">&nbsp;</td>
+				<td style="width:30%">&nbsp;</td>
+			</tr>
+			
+
+		</table>
+	</li>
+	
+
+</ul>
+
+
 
 <h4>基本配置文件</h4>
 	<table class="table">
@@ -303,17 +328,35 @@
 			<td colspan="6" rowspan="1" style="width:50%">参数使用空格分隔 参数过多全给最后一个</td>
 		</tr>
 		<tr>
-			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">cat</span></td>
-			<td colspan="1" rowspan="1" style="width:13%">cat file | more 分页</td>
-			<td colspan="6" rowspan="1" style="width:50%">cat &gt;3.txt 输入 CTRL+D 退出直接保存 </td>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">shell 标准输入 0、输出 1、错误 2</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">command 1&gt;file<br/>command 2&gt;&gt;file</td>
+			<td colspan="6" rowspan="1" style="width:50%">输出重定向到文件<br/>错误追加到文件 </td>
+		</tr>
+				
+				
+</table>
+
+
+<h4>命令 组合 控制 &amp;&amp; || (;)</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			command1 && command2 </span></td>
+			<td colspan="1" rowspan="1" style="width:13%">cp a.txt a/ &amp;&amp; rm -rf a.txt</td>
+			<td colspan="6" rowspan="1" style="width:50%">复制成功后，删除源文件</td>
 		</tr>
 		<tr>
-			<td colspan="3" rowspan="1" style="width:15%" class="style1">sed、awk、grep 与管道</td>
-			<td colspan="1" rowspan="1" style="width:13%">查看后台进程</td>
-			<td colspan="4" rowspan="1" style="width:30%">ps -ef |grep redis</td>
-			<td colspan="2" rowspan="1" style="width:28%">kill -9 进程号</td>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			command1 || command2 </span></td>
+			<td colspan="1" rowspan="1" style="width:13%">cp a.txt a/ || rm -rf a.txt</td>
+			<td colspan="6" rowspan="1" style="width:50%">复制失败了，删除源文件</td>
 		</tr>
-		
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			(command1;command2) </span></td>
+			<td colspan="1" rowspan="1" style="width:13%">()可以省略</td>
+			<td colspan="6" rowspan="1" style="width:50%">顺序执行</td>
+		</tr>
 				
 </table>
 
