@@ -184,11 +184,65 @@
 
 <div>
 <!-- 指令介绍 -->
+<h4>vi 编辑指令</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="8" style="width:15%"><span style="color:green">chmod [who] operator [permission] filename</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">^</td>
+			<td colspan="2" rowspan="1"style="width:20%">行首</td>
+			<td colspan="2" rowspan="1"style="width:20%">$ </td>
+			<td colspan="2" rowspan="1" style="width:20%">行尾</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">（</td>
+			<td colspan="2" rowspan="1"style="width:20%">句首</td>
+			<td colspan="2" rowspan="1"style="width:20%">） </td>
+			<td colspan="2" rowspan="1" style="width:20%">句尾</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">Ctrl+u、Ctrl＋b</td>
+			<td colspan="2" rowspan="1"style="width:20%">文件首翻半屏、一屏</td>
+			<td colspan="2" rowspan="1"style="width:20%">Ctrl+d、Ctrl+f </td>
+			<td colspan="2" rowspan="1" style="width:20%">文件尾翻半屏、一屏</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">i / I</td>
+			<td colspan="2" rowspan="1"style="width:20%">当前字符/行首 插入</td>
+			<td colspan="2" rowspan="1"style="width:20%">o / O </td>
+			<td colspan="2" rowspan="1" style="width:20%">下一行/上一行插入</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">x / dd</td>
+			<td colspan="2" rowspan="1"style="width:20%">删除一个字符 /一行</td>
+			<td colspan="2" rowspan="1"style="width:20%">dw</td>
+			<td colspan="2" rowspan="1" style="width:20%">删除前面空格</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">:set nu </td>
+			<td colspan="2" rowspan="1"style="width:20%">设置行号</td>
+			<td colspan="2" rowspan="1"style="width:20%">/ xx</td>
+			<td colspan="2" rowspan="1" style="width:20%">查找xx字符串 回车 之后 n 下一个</td>
+		</tr>
+
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">Ctrl+G</td>
+			<td colspan="2" rowspan="1"style="width:20%">显示行数和位置百分比</td>
+			<td colspan="2" rowspan="1"style="width:20%">G</td>
+			<td colspan="2" rowspan="1" style="width:20%">最后一行</td>
+		</tr>
+
+
+</table>
+
+
 <h4>权限 chmod chgrp chown id/group umask ln</h4>		
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="4" style="width:15%"><span style="color:green">chmod [who] operator [permission] filename</span></td>
 		</tr>
+		
 		<tr>
 			<td colspan="1" rowspan="1" style="width:13%">who(可省略)</td>
 			<td colspan="4" rowspan="1"style="width:30%">chmod a-x filename </td>
@@ -490,16 +544,16 @@
 		</tr>
 		<tr>
 			<td colspan="1" rowspan="1"style="width:10%">'sed command'</td>
-			<td colspan="5" rowspan="1"style="width:48%">a 增加、c 取代、d 删除、i 插入、p 打印、s 取代、=行号、</td>
+			<td colspan="6" rowspan="1"style="width:48%">a 增加、c 取代、d 删除、i 插入、p 打印、s 取代、=行号、</td>
 		</tr>
 		<tr>
 			<td colspan="1" rowspan="1"style="width:10%">正则元字符</td>
-			<td colspan="5" rowspan="1"style="width:48%">sed 正则需要用//包裹</td>
+			<td colspan="6" rowspan="1"style="width:48%">sed 正则需要用//包裹</td>
 		</tr>
 		
 		<tr>
 			<td colspan="1" rowspan="1"style="width:10%">sed脚本</td>
-			<td colspan="5" rowspan="1"style="width:48%">第一行用 #!/bin/sed -f</td>
+			<td colspan="6" rowspan="1"style="width:48%">第一行用 #!/bin/sed -f</td>
 		</tr>
 		<tr>
 			<td colspan="3"  style="width:22%">sed -n p 1.txt、sed -n '1,$'p 1.txt</td>
@@ -599,20 +653,33 @@
 				
 </table>
 
-<h4 >压缩</h4>
-<ul style="text-decoration: underline; list-style-type: decimal;">
-	<li>tar方式:<br/>
-	压缩&nbsp; tar&nbsp; -zcvf&nbsp; name.tar&nbsp; \目录<br/>
-	解压&nbsp; tar&nbsp; -xvf&nbsp; name.tar <br/>
-	</li>
-	
-	<li>zip方式:<br/>
-	压缩&nbsp; zip&nbsp; –r&nbsp; name.zip&nbsp; \目录<br/>
-	解压&nbsp; unzip&nbsp; name.zip <br/>
-	</li>
+
+<h4>压缩</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">tar<br/><br/>
+				zip</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%"> tar&nbsp; -zcvf&nbsp; name.tar&nbsp; \目录</td>
+			<td colspan="6" rowspan="1" style="width:50%">压缩&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">tar&nbsp; -xvf&nbsp; name.tar </td>
+			<td colspan="6" rowspan="1"style="width:48%">解压&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">zip&nbsp; –r&nbsp; name.zip&nbsp; \目录</td>
+			<td colspan="6" rowspan="1"style="width:48%">压缩&nbsp;</td>
+		</tr>
+		
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">unzip&nbsp; name.zip</td>
+			<td colspan="6" rowspan="1"style="width:48%">解压&nbsp;</td>
+		</tr>
+</table>
 
 
-</ul>
 <h4>创建用户</h4>		
 <table class="table">
 		<tr>
