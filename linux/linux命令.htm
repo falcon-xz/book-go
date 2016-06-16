@@ -15,7 +15,7 @@
 
 .table2 tr td{
 	border:1px solid black;
-	text-align:center
+	text-align:left;
 }
 
 
@@ -30,18 +30,16 @@
 <body>
 <div>
 <!-- 检索部分 -->
-<a href="#step1">文件属性</a>
+<a href="#wjlx">文件类型</a>
 </div>
 
 <div>
 <!-- 属性介绍 -->
-<h4 id="step1">文件属性</h4>
+<h4 id="wjlx">文件类型</h4>
 <ul style="list-style-type:none;">
 	<li>	
 		<table class="table2" style="width:80%;margin-left:10px" >
-			<tr>
-				<td style="width:100%" colspan="4">文件7种类型：</td>
-			</tr>
+			
 			<tr>
 				<td style="width:10%">d：</td>
 				<td style="width:30%">目录</td>
@@ -74,7 +72,7 @@
 
 </ul>
 
-<h4 id="step1">匹配字符</h4>
+<h4 id="step2">匹配字符</h4>
 <ul style="list-style-type:none;">
 	<li>	
 		<table class="table2" style="width:80%;margin-left:10px" >
@@ -102,18 +100,39 @@
 <ul style="list-style-type:none;">
 	<li>	
 		<table class="table2" style="width:80%;margin-left:10px" >
-						<tr>
-				<td style="width:10%">*</td>
-				<td style="width:30%">任意字符</td>
-				<td style="width:10%">？</td>
-				<td style="width:30%">单个字符</td>
+			<tr>
+				<td style="width:10%">^</td>
+				<td style="width:30%">只匹配行首</td>
+				<td style="width:10%">$</td>
+				<td style="width:30%">只匹配行尾</td>
 			</tr>
 			<tr>
-				<td style="width:10%">[...]/[!...]</td>
-				<td style="width:30%">匹配字符和范围</td>
-				<td style="width:10%">&nbsp;</td>
-				<td style="width:30%">&nbsp;</td>
+				<td style="width:10%">.</td>
+				<td style="width:30%">匹配任意单字符</td>
+				<td style="width:10%">*</td>
+				<td style="width:30%">单字符紧跟* 匹配0个或多个同字符</td>
 			</tr>
+			<tr>
+				<td colspan="1" style="width:10%">[]</td>
+				<td colspan="3" style="width:30%">匹配[]内字符，可以使单字符也可以为序列如[1]、[1-5]、[12345]</td>
+			</tr>
+			<tr>
+				<td colspan="1" style="width:10%">\</td>
+				<td colspan="3" style="width:30%">屏蔽元字符的特殊含义，转义字符</td>
+			</tr>
+			<tr>
+				<td colspan="1" style="width:10%">pattern\{n\}</td>
+				<td colspan="3" style="width:30%">用来匹配前面pattern出现次数。n为次数</td>
+			</tr>
+			<tr>
+				<td colspan="1" style="width:10%">pattern\{n,\}m</td>
+				<td colspan="3" style="width:30%">含义同上，但次数最少为 m</td>
+			</tr>
+			<tr>
+				<td colspan="1" style="width:10%">pattern\{n,m\}</td>
+				<td colspan="3" style="width:30%">含义同上，但pattern出现次数在n与m之间</td>
+			</tr>
+			
 			
 
 		</table>
@@ -307,7 +326,7 @@
 				
 </table>
 
-<h4>输入输出 echo read cat</h4>		
+<h4>输入输出 echo read cat tee</h4>		
 <table class="table">
 		
 				<tr>
@@ -331,6 +350,11 @@
 			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">shell 标准输入 0、输出 1、错误 2</span></td>
 			<td colspan="1" rowspan="1" style="width:13%">command 1&gt;file<br/>command 2&gt;&gt;file</td>
 			<td colspan="6" rowspan="1" style="width:50%">输出重定向到文件<br/>错误追加到文件 </td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">tee</span></td>
+			<td colspan="1" rowspan="1" style="width:13%">echo "22" | tee 1.txt</td>
+			<td colspan="6" rowspan="1" style="width:50%">重定向至文件并输出到console </td>
 		</tr>
 				
 				
@@ -360,6 +384,220 @@
 				
 </table>
 
+<h4>grep 查找</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="6" style="width:15%"><span style="color:green">grep [选项] 正则 [文件]<br/><br/>
+				cat [文件] | grep [选项] 正则</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="4" style="width:13%">[选项]</td>
+	
+		</tr>
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-c 匹配行的计数</td>
+			<td colspan="2" rowspan="1"style="width:20%">-i 不区分大小写(单字符)</td>
+			<td colspan="2" rowspan="1"style="width:18%">-h 查询多文件不显示文件名</td>
+		</tr>
+		
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-l 查询多文件只显示匹配的文件名</td>
+			<td colspan="2" rowspan="1"style="width:20%">-n 显示匹配行及行号</td>
+			<td colspan="2" rowspan="1"style="width:18%">-s 不显示不存在或无匹配文本的错误信息</td>
+		</tr>
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-v 显示不包含匹配文本的所有行</td>
+			<td colspan="2" rowspan="1"style="width:20%">&nbsp;</td>
+			<td colspan="2" rowspan="1"style="width:18%">&nbsp;</td>
+		</tr>
+
+		<tr>
+			
+			<td colspan="1" rowspan="1" style="width:13%">正则</td>
+			<td colspan="6" rowspan="1" style="width:50%">"xxx/>"代表精确查询</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:7%">例子</td>
+			<td colspan="2" rowspan="1" style="width:18%">ll -a |grep ^[^d] 不包括文件夹</td>
+			<td colspan="2" rowspan="1" style="width:18%">grep -n "^$" 1.txt 查询空格</td>
+			<td colspan="2" rowspan="1" style="width:18%">grep -n "3\{1\}" 1.txt 3出现1次</td>
+			<td colspan="2" rowspan="1" style="width:24%">grep -n "4..1" 1.txt 4开头1结尾的4位数</td>
+		</tr>
+		
+				
+</table>
+
+<h4>awk文本分析</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="8" style="width:15%"><span style="color:green">awk [-F field-separate] 'command' inputfile<br/><br/>
+				cat inputfile | awk [-F field-separate] 'command'</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">[-F field-separate]</td>
+			<td colspan="6" rowspan="1" style="width:50%">字段之间的分隔符 默认为空格  同hive load指令</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">正则元字符</td>
+			<td colspan="5" rowspan="1"style="width:48%">awk 正则需要用//包裹 如：~/正则/  多了+ 匹配一个或多个字符 ，？匹配出现频率</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">条件操作符</td>
+			<td colspan="5" rowspan="1"style="width:48%">< <= >= == != ~匹配 !~不匹配 （适用正则）</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">逻辑操作符</td>
+			<td colspan="5" rowspan="1"style="width:48%">&& || and or !</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">内置变量（大写）</td>
+			<td colspan="5" rowspan="1"style="width:48%">FILENAME 文件名 、FNR 浏览文件的记录数 等等 </td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">内置字符串函数</td>
+			<td colspan="5" rowspan="1"style="width:48%">gsub(r,s) 用s替换r、index(s,t)返回说字符串中t的第一个位置、length(s)返回s长度等等</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">awk脚本</td>
+			<td colspan="5" rowspan="1"style="width:48%">第一行用 #!/bin/awk -f</td>
+		</tr>
+		<tr>
+			<td colspan="5"  style="width:45%">cat /etc/passwd |awk  -F ':'  'BEGIN {print "name,shell"} {print $1" ---- "$7} END {print "blue,/bin/nosh"}'</td>
+			<td colspan="5"  style="width:45%">BEGIN与END为 awk前后的两个模式 {print 为动作 $0 代表全部 $1代表第一个}</td>
+		</tr>
+		<tr>
+			<td colspan="5"  style="width:45%">cat /etc/passwd |awk  -F ':'  'BEGIN {count=0} {count=count+1;print $1" ---- "$7} END {print count}'</td>
+			<td colspan="5"  style="width:45%">自定义了一个count 在BEGIN时初始化，过程中+1 结尾时输出</td>
+		</tr>
+		<tr>
+			<td colspan="5"  style="width:45%"> cat /etc/passwd |awk  -F ':'  'BEGIN {count=0;lengths=0} { if($1~/^r/) {count=count+1;lengths=lengths+length($1);print $1"--" length($1) "--" $7}} END {print "num:"count ",lengthsum:" lengths}'</td>
+			<td colspan="5"  style="width:45%">在BEGIN时 自定义了 count 数量 与 lengths匹配r开头的长度 ，匹配正则 r开头的时候 count+1 ,lengths 累加长 ，结尾时输出</td>
+		</tr>
+</table>
+ 
+<h4>sed 文本处理</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">sed [option] 'sed command' inputfile<br/><br/>
+				cat inputfile | sed [option] 'sed command'</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">[option]</td>
+			<td colspan="6" rowspan="1" style="width:50%">-n slient模式、-e 指令列模式、-f 使用sed脚本、-r 、<span style="color:red">-i 直接修改 无输出（修改源文件）</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">'sed command'</td>
+			<td colspan="5" rowspan="1"style="width:48%">a 增加、c 取代、d 删除、i 插入、p 打印、s 取代、=行号、</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">正则元字符</td>
+			<td colspan="5" rowspan="1"style="width:48%">sed 正则需要用//包裹</td>
+		</tr>
+		
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">sed脚本</td>
+			<td colspan="5" rowspan="1"style="width:48%">第一行用 #!/bin/sed -f</td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">sed -n p 1.txt、sed -n '1,$'p 1.txt</td>
+			<td colspan="2"  style="width:22%">打印全部</td>
+			<td colspan="2"  style="width:22%">sed -n '/c$/'= 1.txt</td>
+			<td colspan="3"  style="width:22%">打印以c结尾的行号</td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">sed -n '/.*t/'p 1.txt</td>
+			<td colspan="2"  style="width:22%">打印任意有t的行数据</td>
+			<td colspan="2"  style="width:22%">sed '1a hello' 1.txt</td>
+			<td colspan="3"  style="width:22%">在第一行后增加hello的输出 输出变 1.txt不变</td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">sed '1,3'd 1.txt</td>
+			<td colspan="2"  style="width:22%">打印删除了第一行到第三行 删两行的输出 1.txt 无改变</td>
+			<td colspan="2"  style="width:22%">sed -i '1,3'd 1.txt</td>
+			<td colspan="3"  style="width:22%">物理 删除第一行到第三行 删两行 1.txt 被改变</td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">sed  's/two/three/g' 1.txt</td>
+			<td colspan="7"  style="width:22%">全文 three 替换 two  源文件不变  g全局替换、p 打印、w 输出定向至文件 sed  's/two/three/w 3.txt' 1.txt  </td>
+			
+		</tr>
+		
+		
+</table>
+
+
+<h4>sort 排序</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="7" style="width:15%"><span style="color:green">sort [-o outfile] [选项] infile</span></td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="6" style="width:13%">[选项]</td>
+	
+		</tr>
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-o 输出 </td>
+			<td colspan="4" rowspan="1"style="width:39%">保存输出  也可以使用重定向方式</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">-c 测试文件是否分类</td>
+			<td colspan="4" rowspan="1"style="width:39%">sort -c 5.txt</td>
+		</tr>
+		
+		
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-m 合并 、-u 去重</td>
+			<td colspan="4" rowspan="1"style="width:39%">sort -o 3.txt -m 1.txt 2.txt 、sort -u 3.txt</td>
+		</tr>
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-n 以数字排序、(-k -t) 联用 -t 分隔符 -k 分隔之后的域、 -r 降序</td>
+			<td colspan="4" rowspan="1"style="width:39%"> cat 1.txt | sed 's/--/-/g' |sort  -nk2 -rnk3 -rk1  -t '-';  1.把1.txt 中所有--改成- 2.并且按-分隔 对域2数字升序后 对域3数字降序 对域1降序 </td>
+		</tr>
+		
+		<tr>
+			
+			<td colspan="2" rowspan="1"style="width:20%">-r 降序、 -f 忽略大小写、-b 忽略每一行前面的空白部分</td>
+			<td colspan="4" rowspan="1"style="width:39%">sort -o 3.txt -m 1.txt 2.txt 、sort -u 3.txt</td>
+		</tr>
+
+		
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			uniq [option] filename </span></td>
+			<td colspan="3" rowspan="1" style="width:30%">-u 只显示不重复行、-d 只显示重复行、-c打印每种重复行数量  </td>
+			<td colspan="2" rowspan="1" style="width:24%">uniq -c 1.txt</td>
+			<td colspan="2" rowspan="1" style="width:24%">答应重复行数量</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			join [option] file1 file2 </span></td>
+			<td colspan="3" rowspan="1" style="width:30%">-a1 左链接 -a2 右链接、-t 分隔符、-j n m 第n个文件的第m域 做链接  </td>
+			<td colspan="2" rowspan="1" style="width:24%">join -a1 1.txt 2.txt</td>
+			<td colspan="2" rowspan="1" style="width:24%">1.txt 左链接 2.txt </td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			split [option] file</span></td>
+			<td colspan="3" rowspan="1" style="width:30%">-l 按行分隔、-b 按字节分隔、(-d -a)-d数字作为生成文件的后缀 -a长度   </td>
+			<td colspan="2" rowspan="1" style="width:24%">split -b 5 -d -a 2 1.txt</td>
+			<td colspan="2" rowspan="1" style="width:24%">按5字节分隔 后缀为数字 后缀长度为2 x00 x01 x02</td>
+		</tr>
+		
+		<tr>
+			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
+			dd [option] </span></td>
+			<td colspan="3" rowspan="1" style="width:30%">dd if=/dev/zero of=hello.txt bs=100M count=1 </td>
+			<td colspan="4" rowspan="1" style="width:48%">生成100M的空文件</td>
+		</tr>
+		
+				
+</table>
 
 <h4 >压缩</h4>
 <ul style="text-decoration: underline; list-style-type: decimal;">
