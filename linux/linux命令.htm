@@ -648,9 +648,206 @@
 			dd [option] </span></td>
 			<td colspan="3" rowspan="1" style="width:30%">dd if=/dev/zero of=hello.txt bs=100M count=1 </td>
 			<td colspan="4" rowspan="1" style="width:48%">生成100M的空文件</td>
+		</tr>		
+</table>
+
+<h4>netstat 网络相关信息</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="7" style="width:15%"><span style="color:green">netstat [option] <br/> ss [option] </span>速度快</td>
+		</tr>
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%">-a  </td>
+			<td colspan="2" rowspan="1"style="width:20%">显示所有选项，默认不显示LISTEN相关</td>
+			<td colspan="1" rowspan="1"style="width:15%">-n</td>
+			<td colspan="3" rowspan="1"style="width:28%">拒绝显示别名，能显示数字的全部转化成数字</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">-t  </td>
+			<td colspan="2" rowspan="1"style="width:20%">tcp 协议</td>
+			<td colspan="1" rowspan="1"style="width:15%">-u</td>
+			<td colspan="3" rowspan="1"style="width:28%">udp协议</td>
 		</tr>
 		
-				
+		
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%"> -l  </td>
+			<td colspan="2" rowspan="1"style="width:20%">仅列出有在 Listen (监听) 的服務状态</td>
+			<td colspan="1" rowspan="1"style="width:15%">-p</td>
+			<td colspan="3" rowspan="1"style="width:28%">显示建立相关链接的程序名</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%"> -r  </td>
+			<td colspan="2" rowspan="1"style="width:20%">路由表</td>
+			<td colspan="1" rowspan="1"style="width:15%">-e</td>
+			<td colspan="3" rowspan="1"style="width:28%">扩展信息</td>
+		</tr>
+		
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%"> -s  </td>
+			<td colspan="2" rowspan="1"style="width:20%">协议统计</td>
+			<td colspan="1" rowspan="1"style="width:15%">-c</td>
+			<td colspan="3" rowspan="1"style="width:28%">每隔一个固定时间，执行该netstat命令</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%"> -i  </td>
+			<td colspan="2" rowspan="1"style="width:20%">网卡信息</td>
+			<td colspan="1" rowspan="1"style="width:15%">-g</td>
+			<td colspan="3" rowspan="1"style="width:28%">广播组信息</td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			netstat -oat | grep "mysql" |awk '{print $5}'|awk -F: '{print $1}'|sort|uniq -c|sort -nr|head -20<br/>
+			netstat -noat | grep ":3306" |awk '{print $5}'|awk -F: '{print $1}'|sort|uniq -c|sort -nr|head -20
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">连接mysql服务端口最多的的IP地址 </td>
+
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			netstat -noap | grep ':3306'<br/>
+			netstat -oap | grep 'mysql'
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">查看3306运行的服务 <br/>查看服务运行的端口</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			ss -pl 
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">列出每个进程名及其监听的端口 </td>
+		</tr>
+</table>
+
+<h4>lsof 列出当前系统打开文件的工具</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="6" style="width:15%"><span style="color:green">lsof [option] file</span></td>
+		</tr>
+		<tr>
+			
+			<td colspan="10" rowspan="1"style="width:15%">
+COMMAND:进程的名称 ; &nbsp;&nbsp;
+
+PID:进程标识符;&nbsp;&nbsp;
+
+USER:进程所有者;&nbsp;&nbsp;
+
+FD:文件描述符，如cwd、txt等 ;<br/>
+TYPE:文件类型，如DIR、REG等;&nbsp;&nbsp;
+
+DEVICE:指定磁盘的名称;&nbsp;&nbsp;
+
+SIZE:文件的大小;
+<br/>
+NODE:索引节点（文件在磁盘上的标识）;&nbsp;&nbsp;
+
+NAME:打开文件的确切名称; </td>
+		</tr>
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%">无参数</td>
+			<td colspan="2" rowspan="1"style="width:20%">显示开启文件file的进程</td>
+			<td colspan="1" rowspan="1"style="width:15%">-c</td>
+			<td colspan="3" rowspan="1"style="width:28%">过滤 COMMAND</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">-p  </td>
+			<td colspan="2" rowspan="1"style="width:20%">过滤 PID</td>
+			<td colspan="1" rowspan="1"style="width:15%">-u</td>
+			<td colspan="3" rowspan="1"style="width:28%">过滤 USER</td>
+		</tr>
+		
+		
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%">-d  </td>
+			<td colspan="2" rowspan="1"style="width:20%">过滤 FD</td>
+			<td colspan="1" rowspan="1"style="width:15%">-i</td>
+			<td colspan="3" rowspan="1"style="width:28%">显示符合条件的进程情况</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">+d </td>
+			<td colspan="2" rowspan="1"style="width:20%">显示目录下被进程开启的文件</td>
+			<td colspan="1" rowspan="1"style="width:15%">+D</td>
+			<td colspan="3" rowspan="1"style="width:28%">显示目录下所有目录被进程开启的文件</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			lsof +D /var/
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">显示 /var/ 目录下所有被进程占用的文件 及所有信息</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			lsof -i tcp@vggapp19:3306 -r
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">不停止的 查看3306端口上的链接情况  </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			lsof -i :3306 | wc -l
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">查看3306端口的链接数  </td>
+		</tr>
+</table>
+
+<h4>ps 列出系统中运行的进程</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">ps [option] </span></td>
+		</tr>
+		
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%">-A</td>
+			<td colspan="2" rowspan="1"style="width:20%">显示所有进程</td>
+			<td colspan="1" rowspan="1"style="width:15%">-e</td>
+			<td colspan="3" rowspan="1"style="width:28%">同-A</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">-u  </td>
+			<td colspan="2" rowspan="1"style="width:20%">指定用户</td>
+			<td colspan="1" rowspan="1"style="width:15%">-aux</td>
+			<td colspan="3" rowspan="1"style="width:28%">显示所有进程的详细信息</td>
+		</tr>
+		
+		
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%">-d  </td>
+			<td colspan="2" rowspan="1"style="width:20%">过滤 FD</td>
+			<td colspan="1" rowspan="1"style="width:15%">-i</td>
+			<td colspan="3" rowspan="1"style="width:28%">显示符合条件的进程情况</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">e </td>
+			<td colspan="2" rowspan="1"style="width:20%">环境变量</td>
+			<td colspan="1" rowspan="1"style="width:15%">f</td>
+			<td colspan="3" rowspan="1"style="width:28%">程序间关系</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			ps -ef | grep mysql
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">查找服务相应进程</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			ps -aux
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">列出所有内存当中的程序  </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			ps -aux --sort=-pcpu,+pmem
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">进程按 cpu降序 内存占用升序 排序 </td>
+		</tr>
+		
 </table>
 
 
@@ -678,6 +875,8 @@
 			<td colspan="6" rowspan="1"style="width:48%">解压&nbsp;</td>
 		</tr>
 </table>
+
+
 
 
 <h4>创建用户</h4>		
@@ -766,23 +965,12 @@
 			<td style="width:75%">看当前目录的尺寸</td>
 		</tr>
 		<tr>
-			<td style="width:20%">find . -name 文件名</td>
-			<td style="width:75%">查询文件</td>
-		</tr>
-		<tr>
 			<td style="width:20%">locale</td>
 			<td style="width:75%">查字符集</td>
 		</tr>
 		<tr>
 			<td style="width:20%">scp -r 位置 IP:/位置</td>
 			<td style="width:75%">远程发送代码</td>
-		</tr>
-		<tr>
-			<td style="width:20%">vi</td>
-			<td style="width:75%">编辑文件 o下一行  i 插入 dd删除本行 dw删除前面的空格  <br/>
-								  :set nu 设置行号 u撤销  :e! 恢复文档初始状态<br/>
-								  /搜索 n 下一个 
-			</td>
 		</tr>
 		<tr>
 			<td style="width:20%">free -m</td>
@@ -799,14 +987,6 @@
 			<td style="width:75%">磁盘使用情况<br/>
 								  cat /proc/meminfo | grep M
 			</td>
-		</tr>
-		<tr>
-			<td style="width:20%">ps -ef |grep redis</td>
-			<td style="width:75%">查看包含redis字符串的进程 信息</td>
-		</tr>
-		<tr>
-			<td style="width:20%">netstat -anp | grep port | wc -l</td>
-			<td style="width:75%">获得所有链接信息（TCP/UDP/SOCKET） wc -l:连接数</td>
 		</tr>
 		<tr>
 			<td style="width:20%">jps</td>
@@ -862,3 +1042,4 @@
 </body>
 
 </html>
+
