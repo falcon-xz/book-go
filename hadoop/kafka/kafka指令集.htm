@@ -119,6 +119,14 @@ PageCache功能同时可以避免在JVM内部缓存数据，JVM为我们提供�
 
 如果Kafka重启，所有的In-Process Cache都会失效，而OS管理的PageCache依然可以继续使用。<br/>
 <br/>
+
+
+Linux总会把系统中还没被应用使用的内存挪来给Page Cache，在命令行输入free，或者cat /proc/meminfo，"Cached"的部分就是Page Cache。<br/>
+Page Cache中每个文件是一棵Radix树(又称PAT位树, 一种多叉搜索树)，节点由4k大小的Page组成，可以通过文件的偏移量(如0x1110001)快速定位到某个Page。<br/>
+当写操作发生时，它只是将数据写入Page Cache中，并将该页置上dirty标志。<br/>
+当读操作发生时，它会首先在Page Cache中查找内容，如果有就直接返回了，没有的话就会从磁盘读取文件再写回Page Cache。<br/>
+可见，只要生产者与消费者的速度相差不大，消费者会直接读取之前生产者写入Page Cache的数据，大家在内存里完成接力，根本没有磁盘访问。<br/>
+而比起在内存中维护一份消息数据的传统做法，这既不会重复浪费一倍的内存，Page Cache又不需要GC(可以放心使用60G内存了)，而且即使Kafka重启了，Page Cache还依然在<br/><br/>
 	</li>
 	<br/>
 	<li>Sendfile优化：

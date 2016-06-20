@@ -232,8 +232,23 @@
 			<td colspan="2" rowspan="1"style="width:20%">G</td>
 			<td colspan="2" rowspan="1" style="width:20%">最后一行</td>
 		</tr>
+</table>
 
-
+<h4>sudo 特权权限</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="3" style="width:15%"><span style="color:green">sudo [option arg] command</span></td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:20%">修改 /etc/sudoers 文件</td>
+			<td colspan="4" rowspan="1"style="width:40%">增加一行配置 hadoop  ALL=(ALL)       NOPASSWD: ALL 可以使用root权限的用户</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:20%">su -l hdfs -c "mkdir /home/hadoop/hadoop"</td>
+			<td colspan="4" rowspan="1"style="width:40%">使用hadoop的权限，创建一个文件夹</td>
+		
+		</tr>
+		
 </table>
 
 
@@ -850,6 +865,189 @@ NAME:打开文件的确切名称; </td>
 		
 </table>
 
+<h4>mpstat CPU的一些统计信息</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="6" style="width:15%"><span style="color:green">mpstat [option] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span></td>
+		</tr>
+		
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:15%">[option] </td>
+			<td colspan="2" rowspan="1"style="width:20%">-P {|ALL}</td>
+			<td colspan="4" rowspan="1"style="width:45%">表示监控哪个CPU， cpu在[0,cpu个数-1]中取值</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">[ &lt;interval&gt; [ &lt;count&gt; ] ] </td>
+			<td colspan="2" rowspan="1"style="width:40%">&lt;interval&gt; 采样周期 </td>
+			<td colspan="4" rowspan="1"style="width:40%">&lt;count&gt; 采样次数</td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">%usr 用户级别CPU利用率%</td>
+			<td colspan="2" rowspan="1"style="width:20%">%nice nice优先级的用户CPU利用率%</td>
+			<td colspan="3" rowspan="1"style="width:28%">%sys 系统级别CPU利用率%</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">%iowait 有未完成的磁盘I/O请求期间CPU空闲时间%</td>
+			<td colspan="2" rowspan="1"style="width:20%">%irq 硬件中断花费时间%</td>
+			<td colspan="3" rowspan="1"style="width:28%">%soft 软件中断花费时间%</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">%steal cpu被迫等待花费时间%</td>
+			<td colspan="2" rowspan="1"style="width:20%">%guest 虚拟处理器时CPU花费时间%</td>
+			<td colspan="3" rowspan="1"style="width:28%">%idle CPU空闲和系统没有未完成的磁盘I/O请求情况下的时间%</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			mpstat -P ALL
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">所有处理器的数据统计</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			mpstat -P ALL 2 3
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">每2秒收集一次数据，共收集三次统计数据  </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			while :; do ps -eo pid,ni,pri,pcpu,psr,comm | grep 'mysql'; sleep 2; done
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">每2秒收集一次mysql服务CPU等统计信息  </td>
+		</tr>
+		
+		
+</table>
+
+<h4>vmstat 虚拟内存统计</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="10" style="width:15%"><span style="color:green">vmstat [option] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span></td>
+		</tr>
+		
+		<tr>
+			
+			<td colspan="1" rowspan="3"style="width:15%">[option] </td>
+			
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">-a</td>
+			<td colspan="2" rowspan="1"style="width:20%">活跃和非活跃内存</td>
+			<td colspan="1" rowspan="1"style="width:10%">-s</td>
+			<td colspan="2" rowspan="1"style="width:20%">内存相关统计信息及多种系统活动数量</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">-d</td>
+			<td colspan="2" rowspan="1"style="width:20%">磁盘相关统计信息</td>
+			<td colspan="1" rowspan="1"style="width:10%">-f</td>
+			<td colspan="2" rowspan="1"style="width:20%">fork 数量 子线程数量</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:15%">[ &lt;interval&gt; [ &lt;count&gt; ] ] </td>
+			<td colspan="2" rowspan="1"style="width:40%">&lt;interval&gt; 采样周期 </td>
+			<td colspan="4" rowspan="1"style="width:40%">&lt;count&gt; 采样次数</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">r: 运行队列中进程数量</td>
+			<td colspan="2" rowspan="1"style="width:20%">b: 等待IO的进程数量</td>
+			<td colspan="3" rowspan="1"style="width:28%">swpd: 使用虚拟内存大小</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">free: 可用内存大小</td>
+			<td colspan="2" rowspan="1"style="width:20%">buff: 用作缓冲的内存大小</td>
+			<td colspan="3" rowspan="1"style="width:28%">cache: 用作缓存的内存大小</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">si: 每秒从交换区写到内存的大小</td>
+			<td colspan="2" rowspan="1"style="width:20%">so: 每秒写入交换区的内存大小</td>
+			<td colspan="3" rowspan="1"style="width:28%">bi: 每秒读取的块数</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">bo: 每秒写入的块数</td>
+			<td colspan="2" rowspan="1"style="width:20%">in: 每秒中断数，包括时钟中断</td>
+			<td colspan="3" rowspan="1"style="width:28%">cs: 每秒上下文切换数</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1"style="width:20%">us: 用户进程执行时间</td>
+			<td colspan="2" rowspan="1"style="width:20%">sy: 系统进程执行时间</td>
+			<td colspan="3" rowspan="1"style="width:28%">id: 空闲时间</td>
+		</tr>
+		
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			vmstat -a 2 5
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">活跃与非活跃内存 2秒统计一次 共统计5次</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			free -m
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">每2秒收集一次数据，共收集三次统计数据  </td>
+		</tr>
+</table>
+
+
+<h4>sar 总体统计 趋势统计</h4>		
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="8" style="width:15%"><span style="color:green">sar [options] [-o file] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span></td>
+		</tr>
+		<tr>
+			
+			<td colspan="1" rowspan="5"style="width:15%">[option] </td>
+			
+		</tr>
+		<tr>
+			
+			<td colspan="1" rowspan="1"style="width:10%">-u</td>
+			<td colspan="2" rowspan="1"style="width:20%">CPU 使用情况的统计信息</td>
+			<td colspan="1" rowspan="1"style="width:10%">-d</td>
+			<td colspan="2" rowspan="1"style="width:20%">设备使用情况监控</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">-v</td>
+			<td colspan="2" rowspan="1"style="width:20%">inode、文件和其他内核表监控</td>
+			<td colspan="1" rowspan="1"style="width:10%">-r</td>
+			<td colspan="2" rowspan="1"style="width:20%">内存和交换空间监控</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">-B</td>
+			<td colspan="2" rowspan="1"style="width:20%">内存分页监控</td>
+			<td colspan="1" rowspan="1"style="width:10%">-b</td>
+			<td colspan="2" rowspan="1"style="width:20%">I/O和传送速率监控</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1"style="width:10%">-q</td>
+			<td colspan="2" rowspan="1"style="width:20%">进程队列长度和平均负载状态监控</td>
+			<td colspan="1" rowspan="1"style="width:10%">-W</td>
+			<td colspan="2" rowspan="1"style="width:20%">系统交换活动信息监控</td>
+		</tr>
+		<tr>
+			<td colspan="2"  style="width:22%">[-o file]</td>
+			<td colspan="7"  style="width:22%">输出目录 </td>
+		</tr>
+		<tr>
+			<td colspan="2"  style="width:22%">[ &lt;interval&gt; [ &lt;count&gt; ] ]</td>
+			<td colspan="7"  style="width:22%">间隔和数量 </td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">CPU存在瓶颈</td>
+			<td colspan="7"  style="width:22%">sar -u 和 sar -q 等</td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">内存存在瓶颈</td>
+			<td colspan="7"  style="width:22%">sar -B、sar -r 和 sar -W 等</td>
+		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">I/O存在瓶颈</td>
+			<td colspan="7"  style="width:22%">sar -b、sar -u 和 sar -d 等 </td>
+		</tr>
+		
+		
+</table>
 
 <h4>压缩</h4>		
 <table class="table">
