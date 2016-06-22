@@ -32,13 +32,25 @@
 	arg1=$1 <br/>
 	</li>
 	<br/>
+	<li>特定变量<br/>
+	$# 传递参数个数; $* 以字符串显示所有参数; $$脚本运行进程号 ;$? 上条语句退出状态（返回值） 0正常 1有错<br/>
+	</li>
+	<br/>
 	<li>打印<br/>
 	echo $arg1 或者 echo ${arg1}<br/>
 	</li>
 	<br/>
 	<li>字符串的处理<br/>
+	JJ="/MMM" 绑定变量<br/>
+	unset JJ 解绑<br/>
+	echo ${JJ:-"/hhhh"} 如果JJ没有绑定变量 赋值/hhhh<br/>
 	${arg1:1} --- arg1.substr(1)<br/>
 	使用$((${arg1:1}+1)) 重新赋值<br/>
+	</li>
+	<br/>
+	<li>
+		字符串比较 = 、!= 、-z 、-n <br/>
+		数值比较 -eq 、-ne 、-gt 、-le、-ge、-le <br/>
 	</li>
 	<br/>
 	<li>#while 循环与if判断<br/>
@@ -50,8 +62,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;	ifarg=$(($ifarg+2))<br/>
 	elif [ $ifarg -gt 5 ] ;then <br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;	ifarg=$(($ifarg+3))<br/>
-	else<br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;	ifarg=$(($ifarg+1))<br/>
+	else : --什么都不做<br/>
 	fi<br/>
 	echo "--while--"$ifarg<br/>
 	done<br/>
@@ -92,6 +103,32 @@
 	</li>
 </ul>
 
+
+<h4>函数实例</h4>
+<ul style=" list-style-type: decimal;">
+	<li>创建函数 hello.main<br/>
+	#!/bin/sh  <br/>
+	function hello(){<br/>
+        echo hello$1<br/>
+	}<br/>
+	</li>
+	<br/>
+	<li>定位文件<br/>
+	. hello.main 如果返回 file not found 执行下一句<br/>
+	. /hello.main <br/>
+	</li>
+	<br/>
+	<li>检查载入<br/>
+	命令行 set 可以看到这个函数载入shell了<br/>
+	. /hello.main <br/>
+	</li>
+	<br/>
+	<li>函数下线<br/>
+	unset $functionname<br/>
+	<br/>
+	</li>
+	<br/>
+</ul>
 
 </body>
 
