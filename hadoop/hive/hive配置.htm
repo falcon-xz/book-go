@@ -48,10 +48,12 @@
 			<td style="width:65%;color:red;">org.apache.hadoop.hive.conf.HiveConf</td>
 		</tr>
 		<tr>
-			<td style="width:30%">--设置MR执行队列 与 优先级
+			<td style="width:30%">--设置查询引擎为MR 执行队列 与 优先级
 			</td>
-			<td style="width:65%">set mapreduce.job.queuename=hive;<br/>
-								  set mapreduce.job.priority=HIGH;
+			<td style="width:65%">
+									set hive.execution.engine=MR;(TEZ,SPARK)<br/>
+									set mapreduce.job.queuename=hive;<br/>
+									set mapreduce.job.priority=HIGH;
 			</td>
 		</tr>
 		<tr>
@@ -76,9 +78,9 @@
 								  set mapred.reduce.tasks=xx ;  xx个reducer数</td>
 		</tr>
 		<tr>
-			<td style="width:30%">--查询单表列数据不走MR
+			<td style="width:30%">--简单查询不走MR 比如where id= 1 
 			</td>
-			<td style="width:65%">set hive.fetch.task.conversion=more;</td>
+			<td style="width:65%">set hive.fetch.task.conversion=more; (minimal)</td>
 		</tr>
 		<tr>
 			<td style="width:30%">

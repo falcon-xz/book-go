@@ -24,9 +24,14 @@
 <ul style=" list-style-type: decimal;">
 	<li>desc [formatted] tableName ; 查表详细信息<br/>
 		desc function functionName ; 查函数信息 <br/>
+		explain [extended] HQL ; 执行计划 <br/>
 	</li>
 	<br/>
-
+	<li>虚拟列<br/>
+		INPUT__FILE__NAME（输入文件的路径）<br/>
+		BLOCK__OFFSET__INSIDE__FILE（记录在文件中的偏移量） <br/>
+	</li>
+	<br/>
 	<li>星期几 与oracle一致 星期天 为1 星期6为7<br/>
 		pmod(datediff('#date','1920-01-01')-2,7) <br/>
 	</li>
