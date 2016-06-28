@@ -61,9 +61,8 @@
 	</li>
 	<li>
 		<span style="color:red">left semi join</span> 改写 in exists 效率更高<br/> 
-		select A.id.A.name<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from (select A.id, A.name from A where A.name = 'xx') t
-		<span style="color:red">left semi join</span> B on A.id = B.id
+		
+		select t1.id,t1.name from (select t.id, t.name from testpartition t where t.name = 'xz') t1 left semi join user t2 on t1.id = t2.id ;
 		<br/>
 	</li>
 </ul>
@@ -78,7 +77,7 @@
 	<li>
 	优化反例：<br/>
 	小表26W（2M）数据，大表5000W数据，使用map-side join时，map阶段偶尔OOM 40个map 20reduce左右 执行时间70分钟<br/>
-	书上2种方式不使用：<br/>
+	书上2种方式：<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.set hive.auto.convert.join=false  关闭map-side join优化<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.set hive.mapjoin.smalltable.filesize=xxx字节  前表数据量超过大小时不使用map-side join <span style="color:red">（不生效）</span><br/>
 	关闭map-side join优化 后，map增加10倍达到400多，执行时间减少到11分钟<br/>
