@@ -2,24 +2,28 @@ Microsoft HTML Help Compiler 4.74.8702
 
 Compiling e:\book-go.CHM
 
-ajax\ajax.html
-ajax\dwr.html
-ajax\jquery ajax.html
-example\tab_example.htm
+HHC5003: Error: Compilation failed while compiling ajax\ajax.html.
+HHC5003: Error: Compilation failed while compiling ajax\dwr.html.
+HHC5003: Error: Compilation failed while compiling ajax\jquery ajax.html.
+hadoop\hadoop\hadoop原理.htm
+hadoop\hadoop\hadoop指令集.htm
 hadoop\hbase\hbaseAPI.htm
 hadoop\hbase\hbase配置与优化.htm
 hadoop\hbase\hbase元数据.htm
 hadoop\hbase\hbase指令集.htm
-hadoop\HDFS指令集.htm
+hadoop\hbase\protocol buffer.htm
 hadoop\hive\hive-cli.htm
-hadoop\hive\hive函数.htm
 hadoop\hive\hive配置.htm
 hadoop\hive\hive优化.htm
+hadoop\hive\hive语法.htm
 hadoop\hive\hive自定义函数.htm
 hadoop\kafka\kafka配置与优化.htm
 hadoop\kafka\kafka指令集.htm
+hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
 hadoop\zookeeper\zookeeper指令集.htm
+java\jvm\GC.htm
+java\jvm\基本原理.htm
 java\log4j\log4j.htm
 java\parse\parse.htm
 java\reflect\reflect.htm
@@ -27,19 +31,11 @@ java\struts2\struts2-xml.htm
 java\接口协议\http请求调用.htm
 java\接口协议\webservice_axis.htm
 java\算法\分流算法.htm
-js\jsknowledge-one.html
-js\jsknowledge-two.html
-js\json.html
-js\创建Popup.htm
-js\懒加载.html
-linux\linux(一).htm
+HHC5003: Error: Compilation failed while compiling js\jsknowledge-one.html.
+HHC3004: Warning: linux命令.htm : The HTML tag "<= " is not a valid HTML tag (it does not begin with an alphanumeric character).
+linux\linux命令.htm
 HHC3004: Warning: shell.htm : The HTML tag "=4;i++))<br/" is not a valid HTML tag (it does not begin with an alphanumeric character).
 linux\shell.htm
-oracle\oracle(一).htm
-oracle\oracle工具篇.html
-HHC1000: Note: oracle索引篇.html : An empty HTML tag has been used.
-oracle\oracle索引篇.html
-oracle\oracle优化篇.html
 HHC5003: Error: Compilation failed while compiling other\axis2.rar.
 other\explore.client.js
 other\inputdata.sql
@@ -55,17 +51,36 @@ other\utils.js
 HHC5003: Error: Compilation failed while compiling other\即时类媒体接入客服系统定制指南.doc.
 HHC5003: Error: Compilation failed while compiling other\业软公共 提高培训 TopEng-CSP dwr 培训胶片V1.0.ppt.
 工具\utils.htm
+前端\ajax\ajax.html
+前端\ajax\dwr.html
+前端\ajax\jquery ajax.html
+前端\javascript\jsknowledge-one.html
+前端\javascript\jsknowledge-two.html
+前端\javascript\json.html
+前端\javascript\创建Popup.htm
+前端\javascript\懒加载.html
+数据库\mysql\mysql基础.htm
+数据库\oracle\oracle(一).htm
+数据库\oracle\oracle工具篇.html
+HHC1000: Note: oracle索引篇.html : An empty HTML tag has been used.
+数据库\oracle\oracle索引篇.html
+数据库\oracle\oracle优化篇.html
 TOC-Created-By-Easy-CHM.HHC
 Index-Created-By-Easy-CHM.HHK
+java\jvm\heap.jpg
+java\jvm\GC.jpg
+java\jvm\jvm.jpg
 other\conf.rar
 other\UDFDemo.zip
 other\UDTFDemo.zip
-other\parse.zip
 other\reflect.zip
-other\Logger.js
 
 
 The following files were not compiled:
+ajax\ajax.html
+ajax\dwr.html
+ajax\jquery ajax.html
+js\jsknowledge-one.html
 other\axis2.rar
 other\processBar.rar
 other\Spring定时任务管理说明.doc
