@@ -2,9 +2,6 @@ Microsoft HTML Help Compiler 4.74.8702
 
 Compiling e:\book-go.CHM
 
-HHC5003: Error: Compilation failed while compiling ajax\ajax.html.
-HHC5003: Error: Compilation failed while compiling ajax\dwr.html.
-HHC5003: Error: Compilation failed while compiling ajax\jquery ajax.html.
 hadoop\hadoop\hadoop原理.htm
 hadoop\hadoop\hadoop指令集.htm
 hadoop\hbase\hbaseAPI.htm
@@ -22,16 +19,15 @@ hadoop\kafka\kafka指令集.htm
 hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
 hadoop\zookeeper\zookeeper指令集.htm
+java\http\axis.htm
+java\http\http原生.htm
+java\http\jersey.htm
 java\jvm\GC.htm
 java\jvm\基本原理.htm
 java\log4j\log4j.htm
-java\parse\parse.htm
-java\reflect\reflect.htm
-java\struts2\struts2-xml.htm
-java\接口协议\http请求调用.htm
-java\接口协议\webservice_axis.htm
-java\算法\分流算法.htm
-HHC5003: Error: Compilation failed while compiling js\jsknowledge-one.html.
+java\xml\解析.htm
+java\基础\反射.htm
+java\框架\struts2.htm
 HHC3004: Warning: linux命令.htm : The HTML tag "<= " is not a valid HTML tag (it does not begin with an alphanumeric character).
 linux\linux命令.htm
 HHC3004: Warning: shell.htm : The HTML tag "=4;i++))<br/" is not a valid HTML tag (it does not begin with an alphanumeric character).
@@ -50,10 +46,12 @@ other\study.sh
 other\utils.js
 HHC5003: Error: Compilation failed while compiling other\即时类媒体接入客服系统定制指南.doc.
 HHC5003: Error: Compilation failed while compiling other\业软公共 提高培训 TopEng-CSP dwr 培训胶片V1.0.ppt.
+ruby\puppet\puppet.htm
 工具\utils.htm
 前端\ajax\ajax.html
 前端\ajax\dwr.html
 前端\ajax\jquery ajax.html
+前端\emberJS\ember.htm
 前端\javascript\jsknowledge-one.html
 前端\javascript\jsknowledge-two.html
 前端\javascript\json.html
@@ -65,22 +63,17 @@ HHC5003: Error: Compilation failed while compiling other\业软公共 提高培训 TopEn
 HHC1000: Note: oracle索引篇.html : An empty HTML tag has been used.
 数据库\oracle\oracle索引篇.html
 数据库\oracle\oracle优化篇.html
+算法\分流算法.htm
 TOC-Created-By-Easy-CHM.HHC
-Index-Created-By-Easy-CHM.HHK
 java\jvm\heap.jpg
 java\jvm\GC.jpg
 java\jvm\jvm.jpg
 other\conf.rar
 other\UDFDemo.zip
 other\UDTFDemo.zip
-other\reflect.zip
 
 
 The following files were not compiled:
-ajax\ajax.html
-ajax\dwr.html
-ajax\jquery ajax.html
-js\jsknowledge-one.html
 other\axis2.rar
 other\processBar.rar
 other\Spring定时任务管理说明.doc
