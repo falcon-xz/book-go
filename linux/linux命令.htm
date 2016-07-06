@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>linux详解</title>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>产品指令</title>
 <style>
 .table{
 	width:100%;
-	margin-left:10px;
+	margin-left:-10px;
 }
 .table tr td{
 	border:1px solid black;
@@ -23,22 +23,44 @@
 	color: #008000;
 }
 
-
+div{
+	padding-left:3%;
+}
+.divfirst{
+	width:96%;
+	background-color:#FFCC99;
+}
+.divnext{
+	border-style: dotted;
+	border-color: #C0C0C0;
+	display:none;
+	width:94%;
+	margin-left:1%;
+}
 </style>
+<script>
+function hoverhidden(obj){
+	//obj.nextSibling 获取下一个同辈元素
+	var nextObj = obj.nextSibling ;
+	if(nextObj.style.display=="block"){
+		nextObj.style.display = "" ;
+		obj.style.background = "#FFCC99"
+	}else{
+		nextObj.style.display = "block" ;
+		obj.style.background = "#99FFCC"
+	}
+}
+</script>
 </head>
 
 <body>
-<div>
-<!-- 检索部分 -->
-<a href="#wjlx">文件类型</a>
+<h2>linux 常用指令</h2>
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+文件类型
 </div>
-
-<div>
-<!-- 属性介绍 -->
-<h4 id="wjlx">文件类型</h4>
-<ul style="list-style-type:none;">
-	<li>	
-		<table class="table2" style="width:80%;margin-left:10px" >
+<div class="divnext" >
+<table class="table2" style="width:80%;margin-left:10px" >
 			
 			<tr>
 				<td style="width:10%">d：</td>
@@ -64,18 +86,16 @@
 				<td style="width:10%"> </td>
 				<td style="width:30%"> </td>
 			</tr>
-
-
 		</table>
-	</li>
-	
 
-</ul>
+</div>
 
-<h4 id="step2">匹配字符</h4>
-<ul style="list-style-type:none;">
-	<li>	
-		<table class="table2" style="width:80%;margin-left:10px" >
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+匹配字符
+</div>
+<div class="divnext">
+<table class="table2" style="width:80%;margin-left:10px" >
 						<tr>
 				<td style="width:10%">*</td>
 				<td style="width:30%">任意字符</td>
@@ -88,18 +108,15 @@
 				<td style="width:10%">&nbsp;</td>
 				<td style="width:30%">&nbsp;</td>
 			</tr>
-			
-
 		</table>
-	</li>
-	
+</div>
 
-</ul>
-
-<h4 id="step1">正则表达式</h4>
-<ul style="list-style-type:none;">
-	<li>	
-		<table class="table2" style="width:80%;margin-left:10px" >
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+正则表达式
+</div>
+<div class="divnext">
+<table class="table2" style="width:80%;margin-left:10px" >
 			<tr>
 				<td style="width:10%">^</td>
 				<td style="width:30%">只匹配行首</td>
@@ -134,15 +151,14 @@
 			</tr>
 
 		</table>
-	</li>
-	
+</div>
 
-</ul>
-
-
-
-<h4>基本配置文件</h4>
-	<table class="table">
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+基本配置文件
+</div>
+<div class="divnext">
+<table class="table">
 		<tr>
 			<td style="width:20%">版本信息</td>
 			<td style="width:75%">cat /proc/version</td>
@@ -176,14 +192,13 @@
 			<td style="width:75%">cat /etc/udev/rules.d/xx-xx.rules</td>
 		</tr>
 </table>
-
-
 </div>
 
-<div>
-<!-- 指令介绍 -->
-
-<h4>rpm  执行安装包 </h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+rpm  执行安装包
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">rpm [options]  [package ...]</span></td>
@@ -206,9 +221,13 @@
 			<td colspan="6" rowspan="1" style="width:50%">安装升级软件包</td>
 		</tr>
 </table>
+</div>
 
-
-<h4>yum Shell前端软件包管理器 </h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+yum Shell前端软件包管理器
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="4" style="width:15%"><span style="color:green">yum [options] [command] [package ...]</span></td>
@@ -227,9 +246,13 @@
 			<td colspan="6" rowspan="1" style="width:50%">删除软件包</td>
 		</tr>
 </table>
+</div>
 
-
-<h4>vi 编辑指令</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+vi 编辑指令
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="8" style="width:15%"><span style="color:green">chmod [who] operator [permission] filename</span></td>
@@ -278,8 +301,13 @@
 			<td colspan="2" rowspan="1" style="width:20%">最后一行</td>
 		</tr>
 </table>
+</div>
 
-<h4>sudo 特权权限</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+sudo 特权权限
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="3" style="width:15%"><span style="color:green">sudo [option arg] command</span></td>
@@ -291,13 +319,15 @@
 		<tr>
 			<td colspan="3" rowspan="1" style="width:20%">su -l hdfs -c "mkdir /home/hadoop/hadoop"</td>
 			<td colspan="4" rowspan="1"style="width:40%">使用hadoop的权限，创建一个文件夹</td>
-		
 		</tr>
-		
 </table>
+</div>
 
-
-<h4>权限 chmod chgrp chown id/group umask ln</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+权限 chmod chgrp chown id/group umask ln
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="4" style="width:15%"><span style="color:green">chmod [who] operator [permission] filename</span></td>
@@ -343,8 +373,13 @@
 		</tr>
 		
 </table>
+</div>
 
-<h4>查询 find xargs</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+查询 find xargs
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="4" style="width:15%"><span style="color:green">find pathname -options [-print -exec -ok] filename</span></td>
@@ -387,12 +422,14 @@
 			直接执行查找的结果 {} \;大括号 空格 斜杠 分号<br/><br/>
 			将查找的结果 输出到控制台 xargs 为find结果的批量结果</td>
 		</tr>
-				
-
-		
 </table>
+</div>
 
-<h4>计划任务 后台任务</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+crontab 计划任务 后台任务
+</div>
+<div class="divnext">
 <table class="table">
 		
 		<tr>
@@ -435,15 +472,17 @@
 			<td colspan="1" rowspan="1" style="width:13%">查看后台进程</td>
 			<td colspan="4" rowspan="1" style="width:30%">ps -ef |grep redis</td>
 			<td colspan="2" rowspan="1" style="width:28%">kill -9 进程号</td>
-		</tr>
-		
-				
+		</tr>		
 </table>
+</div>
 
-<h4>输入输出 echo read cat tee</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+输入输出 echo read cat tee
+</div>
+<div class="divnext">
 <table class="table">
-		
-				<tr>
+		<tr>
 			<td colspan="3" rowspan="2" style="width:15%" class="style1">echo -e 
 			(linux转义)</td>
 		</tr>
@@ -469,13 +508,15 @@
 			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">tee</span></td>
 			<td colspan="1" rowspan="1" style="width:13%">echo "22" | tee 1.txt</td>
 			<td colspan="6" rowspan="1" style="width:50%">重定向至文件并输出到console </td>
-		</tr>
-				
-				
+		</tr>	
 </table>
+</div>
 
-
-<h4>命令 组合 控制 &amp;&amp; || (;)</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+命令 组合 控制 &amp;&amp; || (;)
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="1" style="width:15%"><span style="color:green">
@@ -497,8 +538,13 @@
 		</tr>
 				
 </table>
+</div>
 
-<h4>grep 查找</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+grep 查找
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="6" style="width:15%"><span style="color:green">grep [选项] 正则 [文件]<br/><br/>
@@ -527,9 +573,7 @@
 			<td colspan="2" rowspan="1"style="width:20%">&nbsp;</td>
 			<td colspan="2" rowspan="1"style="width:18%">&nbsp;</td>
 		</tr>
-
 		<tr>
-			
 			<td colspan="1" rowspan="1" style="width:13%">正则</td>
 			<td colspan="6" rowspan="1" style="width:50%">"xxx/>"代表精确查询</td>
 		</tr>
@@ -539,12 +583,15 @@
 			<td colspan="2" rowspan="1" style="width:18%">grep -n "^$" 1.txt 查询空格</td>
 			<td colspan="2" rowspan="1" style="width:18%">grep -n "3\{1\}" 1.txt 3出现1次</td>
 			<td colspan="2" rowspan="1" style="width:24%">grep -n "4..1" 1.txt 4开头1结尾的4位数</td>
-		</tr>
-		
-				
+		</tr>	
 </table>
+</div>
 
-<h4>awk文本分析</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+awk文本分析
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="8" style="width:15%"><span style="color:green">awk [-F field-separate] 'command' inputfile<br/><br/>
@@ -591,8 +638,13 @@
 			<td colspan="5"  style="width:45%">在BEGIN时 自定义了 count 数量 与 lengths匹配r开头的长度 ，匹配正则 r开头的时候 count+1 ,lengths 累加长 ，结尾时输出</td>
 		</tr>
 </table>
- 
-<h4>sed 文本处理</h4>		
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+sed 文本处理
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">sed [option] 'sed command' inputfile<br/><br/>
@@ -636,14 +688,15 @@
 		<tr>
 			<td colspan="3"  style="width:22%">sed  's/two/three/g' 1.txt</td>
 			<td colspan="7"  style="width:22%">全文 three 替换 two  源文件不变  g全局替换、p 打印、w 输出定向至文件 sed  's/two/three/w 3.txt' 1.txt  </td>
-			
 		</tr>
-		
-		
 </table>
+</div>
 
-
-<h4>sort 排序</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+sort 排序
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="7" style="width:15%"><span style="color:green">sort [-o outfile] [选项] infile</span></td>
@@ -710,14 +763,18 @@
 			<td colspan="4" rowspan="1" style="width:48%">生成100M的空文件</td>
 		</tr>		
 </table>
+</div>
 
-<h4>netstat 网络相关信息</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+netstat 网络相关信息
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="7" style="width:15%"><span style="color:green">netstat [option] <br/> ss [option] </span>速度快</td>
 		</tr>
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:15%">-a  </td>
 			<td colspan="2" rowspan="1"style="width:20%">显示所有选项，默认不显示LISTEN相关</td>
 			<td colspan="1" rowspan="1"style="width:15%">-n</td>
@@ -729,10 +786,7 @@
 			<td colspan="1" rowspan="1"style="width:15%">-u</td>
 			<td colspan="3" rowspan="1"style="width:28%">udp协议</td>
 		</tr>
-		
-		
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:15%"> -l  </td>
 			<td colspan="2" rowspan="1"style="width:20%">仅列出有在 Listen (监听) 的服務状态</td>
 			<td colspan="1" rowspan="1"style="width:15%">-p</td>
@@ -744,7 +798,6 @@
 			<td colspan="1" rowspan="1"style="width:15%">-e</td>
 			<td colspan="3" rowspan="1"style="width:28%">扩展信息</td>
 		</tr>
-		
 		<tr>
 			<td colspan="1" rowspan="1"style="width:15%"> -s  </td>
 			<td colspan="2" rowspan="1"style="width:20%">协议统计</td>
@@ -757,8 +810,6 @@
 			<td colspan="1" rowspan="1"style="width:15%">-g</td>
 			<td colspan="3" rowspan="1"style="width:28%">广播组信息</td>
 		</tr>
-		
-		
 		<tr>
 			<td colspan="5" rowspan="1" style="width:45%">
 			netstat -oat | grep "mysql" |awk '{print $5}'|awk -F: '{print $1}'|sort|uniq -c|sort -nr|head -20<br/>
@@ -781,34 +832,30 @@
 			<td colspan="5" rowspan="1" style="width:45%">列出每个进程名及其监听的端口 </td>
 		</tr>
 </table>
+</div>
 
-<h4>lsof 列出当前系统打开文件的工具</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+lsof 列出当前系统打开文件的工具
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="6" style="width:15%"><span style="color:green">lsof [option] file</span></td>
 		</tr>
 		<tr>
-			
 			<td colspan="10" rowspan="1"style="width:15%">
 COMMAND:进程的名称 ; &nbsp;&nbsp;
-
 PID:进程标识符;&nbsp;&nbsp;
-
 USER:进程所有者;&nbsp;&nbsp;
-
 FD:文件描述符，如cwd、txt等 ;<br/>
 TYPE:文件类型，如DIR、REG等;&nbsp;&nbsp;
-
 DEVICE:指定磁盘的名称;&nbsp;&nbsp;
-
-SIZE:文件的大小;
-<br/>
+SIZE:文件的大小;<br/>
 NODE:索引节点（文件在磁盘上的标识）;&nbsp;&nbsp;
-
 NAME:打开文件的确切名称; </td>
 		</tr>
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:15%">无参数</td>
 			<td colspan="2" rowspan="1"style="width:20%">显示开启文件file的进程</td>
 			<td colspan="1" rowspan="1"style="width:15%">-c</td>
@@ -820,10 +867,7 @@ NAME:打开文件的确切名称; </td>
 			<td colspan="1" rowspan="1"style="width:15%">-u</td>
 			<td colspan="3" rowspan="1"style="width:28%">过滤 USER</td>
 		</tr>
-		
-		
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:15%">-d  </td>
 			<td colspan="2" rowspan="1"style="width:20%">过滤 FD</td>
 			<td colspan="1" rowspan="1"style="width:15%">-i</td>
@@ -854,15 +898,18 @@ NAME:打开文件的确切名称; </td>
 			<td colspan="5" rowspan="1" style="width:45%">查看3306端口的链接数  </td>
 		</tr>
 </table>
+</div>
 
-<h4>ps 列出系统中运行的进程</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+ps 列出系统中运行的进程
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">ps [option] </span></td>
 		</tr>
-		
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:15%">-A</td>
 			<td colspan="2" rowspan="1"style="width:20%">显示所有进程</td>
 			<td colspan="1" rowspan="1"style="width:15%">-e</td>
@@ -874,10 +921,7 @@ NAME:打开文件的确切名称; </td>
 			<td colspan="1" rowspan="1"style="width:15%">-aux</td>
 			<td colspan="3" rowspan="1"style="width:28%">显示所有进程的详细信息</td>
 		</tr>
-		
-		
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:15%">-d  </td>
 			<td colspan="2" rowspan="1"style="width:20%">过滤 FD</td>
 			<td colspan="1" rowspan="1"style="width:15%">-i</td>
@@ -907,10 +951,14 @@ NAME:打开文件的确切名称; </td>
 			</td>
 			<td colspan="5" rowspan="1" style="width:45%">进程按 cpu降序 内存占用升序 排序 </td>
 		</tr>
-		
 </table>
+</div>
 
-<h4>mpstat CPU的一些统计信息</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+mpstat CPU的一些统计信息
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="6" style="width:15%"><span style="color:green">mpstat [option] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span></td>
@@ -962,11 +1010,14 @@ NAME:打开文件的确切名称; </td>
 			</td>
 			<td colspan="5" rowspan="1" style="width:45%">每2秒收集一次mysql服务CPU等统计信息  </td>
 		</tr>
-		
-		
 </table>
+</div>
 
-<h4>vmstat 虚拟内存统计</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+vmstat 虚拟内存统计
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="10" style="width:15%"><span style="color:green">vmstat [option] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span></td>
@@ -1033,20 +1084,21 @@ NAME:打开文件的确切名称; </td>
 			<td colspan="5" rowspan="1" style="width:45%">每2秒收集一次数据，共收集三次统计数据  </td>
 		</tr>
 </table>
+</div>
 
-
-<h4>sar 总体统计 趋势统计</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+sar 总体统计 趋势统计
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="8" style="width:15%"><span style="color:green">sar [options] [-o file] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span></td>
 		</tr>
 		<tr>
-			
 			<td colspan="1" rowspan="5"style="width:15%">[option] </td>
-			
 		</tr>
 		<tr>
-			
 			<td colspan="1" rowspan="1"style="width:10%">-u</td>
 			<td colspan="2" rowspan="1"style="width:20%">CPU 使用情况的统计信息</td>
 			<td colspan="1" rowspan="1"style="width:10%">-d</td>
@@ -1090,11 +1142,14 @@ NAME:打开文件的确切名称; </td>
 			<td colspan="3"  style="width:22%">I/O存在瓶颈</td>
 			<td colspan="7"  style="width:22%">sar -b、sar -u 和 sar -d 等 </td>
 		</tr>
-		
-		
 </table>
+</div>
 
-<h4>压缩</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+压缩 zip tar 
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="3" rowspan="5" style="width:15%"><span style="color:green">tar<br/><br/>
@@ -1118,11 +1173,13 @@ NAME:打开文件的确切名称; </td>
 			<td colspan="6" rowspan="1"style="width:48%">解压&nbsp;</td>
 		</tr>
 </table>
+</div>
 
-
-
-
-<h4>创建用户</h4>		
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+创建用户
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td style="width:20%">增加用户组</td>
@@ -1142,7 +1199,13 @@ NAME:打开文件的确切名称; </td>
 		</tr>
 		
 </table>
-<h4>逻辑卷</h4>		
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+lvm 逻辑卷
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td style="width:20%">初始化物理卷</td>
@@ -1179,8 +1242,13 @@ NAME:打开文件的确切名称; </td>
 			</td>
 		</tr>
 </table>
+</div>
 
-<h4>操作</h4>
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+操作
+</div>
+<div class="divnext">
 <table class="table">
 		
 		<tr>
@@ -1237,7 +1305,13 @@ NAME:打开文件的确切名称; </td>
 		</tr>
 
 </table>
-<h4 id="step1">系统配置</h4>
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+系统配置
+</div>
+<div class="divnext">
 <table class="table">
 		<tr>
 			<td style="width:20%">添加环境变量
@@ -1282,7 +1356,15 @@ NAME:打开文件的确切名称; </td>
 		</tr>
 </table>
 </div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+test
+</div>
+<div class="divnext">content
+</div>
+
+
+
 </body>
-
 </html>
-
