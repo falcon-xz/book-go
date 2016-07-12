@@ -12,8 +12,9 @@
 	
 }
 .table tr td{
-	
+	text-align:left;
 	border:1px solid black;
+	padding-left:10px;
 }
 
 </style>
@@ -24,6 +25,9 @@
 <ul style=" list-style-type: none;">
 	<li>
 		<table class="table" style="font-size:large;">
+			<tr style="background-color:lightgrey">
+				<td colspan="2" style="width:100%;"><b>基础指令</b></td>
+			</tr>
 			<tr>
 				<td style="width:30%;">初始化集群</td>
 				<td style="width:70%;">hdfs namenode -format</td>
@@ -38,12 +42,9 @@
 				<td style="width:70%;">hdfs fsck $PATH -files -blocks</td>
 			</tr>
 			
+			
 			<tr>
-				<td style="width:30%;">启动job历史记录服务</td>
-				<td style="width:70%;">mr-jobhistory-daemon.sh start historyserver</td>
-			</tr>
-			<tr>
-				<td style="width:30%;">基础命令 详见hdfs dfs 提示</td>
+				<td style="width:30%;">hdfs dfs </td>
 				<td style="width:70%;">hdfs dfs -ls [-R]/-cat/-cp/-get/-put/-mv/-rm 
 				[-r]/-rmdir/-mkdir/-touchz/-stat/-tail</td>
 			</tr>
@@ -51,11 +52,10 @@
 				<td style="width:30%;">权限</td>
 				<td style="width:70%;">hdfs dfs chgro/chmod/chown [-R] &lt;path&gt;</td>
 			</tr>
-
 			<tr>
-				<td style="width:30%;">文件大小</td>
-				<td style="width:70%;">hdfs dfs -du [-s] [-h] $path <br/>
-										-s 相当于linux dus  ; -h 大小的数量级单位</td>
+				<td style="width:30%;">文件大小 -s 相当于linux dus  ; -h 大小的数量级单位</td>
+				<td style="width:70%;">hdfs dfs -du [-s] [-h] $path 
+										</td>
 			</tr>
 			<tr>
 				<td style="width:30%;">清空回收站</td>
@@ -70,13 +70,10 @@
 				<td style="width:70%;">hdfs dfs -test src </td>
 			</tr>
 			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
+				<td style="width:30%;">启动job历史记录服务</td>
+				<td style="width:70%;">mr-jobhistory-daemon.sh start historyserver</td>
 			</tr>
-			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
-			</tr>
+			
 		</table>
 	</li>
 	<br/>

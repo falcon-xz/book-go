@@ -12,8 +12,9 @@
 	
 }
 .table tr td{
-	
+	text-align:left;
 	border:1px solid black;
+	padding-left:10px;
 }
 
 </style>
@@ -45,10 +46,10 @@
 	<br/><br/>
 	<table class="table">
 		<tr>
-			<td colspan="2" style="width:95%;text-align:center;background-color:lightblue"> &lt;queue-path&gt;代表的是队列的继承树 &lt;sub-property&gt;指以下参数</td>
+			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> &lt;queue-path&gt;代表的是队列的继承树 &lt;sub-property&gt;指以下参数</td>
 		</tr>
 		<tr>
-			<td colspan="2" style="width:95%;text-align:center;background-color:lightblue"> 资源分配相关参数</td>
+			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> 资源分配相关参数</td>
 		</tr>
 		<tr>
 			<td style="width:15%">capacity</td>
@@ -63,7 +64,7 @@
 			<td style="width:80%">每个用户最多可使用的资源量（百分比）</td>
 		</tr>
 		<tr>
-			<td colspan="2" style="width:95%;text-align:center;background-color:lightblue"> 限制应用程序数目相关参数</td>
+			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> 限制应用程序数目相关参数</td>
 		</tr>
 		<tr>
 			<td style="width:15%">maximum-applications </td>
@@ -74,7 +75,7 @@
 			<td style="width:80%">集群中用于运行应用程序ApplicationMaster的资源比例上限，该参数通常用于限制处于活动状态的应用程序数目。该参数类型为浮点型，默认是0.1，表示10%。所有队列的ApplicationMaster资源比例上限可通过参数yarn.scheduler.capacity. maximum-am-resource-percent设置（可看做默认值），而单个队列可通过参数yarn.scheduler.capacity.<queue-path>. maximum-am-resource-percent设置适合自己的值</td>
 		</tr>
 		<tr>
-			<td colspan="2" style="width:95%;text-align:center;background-color:lightblue"> 队列访问和权限控制参数</td>
+			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> 队列访问和权限控制参数</td>
 		</tr>
 		<tr>
 			<td style="width:15%">state</td>
@@ -89,7 +90,7 @@
 			<td style="width:80%">为队列指定一个管理员，该管理员可控制该队列的所有应用程序，比如杀死任意一个应用程序等</td>
 		</tr>
 		<tr>
-			<td colspan="2" style="width:95%;text-align:center;background-color:lightblue"> <a href="#" onclick="javascript:ss()"> 例子</a> <br/>
+			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> <a href="#" onclick="javascript:ss()"> 例子</a> <br/>
 			<textarea name="hide" readonly style="width:48%;float:left;display:none;overflow-y:scroll" rows="7">
 		默认配置
 格式 

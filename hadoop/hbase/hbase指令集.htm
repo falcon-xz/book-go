@@ -12,8 +12,9 @@
 	
 }
 .table tr td{
-	
+	text-align:left;
 	border:1px solid black;
+	padding-left:10px;
 }
 
 </style>
@@ -25,20 +26,14 @@
 <ul style=" list-style-type: none;">
 	<li>
 		<table class="table" style="font-size:large">
-			
+			<tr style="background-color:lightgrey;">
+				<td colspan="2" style="width:100%;"><b>hbase 指令</b> </td>
+			</tr>
 			<tr>
 				<td style="width:30%;">查看hfile内容 </td>
 				<td style="width:70%;">hbase hfile -v -p -f $PATH</td>
 			</tr>
-			<tr>
-				<td style="width:30%;">增加表级coprocessor(必须在启动前加入jar包)$类全路径 为必填 
-				其他可以空</td>
-				<td style="width:70%;">disable &#39;$tableName';<br/>
-								alter '$tableName',METHOD=>'table_att','coprocessor'=>'$jarpath|$类全路径|$序列号|$权限(SYSTEM/USER)'<br/>
-								alter '$tableName',METHOD=>'table_att_unset&#39;,NAME 
-	=&gt; &#39;$name&#39;<br/>
-				enable '$tableName'</td>
-			</tr>
+			
 			<tr>
 				<td style="width:30%;"> 进入hbase zookeeper控制台</td>
 				<td style="width:70%;">hbase zkcli </td>
@@ -52,69 +47,33 @@
 				<td style="width:70%;">hbase-daemon.sh start/restart 
 				regionserver</td>
 			</tr>
-			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
-			</tr>
-			<tr>
-				<td style="width:30%;"> </td>
-				<td style="width:70%;"></td>
-			</tr>
-			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
-			</tr>
-			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
-			</tr>
-			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
-			</tr>
-
-		</table>
-		
-
-	</li>
-	<br/>
-	
-
-
-</ul>
-<h4>hbase shell 指令集 hbase shell</h4>
-<ul style=" list-style-type: none;">
-	<li>
-		<table class="table" style="font-size:large">
 			
+			
+			
+			<tr style="background-color:lightgrey;">
+				<td colspan="2" style="width:100%;"><b>hbase client 指令</b> </td>
+			</tr>
 			<tr>
 				<td style="width:30%;">hbase信息 直接查元数据</td>
 				<td style="width:70%;">zk_dump</td>
 			</tr>
 			<tr>
-				<td style="width:30%;">hbase<span style="color: rgb(0, 0, 0); font-family: Helvetica, Tahoma, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.2px; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);">
-				手动合并 HStoreFile</span></td>
+				<td style="width:30%;">hbase 手动合并 HStoreFile</td>
 				<td style="width:70%;">major_compact &#39;t1&#39;,&#39;c1&#39;</td>
 			</tr>
 			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
+				<td style="width:30%;">增加表级coprocessor(必须在启动前加入jar包)$类全路径 为必填 
+				其他可以空</td>
+				<td style="width:70%;">disable &#39;$tableName';<br/>
+								alter '$tableName',METHOD=>'table_att','coprocessor'=>'$jarpath|$类全路径|$序列号|$权限(SYSTEM/USER)'<br/>
+								alter '$tableName',METHOD=>'table_att_unset&#39;,NAME 
+	=&gt; &#39;$name&#39;<br/>
+				enable '$tableName'</td>
 			</tr>
-			<tr>
-				<td style="width:30%;"></td>
-				<td style="width:70%;"></td>
-			</tr>
-
 		</table>
-		
-
 	</li>
 	<br/>
-	
-
-
 </ul>
-
 
 </body>
 

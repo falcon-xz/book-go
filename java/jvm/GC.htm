@@ -27,8 +27,9 @@ div{
 	
 }
 .table tr td{
-	text-align:center;
+	text-align:left;
 	border:1px solid black;
+	padding-left:15px;
 }
 </style>
 <script>
@@ -154,17 +155,20 @@ GC 参数说明
 2) 数字型参数选项通过-XX:=设定。数字可以是 m/M(兆字节)，k/K(千字节)，g/G(G字节)。比如：32K表示32768字节。<br/>
 3) 字符行参数选项通过-XX:=设定，通常用来指定一个文件，路径，或者一个命令列表。<br/><br/>
 <table class="table" style="margin-left:-2%">
-
+	<tr style="background-color:lightgrey">
+		<td style="width:40%"><b>参数</b></td>
+		<td style="width:60%"><b>说明</b></td>
+	</tr>
 	<tr>
-		<td style="width:40%">set JAVA_OPTS=%JAVA_OPTS% -Xms128m -Xmx512m</td>
+		<td style="width:40%">
+		export JAVA_OPTS=%JAVA_OPTS% -Xms128m -Xmx512m<br/>
+		java -jar xx.jar -Xms128m -Xmx512m
+		</td>
 		<td style="width:60%">如何加参数启动</td>
 	</tr>
+	
 	<tr>
-		<td style="width:40%">参数</td>
-		<td style="width:60%">说明</td>
-	</tr>
-	<tr>
-		<td colspan="2" style="width:100%;background-color:lightgrey;">日志及打印</td>
+		<td colspan="2" style="width:100%;background-color:lightgrey;"><b>日志及打印</b></td>
 	</tr>
 	<tr>
 		<td style="width:40%">-Xloggc:$path/gc.log-`date +%Y%m%d%H%M`<br/>
@@ -185,7 +189,7 @@ GC 参数说明
 		<td style="width:60%">打印垃圾收集的时间戳</td>
 	</tr>
 	<tr>
-		<td colspan="2" style="width:100%;background-color:lightgrey;">heap堆大小 栈大小 相关</td>
+		<td colspan="2" style="width:100%;background-color:lightgrey;"><b>heap堆大小 栈大小 相关</b></td>
 	</tr>
 	<tr>
 		<td style="width:40%">-Xms1024m </td>
@@ -212,7 +216,7 @@ GC 参数说明
 		<td style="width:60%">设置年轻代（包括Eden和两个Survivor区）与年老代的比值（除去永久代）。设置为4，则年轻代与年老代所占比值为1：4，年轻代占整个堆栈的1/5</td>
 	</tr>
 	<tr>
-		<td colspan="2" style="width:100%;background-color:lightgrey;">Perm Generation 永生代 相关</td>
+		<td colspan="2" style="width:100%;background-color:lightgrey;"><b>Perm Generation 永生代 相关</b></td>
 	</tr>
 	<tr>
 		<td style="width:40%">-XX:PermSize=64m</td>
@@ -223,7 +227,7 @@ GC 参数说明
 		<td style="width:60%">永生代最大值</td>
 	</tr>
 	<tr>
-		<td colspan="2" style="width:100%;background-color:lightgrey;">垃圾收集器行为</td>
+		<td colspan="2" style="width:100%;background-color:lightgrey;"><b>垃圾收集器行为</b></td>
 	</tr>
 	<tr>
 		<td style="width:40%">-XX:+UseSerialGC</td>

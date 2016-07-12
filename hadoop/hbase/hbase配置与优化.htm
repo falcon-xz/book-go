@@ -12,8 +12,9 @@
 	
 }
 .table tr td{
-	
+	text-align:left;
 	border:1px solid black;
+	padding-left:5px;
 }
 
 </style>
@@ -23,8 +24,8 @@
 <h4>hbase-site.xml配置与优化</h4>
 <ul style=" list-style-type: none;">
 	<li>
-		<table border="1" style="width:95%;font-size: small">
-		<tr>
+		<table class="table" style="width:95%;">
+		<tr style="background-color:lightgrey;">
 			<td style="width:20%;text-align:center">配置项</td>
 			<td style="width:40%;text-align:center">说明</td>
 			<td style="width:20%;">优化</td>
@@ -57,11 +58,8 @@
 			<td style="width:20%;">35</td>
 			<td style="width:20%;">10</td>
 		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
+		<tr style="background-color:lightgrey;">
+			<td colspan="4" style="width:100%;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td style="width:20%; height: 66px;">
@@ -78,11 +76,8 @@
 			<td style="width:20%;">0.5</td>
 			<td style="width:20%;">0</td>
 		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
+		<tr style="background-color:lightgrey;">
+			<td colspan="4" style="width:100%;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td style="width:20%;">hbase.hregion.max.filesize</td>
@@ -90,11 +85,8 @@
 			<td style="width:20%;">21474836480(20G)</td>
 			<td style="width:20%;">268435456(256m)</td>
 		</tr>
-		<tr>
-			<td style="width:20%;"></td>
-			<td style="width:40%;"></td>
-			<td style="width:20%;"></td>
-			<td style="width:20%;"></td>
+		<tr style="background-color:lightgrey;">
+			<td colspan="4" style="width:100%;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td style="width:20%;">hbase.hregion.memstore.flush.size</td>
@@ -126,11 +118,8 @@
 			<td style="width:20%;">10</td>
 			<td style="width:20%;">3</td>
 		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
+		<tr style="background-color:lightgrey;">
+			<td colspan="4" style="width:100%;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td style="width:20%;">hbase.regionserver.global.memstore.upperLimit</td>
@@ -150,17 +139,8 @@
 			<td style="width:20%;">0.4</td>
 			<td style="width:20%;">0.2</td>
 		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
+		<tr style="background-color:lightgrey;">
+			<td colspan="4" style="width:100%;">&nbsp;</td>
 		</tr>
 		
 		<tr>
@@ -182,23 +162,14 @@
 			<td style="width:20%;">10485760(10M)</td>
 			<td style="width:20%;">10485760(10M)</td>
 		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
+		<tr style="background-color:lightgrey;">
+			<td colspan="4" style="width:100%;">&nbsp;</td>
 		</tr>
 		<tr>
 			<td style="width:20%;">hbase.client.scanner.caching</td>
 			<td style="width:40%;">scan一次RPC缓存条数</td>
 			<td style="width:20%;">1000</td>
 			<td style="width:20%;">1</td>
-		</tr>
-		<tr>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:40%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
-			<td style="width:20%;">&nbsp;</td>
 		</tr>
 		</table>
 	
@@ -212,39 +183,40 @@
 <h4>hbase-env.sh配置</h4>
 <ul style=" list-style-type: none;">
 	<li>
-		<table border="1" style="width:95%;font-size:small">
-		<tr>
-			<td style="width:40%;text-align:center">配置项</td>
-			<td style="width:60%;text-align:center">说明</td>
+		<table class="table" style="width:95%;">
+		<tr style="background-color:lightgrey;">
+			<td style="width:30%;text-align:center">配置项</td>
+			<td style="width:70%;text-align:center">配置值</td>
 		</tr>
 		<tr>
-			<td style="width:40%;">HBASE_CONF_DIR</td>
-			<td style="width:60%;">hbase配置文件路径</td>
+			<td style="width:30%;">所有守护进程的堆内存大小 master regionserver thrift 自带zookeeper</td>
+			<td style="width:70%;">export HBASE_HEAPSIZE=1024</td>
 		</tr>
 		<tr>
-			<td style="width:40%;">HBASE_MANAGES_ZK=false</td>
-			<td style="width:60%;">是否使用使用hbase管理zookeeper方式</td>
+			<td style="width:30%;">配置目录</td>
+			<td style="width:70%;">export HBASE_CONF_DIR=${HBASE_CONF_DIR:-/etc/hbase/conf}</td>
 		</tr>
 		<tr>
-			<td style="width:40%;"></td>
-			<td style="width:60%;"></td>
+			<td style="width:30%;">pid目录</td>
+			<td style="width:70%;">export HBASE_PID_DIR=/var/run/hbase</td>
+		</tr>
+		<tr>
+			<td style="width:30%;">是否使用使用hbase管理zookeeper方式</td>
+			<td style="width:70%;">HBASE_MANAGES_ZK=false</td>
+		</tr>
+		<tr>
+			<td style="width:30%;">master服务启动参数</td>
+			<td style="width:70%;">export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -Djava.net.preferIPv6Addresses=false -Djava.net.preferIPv4Stack=true"	<br/>
+export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -Xms1024m  -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:MaxGCPauseMillis=1000 -Xloggc:$HBASE_LOG_DIR/gc.log-`date +%Y%m%d%H%M` -verbose:gc  -XX:+PrintGCDetails -XX:+PrintGCTimeStamps  -XX:+PrintGCDateStamps"</td>
 		</tr>
 		
 		<tr>
-			<td style="width:40%;"></td>
-			<td style="width:60%;"></td>
+			<td style="width:30%;">regionserver服务启动参数</td>
+			<td style="width:70%;">
+			export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -Djava.net.preferIPv6Addresses=false -Djava.net.preferIPv4Stack=true"<br/>
+			export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -Xms1024m  -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -Xloggc:$HBASE_LOG_DIR/gc.log-`date +%Y%m%d%H%M` -verbose:gc  -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps  -XX:+PrintTenuringDistribution -XX:InitiatingHeapOccupancyPercent=35  -XX:G1HeapRegionSize=3"
+			</td>
 		</tr>
-		<tr>
-			<td style="width:40%;"></td>
-			<td style="width:60%;"></td>
-		</tr>
-		<tr>
-			<td style="width:40%;"></td>
-			<td style="width:60%;"></td>
-		</tr>
-
-
-
 		</table>
 	
 	</li>
@@ -254,15 +226,6 @@
 
 </ul>
 
-<table border="1" width="100%" id="table1" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
-	<tr>
-		<td bgcolor="#FFCC99">参考配置</td>
-	</tr>
-	<tr>
-		<td><div><a href="../../other/conf.rar">conf.rar</a></div>
-</td>
-	</tr>
-</table>
 </body>
 
 </html>
