@@ -56,6 +56,8 @@ mysql client
 	--创建用户并授权，ip限制<br />
 	mysql -u root -e "GRANT ALL PRIVILEGES ON 数据库名.* TO 'user'@'ip' IDENTIFIED BY 'password' WITH GRANT OPTION; "<br />
 	执行授权 将数据库的所有权限授权给从ip登陆的user用户<br />
+	mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'WITH GRANT OPTION; "<br />
+	给所有ip连接mysql的权限<br />
 	mysql -u root -e "flush privileges;" 立即生效<br /><br />
 	
 	--建表/删表<br />
