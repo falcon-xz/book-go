@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td style="width:30%;">kafka-topics.sh --create --zookeeper 10.10.0.65 --topic test --partitions 2 --replication-factor 1 </td>
-				<td style="width:70%;">zookeeper 集群管理下 创建名为test的topic 分区为2 备份为1</td>
+				<td style="width:70%;">zookeeper 集群管理下 创建名为test的topic 分区为2 备份为1（备份不能大于现有的broker数量）</td>
 			</tr>
 			
 			<tr>
