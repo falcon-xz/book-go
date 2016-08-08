@@ -43,10 +43,7 @@
 	$@ 以字符串显示所有参数;"$1" "$2" "$n"<br/>
 	$? 上条语句退出状态（返回值） 0正常 1有错<br/>
 	</li>
-	<br/>
-	<li>打印<br/>
-	echo $arg1 或者 echo ${arg1}<br/>
-	</li>
+
 	<br/>
 	<li>字符串的处理<br/>
 	JJ="/MMM" 绑定变量<br/>
@@ -57,8 +54,18 @@
 	</li>
 	<br/>
 	<li>
-		字符串比较 = 、!= 、-z 、-n <br/>
+		字符串比较 = 、!= 、-z 、-n    //防止出现 空=""的情况 使用 "x$contants" = "x" 方式<br/>
 		数值比较 -eq 、-ne 、-gt 、-le、-ge、-le <br/>
+		<br/>
+		[ if -d file ]：判断制定的是否为目录<br/>
+		[ if -z file ]：判断制定的变量是否为空<br/>
+		[ if -f file ]：判断制定的是否为文件<br/>
+		[ if -L file ]:判断制定的是否为符号链接<br/>
+		[ if -r file ]：判断制定的是否可读<br/>
+		[ if -s file ]:判断存在的对象长度是否为0<br/>
+		[ if -w file ]:判断制定的是否可写<br/>
+		[ if -x file ]：判断存在的对象是否可以执行<br/>
+
 	</li>
 	<br/>
 	<li>#while 循环与if判断<br/>
