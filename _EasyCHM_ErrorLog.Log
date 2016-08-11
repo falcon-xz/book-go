@@ -13,7 +13,8 @@ hadoop\hive\hive-client.htm
 hadoop\hive\hive优化.htm
 hadoop\hive\hive语法.htm
 hadoop\hive\hive自定义函数.htm
-hadoop\kafka\kafka配置与优化.htm
+hadoop\kafka\kafka概念.htm
+hadoop\kafka\kafka配置.htm
 hadoop\kafka\kafka指令集.htm
 hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
@@ -47,6 +48,7 @@ other\utils.js
 HHC5003: Error: Compilation failed while compiling other\即时类媒体接入客服系统定制指南.doc.
 HHC5003: Error: Compilation failed while compiling other\业软公共 提高培训 TopEng-CSP dwr 培训胶片V1.0.ppt.
 ruby\puppet\puppet.htm
+ruby\ruby\ruby基础.htm
 工具\utils.htm
 前端\ajax\ajax.html
 前端\ajax\dwr.html

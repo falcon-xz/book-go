@@ -75,9 +75,10 @@
 	<br/>
 	<li>json_tuple 解析json格式<br/>
 	语法 json_tuple(jsonstring,key1,key2...)<br/>
-	select key,key2,key3 from (<br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	select "{\"key\":\"value\",\"key2\":\"value2\",\"key3\":\"value3\"}" as jsonstring<br/>
-	) t lateral view json_tuple(t.jsonstring,'key','key2','key3') columns as key,key2,key3 ;<br/>
+	SELECT id,k1,k2,k3 FROM (<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT 1 id, "{\"key1\":\"v1\",\"key2\":\"v2\",\"key3\":\"v3\"}" AS jsonstring UNION ALL<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT 2 id, "{\"key1\":\"v3\",\"key2\":\"v2\",\"key3\":\"v1\"}" AS jsonstring<br/>
+	) t lateral VIEW json_tuple(t.jsonstring,'key1','key2','key3') COLUMNS AS k1,k2,k3 <br/>
 	固定格式，否则解析不出来<br/>
 	</li>
 	<br/>

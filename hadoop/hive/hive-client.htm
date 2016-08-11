@@ -143,7 +143,7 @@ hive client 配置选项
 								  set mapred.reduce.tasks=xx ;  xx个reducer数</td>
 			</tr>
 			<tr>
-				<td style="width:30%;">简单查询不走MR 比如where id= 1</td>
+				<td style="width:30%;">简单查询不走mr 比如where id=1</td>
 				<td style="width:65%;">set hive.fetch.task.conversion=more; (minimal)</td>
 			</tr>
 			<tr>
@@ -162,7 +162,11 @@ hive client 配置选项
 				<td style="width:70%;">set hive.exec.max.dynamic.partitions=10000;</td>
 			</tr>
 			<tr>
-				<td style="width:30%;">设置一个mapper reducer允许创建的分区数量的最大值 default 100</td>
+				<td style="width:30%;">设置每个mapper/reducer允许创建的分区数量的最大值 default 100</td>
+				<td style="width:70%;">set hive.exec.max.dynamic.partitions.pernode=1000 ;</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">设置每个mapper/reducer允许创建的分区数量的最大值 default 100</td>
 				<td style="width:70%;">set hive.exec.max.dynamic.partitions.pernode=1000 ;</td>
 			</tr>
 			<tr>
