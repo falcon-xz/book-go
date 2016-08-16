@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
-<title>产品指令</title>
+<title>linux指令</title>
 <style>
 .table{
 	width:100%;
@@ -958,6 +958,15 @@ ps 列出系统中运行的进程
 			ps -eo pid,lstart,etime,cmd | grep sbt
 			</td>
 			<td colspan="5" rowspan="1" style="width:45%">查看进程运行时间</td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			ps -ef | grep  '[k]afka.Kafka'<br/>
+			ps -ef | grep  'kafka.Kafka' | grep -v 'grep kafka.Kafka'
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">
+			查看进程 不输出本身进程<br/>
+			查看进程 过滤本身进程</td>
 		</tr>
 		
 </table>
