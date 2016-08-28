@@ -53,6 +53,10 @@ mysql client
 	mysqladmin -u root -p oldPassword password newPassword<br /><br />
 	--数据库<br />
 	create/drop database &lt;数据库名&gt;<br /><br />
+	
+	--修改库的属性<br />
+	set global read_only=0 ;//否则报错 The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement<br /><br />
+	
 	--创建用户并授权，ip限制<br />
 	mysql -u root -e "GRANT ALL PRIVILEGES ON 数据库名.* TO 'user'@'ip' IDENTIFIED BY 'password' WITH GRANT OPTION; "<br />
 	执行授权 将数据库的所有权限授权给从ip登陆的user用户<br />
