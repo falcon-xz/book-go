@@ -61,6 +61,21 @@ hive 命令行
 				<td style="width:30%;">初始化数据库</td>
 				<td style="width:65%;">schematool -dbType mysql -initSchema;</td>
 			</tr>
+			<tr>
+				<td colspan="2" style="width:100%;background-color:lightgrey;">hive</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">启动metastore</td>
+				<td style="width:65%;">hive --service metastore & </td>
+			</tr>
+			<tr>
+				<td style="width:30%;">启动hiveserver2</td>
+				<td style="width:65%;">hive --service hiveserver2 &</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">启动hive client</td>
+				<td style="width:65%;">hive / hive --service cli</td>
+			</tr>
 			
 		</table>
 
@@ -104,7 +119,7 @@ hive cli 执行原理
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-hive client 配置选项
+hive sql 配置选项
 </div>
 <div class="divnext">
 <br />
