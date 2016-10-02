@@ -138,6 +138,21 @@
 	<br/>
 </ul>
 
+<h4>hbase coprocessor Endpoint</h4>
+<ul style=" list-style-type: decimal;">
+	<li>
+	类似于oracle producer，提供基于region块的并行化计算<br/><br/>
+	</li>
+	
+	<li>
+	启动或动态加载后，会在hbase的临时文件夹（hbase.local.dir参数）下生成临时jar包，用于计算<br/><br/>
+	</li>
+	
+	<li>
+	master对regionserver发送rpc请求，regionserver找到table下的region块，有木桶效应，<br/>返回各个region的计算结果封装成 Map&lt;byte[] regionname,object 计算结果&gt; 返回给client。<br/><br/>
+	</li>
+</ul>
+
 </body>
 
 </html>
