@@ -489,6 +489,67 @@ rm -rf /var/log/kafka-manager                                                   
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
+vnc
+</div>
+<div class="divnext">
+<table class="table">
+		<tr>
+			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
+			<b>使用</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			安装
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			yum -y install tigervnc-server-1.1.0-5.el6.x86_64<br/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			配置 vi /etc/sysconfig/vncservers
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			 <br/>
+			VNCSERVERS="1:root 2:hadoop " <br/>
+			VNCSERVERARGS[1]="-name root -geometry 1280x720" <br/>
+			VNCSERVERARGS[2]="-name hadoop -geometry 800x600" <br/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			设置密码 vncpassword
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			<br/>
+			1qaz!QAZ <br/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			启动
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			/etc/init.d/vncserver start<br/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			可选操作
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			用户的HOME目录下生成.vnc/xstartup文件 把最后一行 twm & 改为 gnome &<br/>
+			</td>
+		</tr>
+		
+		
+		
+</table>
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
 test
 </div>
 <div class="divnext">content
