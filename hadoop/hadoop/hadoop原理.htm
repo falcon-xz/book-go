@@ -91,6 +91,19 @@
 	</li>
 	
 </ul>
+
+<h4>Hadoop安全机制</h4>
+<ul style=" list-style-type: decimal;">
+	<li>用户篇：<br/>
+		用户伪装机制使得Hadoop支持类似于linux “sudo”的功能，即用户A以用户B的身份执行功能<br/>
+		功能允许一个超级用户代理其他用户执行作业或者命令，但对外看来执行者仍是普通用户<br/>
+		hive执行shell命令，验证用户为hive/vggapp19@NEWLAND.COM（KB状态）,无访问hdfs权限<br/>
+		在core-site中增加两个参数：hadoop.proxyuser.hive.hosts=hive(*);hadoop.proxyuser.hive.groups=hive(*);<br/>
+		会把所有运行hive的用户伪装为*（hive在hdfs上的超级用户）<br/>
+		
+	</li>
+
+</ul>
 </body>
 
 </html>
