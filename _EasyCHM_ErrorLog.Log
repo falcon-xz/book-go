@@ -2,6 +2,7 @@ Microsoft HTML Help Compiler 4.74.8702
 
 Compiling e:\book-go.CHM
 
+hadoop\hadoop\hadoop配置与优化.htm
 hadoop\hadoop\hadoop原理.htm
 hadoop\hadoop\hadoop指令集.htm
 hadoop\hbase\hbaseAPI.htm
@@ -16,6 +17,7 @@ hadoop\hive\hive自定义函数.htm
 hadoop\kafka\kafka概念.htm
 hadoop\kafka\kafka配置.htm
 hadoop\kafka\kafka指令集.htm
+hadoop\yarn\yarn配置与优化.htm
 hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
 hadoop\zookeeper\zookeeper指令集.htm
