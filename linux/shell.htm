@@ -102,7 +102,7 @@
 	#单行<br/>
 	hivesql=`hive -e "select concat_ws('-','1','2') ;"`<br/>
 	执行结果为1-2<br/>
-	array=(${hivesql//-/})<br/>
+	array=(${hivesql//-/ })<br/>
 	for i in ${array[@]}<br/>
 	do<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;	echo "单行循环"$i<br/>
@@ -110,7 +110,7 @@
 	#多行中直接取值都是以 空格 分割<br/>
 	hivesql2=`hive -e "select '3A','3B' union all select '4A','4B' union all select '5A','5B' ;"`<br/>
 	echo "多行字符串"$hivesql2<br/>
-	array2=(${hivesql2// /})<br/>
+	array2=(${hivesql2// / })<br/>
 	for i in ${array2[@]}<br/>
 	do<br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;	echo "多行循环"$i<br/>
