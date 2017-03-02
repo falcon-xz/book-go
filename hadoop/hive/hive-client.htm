@@ -176,6 +176,11 @@ hive sql 配置选项
 				<td style="width:65%;">set hive.exec.reducers.bytes.per.reducer=xxx字节;  每个reducer处理的字节数<br/>
 								  set mapred.reduce.tasks=xx ;  xx个reducer数</td>
 			</tr>
+			
+			<tr>
+				<td style="width:30%;">执行本地job 的输入数据阀值 （本地执行无监控数据）</td>
+				<td style="width:65%;">set hive.exec.mode.local.auto.inputbytes.max=1;</td>
+			</tr>
 			<tr>
 				<td style="width:30%;">简单查询不走mr 比如where id=1</td>
 				<td style="width:65%;">set hive.fetch.task.conversion=more; (minimal)</td>
