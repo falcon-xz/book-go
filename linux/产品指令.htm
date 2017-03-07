@@ -71,195 +71,50 @@ function ss(id){
 
 <body>
 <h2>产品 指令</h2>
-<h4></h4>
-<div class="divfirst"  onclick="javascript:hoverhidden(this)">
-编译源码包
-</div>
-<div class="divnext" >
-<table class="table">
-		<tr>
-			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
-			<b>指令</b>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> ./configure [--prefix=$targetDir]  </td>
-			<td colspan="6" rowspan="1" style="width:60%">第一步</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> make </td>
-			<td colspan="6" rowspan="1" style="width:60%">第二步</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> make install  </td>
-			<td colspan="6" rowspan="1" style="width:60%">第三步</td>
-		</tr>
-		
-</table>
-</div>
-
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-maven  http://mvnrepository.com/
-</div>
-<div class="divnext" >
-<table class="table">
-		<tr>
-			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
-			<b>指令</b>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> 
-			mvn archetype:create <br/>
-			-DgroupId=packageName <br/>
-			-DartifactId=projectName  
-			</td>
-			<td colspan="6" rowspan="1" style="width:60%">普通java项目</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> 
-			 mvn archetype:create <br/>
-			-DgroupId=packageName   <br/> 
-			-DartifactId=webappName <br/>
-			-DarchetypeArtifactId=maven-archetype-webapp
-			</td>
-			<td colspan="6" rowspan="1" style="width:60%">java web 项目</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">mvn compile  </td>
-			<td colspan="6" rowspan="1" style="width:60%">编译源代码</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">
-			mvn clean <br/>
-			mvn clean install
-			</td>
-			<td colspan="6" rowspan="1" style="width:60%">清除产生的项目</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> mvn eclipse:eclipse  </td>
-			<td colspan="6" rowspan="1" style="width:60%">生成eclipse项目</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> mvn idea:idea  </td>
-			<td colspan="6" rowspan="1" style="width:60%">生成idea项目</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> mvn validate  </td>
-			<td colspan="6" rowspan="1" style="width:60%">验证工程是否正确</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> mvn idea:idea  </td>
-			<td colspan="6" rowspan="1" style="width:60%">生成idea项目</td>
-		</tr>
-</table>
-</div>
-
-<h4></h4>
-<div class="divfirst"  onclick="javascript:hoverhidden(this)">
-svn
+yum源
 </div>
 <div class="divnext">
 <table class="table">
 		<tr>
 			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
-			<b>指令</b>
+			<b>制作</b>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="4" rowspan="1" style="width:40%"> 
-			svn checkout svn://192.168.1.1/pro/domain
+			获得镜像文件 
 			</td>
-			<td colspan="6" rowspan="1" style="width:60%">检出目录</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			CentOS-7-x86_64-DVD-1511.iso<br/>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4" rowspan="1" style="width:40%"> 
-			svn export svn://192.168.1.1/pro/domain/1.txt
+			把.ios文件当做磁盘挂载在系统上
 			</td>
-			<td colspan="6" rowspan="1" style="width:60%">检出文件</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			mount -o loop .iso路径 目标路径
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4" rowspan="1" style="width:40%"> 
-			  svn add file
+			从目标路径把 Packages 目录拷贝到 yum源路径下 执行 createrepo . 创建基于rpm包的索引文件
 			</td>
-			<td colspan="6" rowspan="1" style="width:60%">添加当前目录下的file</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">svn update/up [-r version] [file]</td>
-			<td colspan="6" rowspan="1" style="width:60%">更新 版本 文件</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">svn commit/ci -m "注释" file   </td>
-			<td colspan="6" rowspan="1" style="width:60%">提交并加上注释</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">svn delete svn://192.168.1.1/pro/domain/1.txt -m “delete test file”</td>
-			<td colspan="6" rowspan="1" style="width:60%">删除并加上注释</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">
-			svn info svn://192.168.1.1/pro/domain 
-			</td>
-			<td colspan="6" rowspan="1" style="width:60%">查看文件详细信息</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> svn diff/di [-r version A:version B] file  </td>
-			<td colspan="6" rowspan="1" style="width:60%">将修改的文件与基础版本比较 [两个版本对比]</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%">  svn list/ls [path]  </td>
-			<td colspan="6" rowspan="1" style="width:60%">显示path目录下的所有属于版本库的文件和目录</td>
-		</tr>
-		<tr>
-			<td colspan="4" rowspan="1" style="width:40%"> svn mkdir path/URL  </td>
-			<td colspan="6" rowspan="1" style="width:60%">创建纳入版本控制下的新目录</td>
-		</tr>
-		<tr>
-			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
-			<b>冲突</b>
+			<td colspan="6" rowspan="1" style="width:60%">
+			<br/>
+			createrepo .<br/>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2" rowspan="1" style="width:20%">(e)  edit </td>
-			<td colspan="3" rowspan="1" style="width:30%">直接进入编辑</td>
-			<td colspan="2" rowspan="1" style="width:20%"> (df) diff-full</td>
-			<td colspan="3" rowspan="1" style="width:30%">显示更改至目标文件的所有变化</td>
-		</tr>
-		<tr>
-			<td colspan="2" rowspan="1" style="width:20%"> (r)  resolved  </td>
-			<td colspan="3" rowspan="1" style="width:30%">接受合并版本</td>
-			<td colspan="2" rowspan="1" style="width:20%">(dc) display-conflict </td>
-			<td colspan="3" rowspan="1" style="width:30%">显示所有冲突 </td>
-		</tr>
-		<tr>
-			<td colspan="2" rowspan="1" style="width:20%"> (mc) mine-conflict</td>
-			<td colspan="3" rowspan="1" style="width:30%">冲突以本地为准</td>
-			<td colspan="2" rowspan="1" style="width:20%">(tc) theirs-conflict </td>
-			<td colspan="3" rowspan="1" style="width:30%">冲突以服务器为准 </td>
-		</tr>
-		<tr>
-			<td colspan="2" rowspan="1" style="width:20%"> (mf) mine-full </td>
-			<td colspan="3" rowspan="1" style="width:30%">完全以本地为准 </td>
-			<td colspan="2" rowspan="1" style="width:20%">(tf) theirs-full  </td>
-			<td colspan="3" rowspan="1" style="width:30%">完全以服务器为准</td>
-		</tr>
-		<tr>
-			<td colspan="2" rowspan="1" style="width:20%">(p) postpone </td>
-			<td colspan="3" rowspan="1" style="width:30%">标记冲突，稍后解决 </td>
-			<td colspan="2" rowspan="1" style="width:20%">(l)  launch  </td>
-			<td colspan="3" rowspan="1" style="width:30%">启动外部工具来解决冲突</td>
-		</tr>
-		<tr>
-			<td colspan="2" rowspan="1" style="width:20%">(s)  show all</td>
-			<td colspan="3" rowspan="1" style="width:30%">显示全部选项 </td>
-			<td colspan="2" rowspan="1" style="width:20%">&nbsp;</td>
-			<td colspan="3" rowspan="1" style="width:30%">&nbsp;</td>
-		</tr>
+		
+		
+		
 		
 </table>
 </div>
+
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
@@ -487,6 +342,198 @@ rm -rf /var/log/kafka-manager                                                   
 </table>
 </div>
 
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+svn
+</div>
+<div class="divnext">
+<table class="table">
+		<tr>
+			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
+			<b>指令</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			svn checkout svn://192.168.1.1/pro/domain
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">检出目录</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			svn export svn://192.168.1.1/pro/domain/1.txt
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">检出文件</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			  svn add file
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">添加当前目录下的file</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">svn update/up [-r version] [file]</td>
+			<td colspan="6" rowspan="1" style="width:60%">更新 版本 文件</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">svn commit/ci -m "注释" file   </td>
+			<td colspan="6" rowspan="1" style="width:60%">提交并加上注释</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">svn delete svn://192.168.1.1/pro/domain/1.txt -m “delete test file”</td>
+			<td colspan="6" rowspan="1" style="width:60%">删除并加上注释</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">
+			svn info svn://192.168.1.1/pro/domain 
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">查看文件详细信息</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> svn diff/di [-r version A:version B] file  </td>
+			<td colspan="6" rowspan="1" style="width:60%">将修改的文件与基础版本比较 [两个版本对比]</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">  svn list/ls [path]  </td>
+			<td colspan="6" rowspan="1" style="width:60%">显示path目录下的所有属于版本库的文件和目录</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> svn mkdir path/URL  </td>
+			<td colspan="6" rowspan="1" style="width:60%">创建纳入版本控制下的新目录</td>
+		</tr>
+		<tr>
+			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
+			<b>冲突</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:20%">(e)  edit </td>
+			<td colspan="3" rowspan="1" style="width:30%">直接进入编辑</td>
+			<td colspan="2" rowspan="1" style="width:20%"> (df) diff-full</td>
+			<td colspan="3" rowspan="1" style="width:30%">显示更改至目标文件的所有变化</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:20%"> (r)  resolved  </td>
+			<td colspan="3" rowspan="1" style="width:30%">接受合并版本</td>
+			<td colspan="2" rowspan="1" style="width:20%">(dc) display-conflict </td>
+			<td colspan="3" rowspan="1" style="width:30%">显示所有冲突 </td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:20%"> (mc) mine-conflict</td>
+			<td colspan="3" rowspan="1" style="width:30%">冲突以本地为准</td>
+			<td colspan="2" rowspan="1" style="width:20%">(tc) theirs-conflict </td>
+			<td colspan="3" rowspan="1" style="width:30%">冲突以服务器为准 </td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:20%"> (mf) mine-full </td>
+			<td colspan="3" rowspan="1" style="width:30%">完全以本地为准 </td>
+			<td colspan="2" rowspan="1" style="width:20%">(tf) theirs-full  </td>
+			<td colspan="3" rowspan="1" style="width:30%">完全以服务器为准</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:20%">(p) postpone </td>
+			<td colspan="3" rowspan="1" style="width:30%">标记冲突，稍后解决 </td>
+			<td colspan="2" rowspan="1" style="width:20%">(l)  launch  </td>
+			<td colspan="3" rowspan="1" style="width:30%">启动外部工具来解决冲突</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="1" style="width:20%">(s)  show all</td>
+			<td colspan="3" rowspan="1" style="width:30%">显示全部选项 </td>
+			<td colspan="2" rowspan="1" style="width:20%">&nbsp;</td>
+			<td colspan="3" rowspan="1" style="width:30%">&nbsp;</td>
+		</tr>
+		
+</table>
+</div>
+
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+编译C语言
+</div>
+<div class="divnext" >
+<table class="table">
+		<tr>
+			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
+			<b>指令</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> ./configure [--prefix=$targetDir]  </td>
+			<td colspan="6" rowspan="1" style="width:60%">第一步</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> make </td>
+			<td colspan="6" rowspan="1" style="width:60%">第二步</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> make install  </td>
+			<td colspan="6" rowspan="1" style="width:60%">第三步</td>
+		</tr>
+		
+</table>
+</div>
+
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+maven  http://mvnrepository.com/
+</div>
+<div class="divnext" >
+<table class="table">
+		<tr>
+			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
+			<b>指令</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			mvn archetype:create <br/>
+			-DgroupId=packageName <br/>
+			-DartifactId=projectName  
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">普通java项目</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			 mvn archetype:create <br/>
+			-DgroupId=packageName   <br/> 
+			-DartifactId=webappName <br/>
+			-DarchetypeArtifactId=maven-archetype-webapp
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">java web 项目</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">mvn compile  </td>
+			<td colspan="6" rowspan="1" style="width:60%">编译源代码</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%">
+			mvn clean <br/>
+			mvn clean install
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">清除产生的项目</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> mvn eclipse:eclipse  </td>
+			<td colspan="6" rowspan="1" style="width:60%">生成eclipse项目</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> mvn idea:idea  </td>
+			<td colspan="6" rowspan="1" style="width:60%">生成idea项目</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> mvn validate  </td>
+			<td colspan="6" rowspan="1" style="width:60%">验证工程是否正确</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> mvn idea:idea  </td>
+			<td colspan="6" rowspan="1" style="width:60%">生成idea项目</td>
+		</tr>
+</table>
+</div>
+
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
 vnc
@@ -547,6 +594,7 @@ vnc
 		
 </table>
 </div>
+
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
