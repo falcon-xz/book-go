@@ -163,7 +163,7 @@ function hoverhidden(obj){
 <table class="table">
 		<tr>
 			<td style="width:20%">linux版本信息</td>
-			<td style="width:75%">cat /etc/issue</td>
+			<td style="width:75%">lsb_release -a</td>
 		</tr>
 		<tr>
 			<td style="width:20%">内核的版本号</td>
@@ -928,6 +928,43 @@ NAME:打开文件的确切名称; </td>
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
+curl 通信命令
+</div>
+<div class="divnext">
+<table class="table">
+		<tr>
+			<td colspan="10" rowspan="1" style="width:15%"><span style="color:green">curl [option]</span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			curl www.baidu.com
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">查看源码 </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			curl -o [file] www.baidu.com
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">保存源码到文件 </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			curl -v www.baidu.com
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%">显示通信过程 </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="width:45%">
+			curl -X POST -d "name=kafka-manager&zkHosts=vdkapp29:2181&kafkaVersion=0.10.1.0&jmxEnabled=true"   "http://vdkapp27:9843/clusters"
+			</td>
+			<td colspan="5" rowspan="1" style="width:45%"> -X 协议请求（POST,GET,DELETE,PUT） -d 携带参数 </td>
+		</tr>
+		
+</table>
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
 ps 列出系统中运行的进程
 </div>
 <div class="divnext">
@@ -1355,8 +1392,12 @@ lvm 逻辑卷
 			<td style="width:75%">查看文件</td>
 		</tr>
 		<tr>
-			<td style="width:20%">echo "ss"&quot; &gt;&gt; /etc/profile</td>
-			<td style="width:75%">添加ss到/etc/profile尾部</td>
+			<td style="width:20%">echo "ss" &gt;&gt; 1.txt</td>
+			<td style="width:75%">添加ss到1.txt尾部</td>
+		</tr>
+		<tr>
+			<td style="width:20%">truncate --size=$[`cat 1.txt | wc -c`-`echo "ss" | wc -c`] 1.txt;</td>
+			<td style="width:75%">将1.txt尾部添加的ss删除</td>
 		</tr>
 		<tr>
 			<td style="width:20%">du -sk ./*</td>
