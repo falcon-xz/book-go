@@ -56,6 +56,11 @@
 				</td>
 			</tr>
 			<tr>
+				<td style="width:30%;">kafka-topics.sh --describe --unavailable-partitions --zookeeper 10.10.0.65 </td>
+				<td style="width:70%;">查看不可用分区信息
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2" style="width:100%;background-color:lightgrey;">kafka-reassign-partitions broker id 改变 重新分配partition</td>
 			</tr>
 			<tr>
@@ -63,15 +68,17 @@
 				<td style="width:70%;">topic.json文件内容 {"topics":[{"topic": "broker"},{"topic": "broker2"}],"version":1} <br/>重新在broker-list中选举 zn 节点中 partition 的主读写副本</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="width:100%;background-color:lightgrey;">控制台测试</td>
+				<td colspan="2" style="width:100%;background-color:lightgrey;">控制台测试 含kb</td>
 			</tr>
 			<tr>
-				<td style="width:30%;">kafka-console-producer.sh --broker-list 10.10.0.67:9092 --topic storm</td>
-				<td style="width:70%;">使用console打印输入的方式 往broker 下topic storm 发送信息</td>
+				<td style="width:30%;">export KAFKA_OPTS=" -Djava.security.auth.login.config=/etc/kafka/conf/kafka_client_jaas.conf  -Djava.security.krb5.conf=/etc/krb5.conf";<br/>
+/usr/lib/kafka/bin/kafka-console-producer.sh --broker-list vdkapp27:6667 --topic test  --producer.config /etc/kafka/conf/client.properties</td>
+				<td style="width:70%;">开启kb后 使用console打印输入的方式 往 broker 下topic test 发送信息</td>
 			</tr>
 			<tr>
-				<td style="width:30%;">kafka-console-consumer.sh --zookeeper 10.10.0.66:2181 --topic storm</td>
-				<td style="width:70%;">使用console打印输出的方式 接受zookeeper集群中的 topic storm 的数据</td>
+				<td style="width:30%;">export KAFKA_OPTS=" -Djava.security.auth.login.config=/etc/kafka/conf/kafka_client_jaas.conf  -Djava.security.krb5.conf=/etc/krb5.conf";<br/>
+/usr/lib/kafka/bin/kafka-console-consumer.sh --bootstrap-server vdkapp27:6667 --topic test  --new-consumer  --consumer.config /etc/kafka/conf/client.properties</td>
+				<td style="width:70%;">开启kb后 使用console打印输出的方式 接受 broker 集群中的 topic test 的数据</td>
 			</tr>
 
 		</table>
