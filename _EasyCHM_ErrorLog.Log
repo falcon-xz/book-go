@@ -27,6 +27,7 @@ java\http\jersey.htm
 java\jvm\GC.htm
 java\jvm\基本原理.htm
 java\log4j\log4j.htm
+java\metrics\概念.htm
 java\xml\解析.htm
 java\基础\反射.htm
 java\框架\struts2.htm
@@ -49,10 +50,12 @@ HHC5003: Error: Compilation failed while compiling other\study.sh.
 other\utils.js
 HHC5003: Error: Compilation failed while compiling other\即时类媒体接入客服系统定制指南.doc.
 HHC5003: Error: Compilation failed while compiling other\业软公共 提高培训 TopEng-CSP dwr 培训胶片V1.0.ppt.
+ruby\puppet\puppet.htm
 工具\utils.htm
 前端\ajax\ajax.html
 前端\ajax\dwr.html
 前端\ajax\jquery ajax.html
+前端\emberJs\emberJs.htm
 前端\javascript\js插件.htm
 前端\javascript\js基础.htm
 数据库\mysql\mysql基础篇.htm

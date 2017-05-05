@@ -41,12 +41,12 @@ function hoverhidden(obj){
 SQL基础
 </div>
 <div class="divnext" >
-	
 	<br />
 	--重命名表 <br />
 	ALTER TABLE 表名 rename to  新表名<br />
 	--创建相同表<br />
 	create table  表b as  select * from 表a<br />
+	<br />
 	--增加字段<br />
 	alter table AQSIQ_XTGL_TELRECORD add HFTEL_GDDH VARCHAR2(100);<br />
 	alter table AQSIQ_XTGL_TELRECORD add HFTEL_GDDH VARCHAR2(100) default 0;<br />
@@ -119,6 +119,41 @@ SQL基础
 	
 	<br />
 </div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+分区表
+</div>
+<div class="divnext">
+<span style=" color: #CC33FF;font-size:large">范围分区 range</span><br />
+create table rangeTable (tid number,ttime date) partition by range (ttime)<br />
+(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p1 values less than (to_date('2010-10-01','yyyy-mm-dd')),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p2 values less than (to_date('2011-10-01','yyyy-mm-dd')),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p3 values less than (maxvalue)<br />
+);<br /><br />
+<span style=" color: #CC33FF;font-size:large">散列分区 hash</span><br />
+create table hashTable (tid number,ttime date) partition by hash (tid)<br />
+(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p1 tablespace DATA_TS,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p2 tablespace DATA_TS,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p3 tablespace DATA_TS<br />
+);<br /><br />
+<span style=" color: #CC33FF;font-size:large">列表分区 list</span><br />
+create table listTable (tid number,ttime date) partition by list (tid)<br />
+(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p1 values (1,2),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p2 values (3,4),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition p3 values (default)<br />
+);<br /><br />
+<span style=" color: #CC33FF;font-size:large">范围-散列分区 range-hash</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition by range subpartition by hash<br /><br />
+<span style=" color: #CC33FF;font-size:large">范围-列表分区 range-list</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;partition by range subpartition by list<br /><br />
+
+
+</div>
+
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
 分析函数、窗口函数

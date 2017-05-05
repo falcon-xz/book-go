@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>metric</title>
+<style>
+.table{
+	
+	width:100%;
+	margin-left:10px;
+	
+}
+.table tr td{
+	
+	border:1px solid black;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<h4>度量</h4>
+<ul style=" list-style-type: none;">
+	<li>
+		一般使用 com.yammer.metrics metrics-core 2.2.0 作为度量jar包<br/>
+		MetricRegistry为metric注册中心，它是程序中所有度量metric的容器
+		<br/><br/>
+	</li>
+	<li>
+		Gauge 仪表:<br/>
+		最简单的计量，一般用来统计瞬时状态的数据信息
+		<br/><br/>
+	</li>
+	<li>
+		Counter 计数器:<br/>
+		是Gauge的一个特例，维护一个计数器，可以通过inc()和dec()方法对计数器做修改
+		<br/><br/>
+	</li>
+	<li>
+		Meters :<br/>
+		用来计算事件的速率
+		<br/><br/>
+	</li>
+	<li>
+		HISTOGRAM 直方图:<br/>
+		可以为数据流提供统计数据。 除了最大值，最小值，平均值外，它还可以测量 中值(median)，百分比
+		<br/><br/>
+	</li>
+	<li>
+		TIMER 计时器 :<br/>
+		用来测量一段代码被调用的速率和用时。等于Meter+Hitogram，既算TPS，也算执行时间
+		<br/><br/>
+	</li>
+	<li>
+		Health Check 健康检查:<br/>
+		服务健康检查能力， 由metrics-healthchecks模块提供
+		<br/><br/>
+	</li>
+	
+	
+</ul>
+
+<h4>reporter</h4>
+<ul style=" list-style-type: none;">
+	<li>
+		JmxReporter :<br/>
+		可以通过 JConsole 查看
+		<br/><br/>
+	</li>
+	<li>
+		ConsoleReporter :<br/>
+		是Gauge的一个特例，维护一个计数器，可以通过inc()和dec()方法对计数器做修改
+		<br/><br/>
+	</li>
+	<li>
+		CsvReporter :<br/>
+		用来计算事件的速率
+		<br/><br/>
+	</li>
+</ul>
+
+
+
+
+
+
+
+</body>
+
+</html>
