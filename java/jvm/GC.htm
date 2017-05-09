@@ -270,6 +270,31 @@ GC 参数说明
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
+收集 java core , heap dump 
+</div>
+<div class="divnext">
+<br/>
+<h4>heap dump</h4>
+<ul style=" list-style-type:;">
+	<li>
+		自动方式 :<br/>
+		-XX:+HeapDumpOnOutOfMemoryError  -XX:HeapDumpPath=${目录}<br/>
+		当应用抛出OutOfMemoryError时自动在${目录}下生成dump文件
+		<br/><br/>
+	</li>
+	<li>
+		手动方式 :<br/>
+		jmap -dump:format=b,file=a.hprof <pid><br/>
+
+		file：保存路径及文件名<br/>
+		pid：进程编号
+		<br/><br/>
+	</li>
+</ul>
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
 test
 </div>
 <div class="divnext">content
