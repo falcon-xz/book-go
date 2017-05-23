@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>操作系统</title>
+<style>
+.table{
+	width:100%;
+	margin-left:-10px;
+}
+.table tr td{
+	border:1px solid black;
+	text-align:left;
+	padding-left:20px;
+}
+.table2{
+	width:100%;
+	margin-left:-10px;
+}
+.table2 tr td{
+	border:1px solid ;
+	text-align:center;
+}
+
+
+.style1 {
+	color: #008000;
+}
+
+div{
+	padding-left:3%;
+}
+.divfirst{
+	width:96%;
+	background-color:#FFCC99;
+}
+.divnext{
+	border-style: dotted;
+	border-color: #C0C0C0;
+	display:none;
+	width:94%;
+	margin-left:1%;
+}
+</style>
+<script>
+function hoverhidden(obj){
+	//obj.nextSibling 获取下一个同辈元素
+	var nextObj = obj.nextSibling ;
+	if(nextObj.style.display=="block"){
+		nextObj.style.display = "" ;
+		obj.style.background = "#FFCC99"
+	}else{
+		nextObj.style.display = "block" ;
+		obj.style.background = "#99FFCC"
+	}
+}
+
+function ss(id){
+	var s = document.getElementById(id).style.display ;
+	if(s=="none"){
+		document.getElementById(id).style.display="block" ;
+	}else{
+		document.getElementById(id).style.display="none" ;
+	}
+	
+	
+}
+</script>
+</head>
+
+<body>
+
+
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+centos
+</div>
+<div class="divnext">
+<table class="table">
+		<tr>
+			<td colspan="10" rowspan="1"  style="width:100%;background-color:lightgrey">
+			<b>rpm</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			os
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			http://mirror.centos.org/centos/7/os/x86_64/Packages/<br/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="width:40%"> 
+			ceph
+			</td>
+			<td colspan="6" rowspan="1" style="width:60%">
+			http://mirror.centos.org/centos/7/storage/x86_64/ceph-jewel/<br/>
+			</td>
+		</tr>
+		
+		
+		
+		
+</table>
+</div>
+
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+test
+</div>
+<div class="divnext">content
+</div>
+
+
+
+</body>
+</html>

@@ -35,6 +35,7 @@ HHC3004: Warning: linux命令.htm : The HTML tag "<= " is not a valid HTML tag (it
 linux\linux命令.htm
 HHC3004: Warning: shell.htm : The HTML tag "=4;i++))<br/" is not a valid HTML tag (it does not begin with an alphanumeric character).
 linux\shell.htm
+linux\操作系统.htm
 linux\产品指令.htm
 HHC5003: Error: Compilation failed while compiling other\axis2.rar.
 other\explore.client.js

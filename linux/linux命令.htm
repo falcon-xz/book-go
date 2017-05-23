@@ -715,6 +715,10 @@ sed 文本处理
 			<td colspan="3"  style="width:22%">sed  's/two/three/g' 1.txt</td>
 			<td colspan="7"  style="width:22%">全文 three 替换 two  源文件不变  g全局替换、p 打印、w 输出定向至文件 sed  's/two/three/w 3.txt' 1.txt  </td>
 		</tr>
+		<tr>
+			<td colspan="3"  style="width:22%">sed -i 's/SELINUX=enforcing/SELINUX=disabled/g'/etc/sysconfig/selinux</td>
+			<td colspan="7"  style="width:22%">把文件中的 SELINUX=enforcing替换为SELINUX=disabled </td>
+		</tr>
 </table>
 </div>
 
