@@ -59,7 +59,7 @@
 	g.查询数据占总数据量百分比过大，回表查询cost过大<br/>
 	h.索引列like 时 % 百分号在前 '%xx'<br/>
 	i.<>条件<br/>
-	j.修改字段类型导致索引失效 ,LONG修改为CLOB，居然会导致其他列的索引失效
+	j.修改字段类型导致索引失效 ,LONG修改为CLOB，居然会导致其他列的索引失效<br/>
 	h.误删除表后恢复，索引名称改变<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;drop table emp2;<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;flashback table emp2 to before drop;<br/>

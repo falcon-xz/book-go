@@ -22,7 +22,8 @@ hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
 hadoop\zookeeper\zookeeper指令集.htm
 java\http\axis.htm
-java\http\http原生.htm
+java\http\http协议.htm
+java\http\java请求调用.htm
 java\http\jersey.htm
 java\jvm\GC.htm
 java\jvm\基本原理.htm
