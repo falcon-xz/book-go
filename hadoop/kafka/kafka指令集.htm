@@ -68,7 +68,14 @@
 				<td style="width:70%;">topic.json文件内容 {"topics":[{"topic": "broker"},{"topic": "broker2"}],"version":1} <br/>重新在broker-list中选举 zn 节点中 partition 的主读写副本</td>
 			</tr>
 			<tr>
+				<td colspan="2" style="width:100%;background-color:lightgrey;">consumer offset</td>
+			</tr>
+			<tr>
 				<td colspan="2" style="width:100%;background-color:lightgrey;">控制台测试 含kb</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">kafka-consumer-offset-checker.sh --zookeeper zkhosts:2181 --topic test --group consumer </td>
+				<td style="width:70%;">当consumer记录offset到zk上时 按分区数查看偏移总量和消费偏移量</td>
 			</tr>
 			<tr>
 				<td style="width:30%;">export KAFKA_OPTS=" -Djava.security.auth.login.config=/etc/kafka/conf/kafka_client_jaas.conf  -Djava.security.krb5.conf=/etc/krb5.conf";<br/>

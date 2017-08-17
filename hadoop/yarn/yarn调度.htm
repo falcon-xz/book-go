@@ -57,22 +57,26 @@
 		</tr>
 		<tr>
 			<td style="width:15%">maximum-capacity</td>
-			<td style="width:80%">队列的资源使用上限（百分比）</td>
+			<td style="width:80%">队列可以获取到的最大容量（不予保障）（集群空闲时从其他队列借取）</td>
+		</tr>
+		<tr>
+			<td style="width:15%">minimum-user-limit-percent</td>
+			<td style="width:80%">对单一用户的最小容量控制</td>
 		</tr>
 		<tr>
 			<td style="width:15%">user-limit-factor</td>
-			<td style="width:80%">每个用户最多可使用的资源量（百分比）</td>
+			<td style="width:80%">单一用户的最大容量控制（在资源空闲时，每个用户可以申请到的资源上限），例如：该值配置为1.5，则单个用户可以申请到的最大资源为：min（1.5*capacity，maximum-capacity）</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> 限制应用程序数目相关参数</td>
 		</tr>
 		<tr>
 			<td style="width:15%">maximum-applications </td>
-			<td style="width:80%">集群或者队列中同时处于等待和运行状态的应用程序数目上限，这是一个强限值，一旦集群中应用程序数目超过该上限，后续提交的应用程序将被拒绝，默认值为10000。所有队列的数目上限可通过参数yarn.scheduler.capacity.maximum-applications设置（可看做默认值），而单个队列可通过参数yarn.scheduler.capacity.<queue-path>.maximum-applications设置适合自己的值</td>
+			<td style="width:80%">集群或者队列中同时处于等待和运行状态的应用程序数目上限，这是一个强限值，一旦集群中应用程序数目超过该上限，后续提交的应用程序将被拒绝，默认值为10000。所有队列的数目上限可通过参数yarn.scheduler.capacity.maximum-applications设置（可看做默认值），而单个队列可通过参数yarn.scheduler.capacity.[A].maximum-applications设置适合自己的值</td>
 		</tr>
 		<tr>
 			<td style="width:15%">maximum-am-resource-percent</td>
-			<td style="width:80%">集群中用于运行应用程序ApplicationMaster的资源比例上限，该参数通常用于限制处于活动状态的应用程序数目。该参数类型为浮点型，默认是0.1，表示10%。所有队列的ApplicationMaster资源比例上限可通过参数yarn.scheduler.capacity. maximum-am-resource-percent设置（可看做默认值），而单个队列可通过参数yarn.scheduler.capacity.<queue-path>. maximum-am-resource-percent设置适合自己的值</td>
+			<td style="width:80%">集群中用于运行应用程序ApplicationMaster的资源比例上限，该参数通常用于限制处于活动状态的应用程序数目。该参数类型为浮点型，默认是0.1，表示10%。所有队列的ApplicationMaster资源比例上限可通过参数yarn.scheduler.capacity. maximum-am-resource-percent设置（可看做默认值），而单个队列可通过参数yarn.scheduler.capacity.[A]. maximum-am-resource-percent设置适合自己的值</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="width:95%;text-align:center;background-color:lightgrey"> 队列访问和权限控制参数</td>
@@ -122,27 +126,31 @@ yarn.scheduler.capacity.root.unfunded.capacity=50
 	<value></value>
 </property>
 
+yarn.scheduler.capacity.default.minimum-user-limit-percent=100
 yarn.scheduler.capacity.maximum-am-resource-percent=0.2
-yarn.scheduler.capacity.maximum-applications=20
-//定义两个
-yarn.scheduler.capacity.root.acl_administer_queues=*
-yarn.scheduler.capacity.root.queues=default,hive
+yarn.scheduler.capacity.maximum-applications=10000
 
-yarn.scheduler.capacity.root.default.capacity=40
+
+yarn.scheduler.capacity.root.queues=default,T1
+yarn.scheduler.capacity.node-locality-delay=40
+yarn.scheduler.capacity.root.accessible-node-labels=*
+yarn.scheduler.capacity.root.acl_administer_queue=*
+yarn.scheduler.capacity.root.capacity=100
+
 yarn.scheduler.capacity.root.default.acl_administer_jobs=*
-yarn.scheduler.capacity.root.default.acl_submit_jobs=*
-yarn.scheduler.capacity.root.default.maximum-capacity=50
+yarn.scheduler.capacity.root.default.acl_submit_applications=*
+yarn.scheduler.capacity.root.default.capacity=70
+yarn.scheduler.capacity.root.default.maximum-capacity=70
 yarn.scheduler.capacity.root.default.state=RUNNING
 yarn.scheduler.capacity.root.default.user-limit-factor=1
 
-yarn.scheduler.capacity.root.hive.capacity=60
-yarn.scheduler.capacity.root.hive.acl_administer_jobs=*
-yarn.scheduler.capacity.root.hive.acl_submit_jobs=*
-yarn.scheduler.capacity.root.hive.maximum-capacity=70
-yarn.scheduler.capacity.root.hive.state=RUNNING
-yarn.scheduler.capacity.root.hive.user-limit-factor=1
+yarn.scheduler.capacity.root.T1.acl_administer_jobs=*
+yarn.scheduler.capacity.root.T1.acl_submit_applications=*
+yarn.scheduler.capacity.root.T1.capacity=30
+yarn.scheduler.capacity.root.T1.maximum-capacity=80
+yarn.scheduler.capacity.root.T1.state=RUNNING
+yarn.scheduler.capacity.root.T1.user-limit-factor=1
 
-yarn.scheduler.capacity.root.unfunded.capacity=50
 			</textarea>
 			</td>
 		</tr>

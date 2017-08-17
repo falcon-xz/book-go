@@ -186,6 +186,17 @@ hive sql 配置选项
 				<td style="width:65%;">set hive.fetch.task.conversion=more; (minimal)</td>
 			</tr>
 			<tr>
+				<td colspan="2" style="width:100%;background-color:lightgrey;">外表分区</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">创建分区</td>
+				<td style="width:70%;">alter table [T] add IF NOT EXISTS partition (ptdate=$lastday) location 'hdfs://ha/[T]/$lastday';</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">删除分区</td>
+				<td style="width:70%;">alter table [T] drop IF EXISTS partition (ptDate=$oldday);</td>
+			</tr>
+			<tr>
 				<td colspan="2" style="width:100%;background-color:lightgrey;">动态分区</td>
 			</tr>
 			<tr>
