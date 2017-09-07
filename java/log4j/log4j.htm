@@ -20,7 +20,47 @@
 </head>
 
 <body>
-<h4>log4j</h4>
+
+<h4>log4j.properties</h4>
+<ul style=" list-style-type: decimal;">
+	<li>
+# 应用的输出 INFO 到控制台和 kafka对应文件                         	<br/>
+log4j.rootLogger=INFO, stdout ,kafka                                 	<br/>
+                                                                     	<br/>
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender               	<br/>
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout          	<br/>
+log4j.appender.stdout.layout.ConversionPattern=[%d] %p %m (%c)%n     	<br/>
+                                                                     	<br/>
+log4j.appender.kafka=org.apache.log4j.DailyRollingFileAppender       	<br/>
+# 日期格式 一天换个文件                                             	<br/>
+log4j.appender.kafka.DatePattern='.'yyyy-MM-dd                       	<br/>
+# 日志路径                                                           	<br/>
+log4j.appender.kafka.File=E:\\java\\log\\kafka.log                   	<br/>
+log4j.appender.kafka.layout=org.apache.log4j.PatternLayout           	<br/>
+log4j.appender.kafka.layout.ConversionPattern=[%d] %p %m (%c)%n      	<br/>
+# 最多10个备份日志                                                  	<br/>
+log4j.appender.kafka.MaxBackupIndex=10                               	<br/>
+# 每个日志最大                                                      	<br/>
+log4j.appender.kafka.MaxFileSize=1MB                                 	<br/>
+                                                                     	<br/>
+# com.xz.kafka包下 INFO 输出到 cust对应文件                         	<br/>
+log4j.logger.com.xz.kafka=INFO,cust                                  	<br/>
+log4j.appender.cust=org.apache.log4j.DailyRollingFileAppender        	<br/>
+log4j.appender.cust.DatePattern='.'yyyy-MM-dd-HH                     	<br/>
+log4j.appender.cust.File=E:\\java\\log\\cust.log                     	<br/>
+log4j.appender.cust.layout=org.apache.log4j.PatternLayout            	<br/>
+log4j.appender.cust.layout.ConversionPattern=[%d] %p %m (%c)%n       	<br/>
+log4j.appender.cust.MaxBackupIndex=10                                	<br/>
+log4j.appender.cust.MaxFileSize=1MB                                  	<br/>
+	
+	</li>
+	<br/>
+	
+
+
+</ul>
+
+<h4>log4j API</h4>
 <ul style=" list-style-type: decimal;">
 	<li>三大组件：</br>
 	Logger：负责供客户端代码调用，执行debug(Object msg)、info(Object msg)、warn(Object msg)、error(Object msg)等方法。 </br>

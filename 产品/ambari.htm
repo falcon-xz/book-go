@@ -115,6 +115,42 @@ function ss(id){
 </table>
 </div>
 
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+编译
+</div>
+<div class="divnext">
+<table class="table">
+		<tr>
+			<td colspan="3" rowspan="1" style="width:20%"> 
+			ambari-web:官网npm包下载不了，增加淘宝源
+			</td>
+			<td colspan="7" rowspan="1" style="width:80%">
+			npm config set registry https://registry.npm.taobao.org
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:20%"> 
+			ambari-metrics: pom.xml 修改 针对ambari-metrics-collect和grafana的tar包
+			</td>
+			<td colspan="7" rowspan="1" style="width:80%">
+			hbase.tar、hadoop.tar、grafana.tar、phoenix.tar
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" rowspan="1" style="width:20%"> 
+			ambari-metrics-storm-sink: pom.xml 修改storm版本 
+			</td>
+			<td colspan="7" rowspan="1" style="width:80%">
+			storm.version=1.1.0 去掉snap-shot
+			</td>
+		</tr>
+		
+		
+		
+</table>
+</div>
+
 
 
 <h4></h4>

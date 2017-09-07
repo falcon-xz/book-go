@@ -18,6 +18,7 @@ hadoop\kafka\kafka概念.htm
 hadoop\kafka\kafka配置.htm
 hadoop\kafka\kafka指令集.htm
 hadoop\spark\spark本地调试.htm
+hadoop\spark\spark算子.htm
 hadoop\yarn\yarn配置与优化.htm
 hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
