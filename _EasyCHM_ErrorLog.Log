@@ -18,7 +18,7 @@ hadoop\kafka\kafka概念.htm
 hadoop\kafka\kafka配置.htm
 hadoop\kafka\kafka指令集.htm
 hadoop\spark\spark本地调试.htm
-hadoop\spark\spark算子.htm
+HHC5003: Error: Compilation failed while compiling hadoop\spark\spark算子.htm.
 hadoop\yarn\yarn配置与优化.htm
 hadoop\yarn\yarn调度.htm
 hadoop\zookeeper\zookeeper优化.htm
@@ -31,7 +31,7 @@ java\jvm\GC.htm
 java\jvm\基本原理.htm
 java\log4j\log4j.htm
 java\metrics\概念.htm
-java\scala\基础语法.htm
+HHC5003: Error: Compilation failed while compiling java\scala\基础语法.htm.
 java\xml\解析.htm
 java\基础\反射.htm
 java\框架\struts2.htm
@@ -87,6 +87,8 @@ other\Logger.js
 
 
 The following files were not compiled:
+hadoop\spark\spark算子.htm
+java\scala\基础语法.htm
 other\axis2.rar
 other\processBar.rar
 other\Spring定时任务管理说明.doc
