@@ -409,6 +409,142 @@ set 命令行 类型：intset( 整数，数量<512 ) 、hashtable
 	</ul>
 </div>
 
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+sorted set 命令行 类型：ziplist( 元素<64字节，数量<128 ) 、skiplist
+</div>
+<div class="divnext" >
+	<ul style=" list-style-type: none;">
+	<br/>
+	<li>
+		<table class="table" style="font-size:large;width:90%">
+			<tr style="background-color:lightgrey">
+
+				<td style="width:40%;">命令</td>
+				<td style="width:40%;">含义</td>
+				<td style="width:20%;">时间复杂度</td>
+			</tr>
+			
+			<tr>
+				<td style="width:30%;">zadd key score member [score member ...]</td>
+				<td style="width:30%;">往sorted set中增加元素</td>
+				<td style="width:20%;">O(k*log(n)) k为添加元素个数，n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zcard key </td>
+				<td style="width:30%;">成员个数</td>
+				<td style="width:20%;">O(1) </td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zscore key member</td>
+				<td style="width:30%;">成员分值</td>
+				<td style="width:20%;">O(1) </td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zrank(zrevrank) key member </td>
+				<td style="width:30%;">成员的排名 正序(逆序)</td>
+				<td style="width:20%;">O(log(n)) n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zrem key member [member ...]</td>
+				<td style="width:30%;">删除成员</td>
+				<td style="width:20%;">O(k*log(n)) k为删除元素个数，n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zincrby key incrmement member</td>
+				<td style="width:30%;">增加成员分值</td>
+				<td style="width:20%;">O(log(n)) n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zrange(zrevrange)(withscores) key start end</td>
+				<td style="width:30%;">范围获取元素 正序(逆序)</td>
+				<td style="width:20%;">O(log(n)+k) k为获取的成员个数，n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zrangebyscore(zrevrangebyscore)(withscores) key start end</td>
+				<td style="width:30%;">指定分数范围获取元素 正序(逆序)</td>
+				<td style="width:20%;">O(log(n)+k) k为获取的成员个数，n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zcount</td>
+				<td style="width:30%;">返回指定分值的成员个数</td>
+				<td style="width:20%;">O(log(n)) n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zremrangebyrank key start end</td>
+				<td style="width:30%;">删除指定排名内的升序元素</td>
+				<td style="width:20%;">O(log(n)+k) k为删除的成员个数,n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zremrangeByScore key start end</td>
+				<td style="width:30%;">删除指定分值内的升序元素</td>
+				<td style="width:20%;">O(log(n)+k) k为删除的成员个数,n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zremrangeByLex key start end</td>
+				<td style="width:30%;">前置条件：所有成员的分值都相同 删除指定升序元素的范围 元素前要加[</td>
+				<td style="width:20%;">O(log(n)+k) k为删除的成员个数,n为当前有序集合成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zinterstore desination numkeys key [key ...]</td>
+				<td style="width:30%;">对于相同元素取交集  并对分值进行sum max min操作;权重 相对于集合</td>
+				<td style="width:20%;">O(n*k)+O(m*long(m)) n是成员数最小的有序集合成员个数，k为有序集合的个数，m是结果集合的成员个数</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">zunionstore desination numkeys key [key ...]</td>
+				<td style="width:30%;">对于相同元素取交集  并对分值进行sum max min操作;权重 相对于集合</td>
+				<td style="width:20%;">O(n)+O(m*long(m)) n是所有成员个数和，m是结果集合的成员个数</td>
+			</tr>
+			
+			
+
+		</table>
+	</li>
+	</ul>
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+集合差异
+</div>
+<div class="divnext" >
+	<ul style=" list-style-type: none;">
+	<br/>
+	<li>
+		<table class="table" style="font-size:large;width:90%">
+			<tr style="background-color:lightgrey">
+				<td style="width:15%;">数据类型</td>
+				<td style="width:20%;">重复元素</td>
+				<td style="width:20%;">是否有序</td>
+				<td style="width:20%;">有序实现方式</td>
+				<td style="width:25%;">应用场景</td>
+			</tr>
+			<tr>
+				<td style="width:15%;">list</td>
+				<td style="width:20%;">是</td>
+				<td style="width:20%;">是</td>
+				<td style="width:20%;">索引下标</td>
+				<td style="width:25%;">时间轴、消息队列</td>
+			</tr>
+			<tr>
+				<td style="width:15%;">set</td>
+				<td style="width:20%;">否</td>
+				<td style="width:20%;">否</td>
+				<td style="width:20%;">无</td>
+				<td style="width:25%;">标签、社交</td>
+			</tr>
+			<tr>
+				<td style="width:15%;">有序集合</td>
+				<td style="width:20%;">否</td>
+				<td style="width:20%;">是</td>
+				<td style="width:20%;">分值</td>
+				<td style="width:25%;">排行系统、社交</td>
+			</tr>
+		</table>
+	</li>
+	</ul>
+</div>
+
 
 
 <h4></h4>
