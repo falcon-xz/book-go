@@ -222,7 +222,7 @@ rpm  执行安装包
 			<td colspan="6" rowspan="1" style="width:50%">查看 指定rpm包是否安装</td>
 		</tr>
 		<tr>
-			<td colspan="1" rowspan="1" style="width:13%">rpm -e [package]</td>
+			<td colspan="1" rowspan="1" style="width:13%">rpm -e [package] [--nodeps]</td>
 			<td colspan="6" rowspan="1" style="width:50%">删除安装包</td>
 		</tr>
 		<tr>
@@ -252,12 +252,25 @@ yum Shell前端软件包管理器
 		</tr>
 		<tr>
 			<td colspan="1" rowspan="1" style="width:13%">yum install [package]</td>
-			<td colspan="6" rowspan="1" style="width:50%">安装全部</td>
+			<td colspan="6" rowspan="1" style="width:50%">安装包</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">yum localinstall [package]</td>
+			<td colspan="6" rowspan="1" style="width:50%">本地安装软件包</td>
 		</tr>
 		<tr>
 			<td colspan="1" rowspan="1" style="width:13%">yum remove [package]</td>
 			<td colspan="6" rowspan="1" style="width:50%">删除软件包</td>
 		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">yum upgrade [package]</td>
+			<td colspan="6" rowspan="1" style="width:50%">更新单个包</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1" style="width:13%">yum update [package]</td>
+			<td colspan="6" rowspan="1" style="width:50%">更新版本包</td>
+		</tr>
+		
 </table>
 </div>
 
@@ -1354,44 +1367,70 @@ zip tar 打包
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-lvm 逻辑卷
+逻辑卷、物理卷挂载
 </div>
 <div class="divnext">
 <table class="table">
 		<tr>
+			<td style="width:20%">光驱挂载</td>
+			<td colspan="2" style="width:75%">mount -o loop /dev/cdrom 路径</td>
+		</tr>
+		<tr>
+			<td style="width:20%">查看未分配的磁盘</td>
+			<td colspan="2" style="width:75%">fdisk -l </td>
+		</tr>
+		<tr>
+			<td rowspan="6" style="width:10%">逻辑卷</td>
 			<td style="width:20%">初始化物理卷</td>
-			<td style="width:75%">fdisk -l 查看未分配的磁盘<br/>
-								  pvcreate /dev/sdb(空闲磁盘)	<br/>
+			<td style="width:65%">pvcreate /dev/sdb(空闲磁盘物理卷)	<br/>
 								  pvdisplay 查看		
 			</td>
 		</tr>
 		<tr>
 			<td style="width:20%">初始化物理卷组</td>
-			<td style="width:75%">vgcreate vg名称 /dev/sdb<br/>
+			<td style="width:65%">vgcreate vg名称 /dev/sdb<br/>
 								  vgdisplay 查看
 			</td>
 		</tr>
 		<tr>
 			<td style="width:20%">初始化逻辑卷</td>
-			<td style="width:75%">lvcreate -L 5G -n lv名称 vg名称 （将物理卷组加入到逻辑卷）<br/>
+			<td style="width:65%">lvcreate -L 5G -n lv名称 vg名称 （将物理卷组加入到逻辑卷）<br/>
 								  lvdisplay 查看</td>
 		</tr>
 		<tr>
 			<td style="width:20%">格式化逻辑分区</td>
-			<td style="width:75%">mkfs -t ext4 /dev/vg名称/lv名称</td>
+			<td style="width:65%">mkfs -t ext4 /dev/vg名称/lv名称</td>
 		</tr>
 		<tr>
 			<td style="width:20%">挂载磁盘
 			</td>
-			<td style="width:75%">mount /dev/vg名称/lv名称 路径</td>
+			<td style="width:65%">mount /dev/vg名称/lv名称 路径</td>
 		</tr>
 		<tr>
 			<td style="width:20%">磁盘长挂/etc/fstab
 			</td>
-			<td style="width:75%">/dev/vg名称/lv名称	   路径   磁盘初始化类型	defaults	1	1<br/>
+			<td style="width:65%">逻辑磁盘名	   路径   磁盘初始化类型	defaults	1	1<br/>
 								  /dev/vg/lv01	   /hadoop   ext4	defaults	1	1		
 			</td>
 		</tr>
+		
+		<tr>
+			<td rowspan="3" style="width:10%">物理卷</td>
+			<td style="width:20%">格式化</td>
+			<td style="width:65%">mkfs -t ext4 物理卷</td>
+		</tr>
+		<tr>
+			<td style="width:20%">挂载磁盘</td>
+			<td style="width:65%">mount /dev/sdb 路径</td>
+		</tr>
+		<tr>
+			<td style="width:20%">磁盘长挂/etc/fstab
+			</td>
+			<td style="width:65%">物理磁盘名	   路径   磁盘初始化类型	defaults	1	1<br/>
+								  /dev/sdb	   /hadoop   ext4	defaults	1	1		
+			</td>
+		</tr>
+		
 </table>
 </div>
 
