@@ -68,6 +68,16 @@ mysql client
 	给所有ip连接mysql的权限<br />
 	mysql -u root -e "flush privileges;" 立即生效<br /><br />
 	
+	
+	<br />
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+操作
+</div>
+<div class="divnext">
+	
 	--建表/删表<br />
 	create table test(id int(4) primary key auto_increment,name char(20) default '0') ;<br />
 	drop table test ;<br /><br />
@@ -82,10 +92,14 @@ mysql client
 	alter table 表名 add/drop unique 索引名 (字段名);<br /><br />
 	
 	--增加/删除字段<br />
-	alter table 表名 add/drop 字段名 字段类型;<br />
+	alter table 表名 add/drop 字段名 字段类型;<br /><br />
 	
-	<br />
+	--修改字段<br />
+	alter table 表名 change 原字段名 修改字段名 字段类型;<br /><br />
+	
 </div>
+
+
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
 函数
