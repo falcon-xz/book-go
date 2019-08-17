@@ -10,6 +10,28 @@
 <body>
 <h4>oracle优化篇</h4>
 <ul style=" list-style-type: decimal;">
+	<li>不走索引的原因<br/>
+	a.隐式转换 <br/>
+	b.你的表的统计信息(最可能的原因) 需要重新计算 手工分析<br/>
+	c.数据量太小 cost优化器决定<br/>
+	d.组合索引：查询谓词并未使用组合索引的第一列，此处有一个INDEX SKIP SCAN概念<br/>
+	e.索引列包含有null值 使用select count(*) from table时不会使用索引<br/>
+	f.在索引列上使用函数时不会使用索引，如果一定要使用索引只能建立函数索引。<br/>
+	g.查询数据占总数据量百分比过大，回表查询cost过大<br/>
+	h.索引列like 时 % 百分号在前 '%xx'<br/>
+	i.<>条件  select * from dept where staff_num <> 1000; 改为 select * from dept shere staff_num < 1000 or dept_id > 1000;<br/>
+	j.修改字段类型导致索引失效 ,LONG修改为CLOB，居然会导致其他列的索引失效<br/>
+	h.误删除表后恢复，索引名称改变<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;drop table emp2;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;flashback table emp2 to before drop;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;会影响hint语句的执行<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;查看着两个索引的名称<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;select * from user_indexes t1 where t1.TABLE_NAME='EMP2'<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;重命名<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;alter index "BIN$vk6WzSBMTq6MsKWXDL8feg==$0" rename to INDEX_EMP2_EMPNO<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;alter index "BIN$O8u7vzfTSXORRKnesiOZSw==$0" rename to INDEX_EMP2_DEPTNO<br/><br/>
+
+	</li>
 	<li>
 		字段建立<br/>
 		数据库字段(除了varchar2外)长度使用2的倍数<br/>

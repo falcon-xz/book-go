@@ -152,6 +152,17 @@ CONSTRAINT 约束名 PRIMARY KEY (字段，字段))  <br/>
 	<br/>
 	
 	<li>
+	手工分析索引<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;a.分析索引的block中是否有坏块儿<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;analyze index idx_t validate structure：<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;b.统计索引的统计信息(全分析)，主要为CBO服务<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;analyze index idx_t compute statistics：<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;c.指定比例进行抽样分析，为CBO服务<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;analyze index idx_t estimate statistics sample 10 percent<br/>
+	<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;之后查询<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;SELECT t.height,t.blocks,t.name,t.lf_rows,t.del_lf_rows,t.del_lf_rows/t.lf_rows FROM index_stats t<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;如果t.del_lf_rows/t.lf_rows 删除的数据占总数据的15%以上 ，需要重建或者整理索引碎片<br/>
 	</li>
 	<br/>
 	
