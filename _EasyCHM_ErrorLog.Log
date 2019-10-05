@@ -17,11 +17,11 @@ hadoop\hive\hive自定义函数.htm
 hadoop\kafka\kafka概念.htm
 hadoop\kafka\kafka配置.htm
 hadoop\kafka\kafka指令集.htm
+hadoop\kerberos\kerberos概念.htm
 hadoop\spark\spark本地调试.htm
-HHC5003: Error: Compilation failed while compiling hadoop\spark\spark算子.htm.
 hadoop\yarn\yarn配置与优化.htm
 hadoop\yarn\yarn调度.htm
-hadoop\zookeeper\zookeeper优化.htm
+hadoop\zookeeper\zookeeper概念.htm
 hadoop\zookeeper\zookeeper指令集.htm
 java\http\axis.htm
 java\http\http协议.htm
@@ -38,11 +38,11 @@ java\面试\大数据.htm
 java\面试\分布式.htm
 java\面试\系统篇.htm
 HHC3004: Warning: linux命令.htm : The HTML tag "<= " is not a valid HTML tag (it does not begin with an alphanumeric character).
-linux\linux命令.htm
+os\linux\linux命令.htm
 HHC3004: Warning: shell.htm : The HTML tag "=4;i++))<br/" is not a valid HTML tag (it does not begin with an alphanumeric character).
-linux\shell.htm
-linux\windows命令.htm
-linux\产品指令.htm
+os\linux\shell.htm
+os\linux\产品指令.htm
+os\windows\windows命令.htm
 HHC5003: Error: Compilation failed while compiling other\axis2.rar.
 other\explore.client.js
 other\inputdata.sql
@@ -78,6 +78,8 @@ HHC1000: Note: oracle高级篇.html : An empty HTML tag has been used.
 HHC1000: Note: oracle优化篇.html : An empty HTML tag has been used.
 HHC1000: Note: oracle优化篇.html : An empty HTML tag has been used.
 数据库\oracle\oracle优化篇.html
+HHC3004: Warning: redis高级篇.htm : The HTML tag "=0鐨勭洿鎺ユ嫤鎴紱					</li" is not a valid HTML tag (it does not begin with an alphanumeric character).
+数据库\redis\redis高级篇.htm
 数据库\redis\redis基础篇.htm
 数据库\redis\redis命令行.htm
 算法\分流算法.htm
@@ -85,6 +87,7 @@ HHC1000: Note: oracle优化篇.html : An empty HTML tag has been used.
 TOC-Created-By-Easy-CHM.HHC
 java\jvm\jvm.jpg
 java\面试\mianshi\jvm_heap.jpg
+other\css.js
 other\UDFDemo.zip
 other\UDTFDemo.zip
 other\shell\study.sh
@@ -95,7 +98,6 @@ other\Logger.js
 
 
 The following files were not compiled:
-hadoop\spark\spark算子.htm
 other\axis2.rar
 other\processBar.rar
 other\Spring定时任务管理说明.doc

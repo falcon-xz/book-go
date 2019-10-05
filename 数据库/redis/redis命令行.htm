@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>redis命令行</title>
+<script type="text/javascript" src="../../other/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../other/css.js"/></script>
 <style>
 div{
 	padding-left:3%;
@@ -32,26 +34,14 @@ div{
 	padding-left:15px;
 }
 </style>
-<script>
-function hoverhidden(obj){
-	//obj.nextSibling 获取下一个同辈元素
-	var nextObj = obj.nextSibling ;
-	if(nextObj.style.display=="block"){
-		nextObj.style.display = "" ;
-		obj.style.background = "#FFCC99"
-	}else{
-		nextObj.style.display = "block" ;
-		obj.style.background = "#99FFCC"
-	}
-}
-</script>
+
 </head>
 
 <body>
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-string命令行 类型：int(8字节长整型) 、embstr(元素<39字节)、raw(元素>39字节)
+string命令行 
 </div>
 <div class="divnext" >
 	<ul style=" list-style-type: none;">
@@ -150,7 +140,7 @@ string命令行 类型：int(8字节长整型) 、embstr(元素<39字节)、raw(
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-hash命令行 类型：ziplist(元素<64字节，数量<512 ) 、hashtable
+hash命令行 
 </div>
 <div class="divnext" >
 	<ul style=" list-style-type: none;">
@@ -249,7 +239,7 @@ hash命令行 类型：ziplist(元素<64字节，数量<512 ) 、hashtable
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-list命令行 类型：ziplist(元素<64字节，数量<512 ) 、linkedlist、quicklist(介于两者)
+list命令行 
 </div>
 <div class="divnext" >
 	<ul style=" list-style-type: none;">
@@ -349,7 +339,7 @@ list命令行 类型：ziplist(元素<64字节，数量<512 ) 、linkedlist、qu
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-set 命令行 类型：intset( 整数，数量<512 ) 、hashtable
+set 命令行 
 </div>
 <div class="divnext" >
 	<ul style=" list-style-type: none;">
@@ -428,7 +418,7 @@ set 命令行 类型：intset( 整数，数量<512 ) 、hashtable
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">
-sorted set 命令行 类型：ziplist( 元素<64字节，数量<128 ) 、skiplist
+sorted set 命令行 
 </div>
 <div class="divnext" >
 	<ul style=" list-style-type: none;">
@@ -526,47 +516,6 @@ sorted set 命令行 类型：ziplist( 元素<64字节，数量<128 ) 、skiplis
 	</ul>
 </div>
 
-<h4></h4>
-<div class="divfirst"  onclick="javascript:hoverhidden(this)">
-集合差异
-</div>
-<div class="divnext" >
-	<ul style=" list-style-type: none;">
-	<br/>
-	<li>
-		<table class="table" style="font-size:large;width:90%">
-			<tr style="background-color:lightgrey">
-				<td style="width:15%;">数据类型</td>
-				<td style="width:20%;">重复元素</td>
-				<td style="width:20%;">是否有序</td>
-				<td style="width:20%;">有序实现方式</td>
-				<td style="width:25%;">应用场景</td>
-			</tr>
-			<tr>
-				<td style="width:15%;">list</td>
-				<td style="width:20%;">是</td>
-				<td style="width:20%;">是</td>
-				<td style="width:20%;">索引下标</td>
-				<td style="width:25%;">时间轴、消息队列</td>
-			</tr>
-			<tr>
-				<td style="width:15%;">set</td>
-				<td style="width:20%;">否</td>
-				<td style="width:20%;">否</td>
-				<td style="width:20%;">无</td>
-				<td style="width:25%;">标签、社交</td>
-			</tr>
-			<tr>
-				<td style="width:15%;">有序集合</td>
-				<td style="width:20%;">否</td>
-				<td style="width:20%;">是</td>
-				<td style="width:20%;">分值</td>
-				<td style="width:25%;">排行系统、社交</td>
-			</tr>
-		</table>
-	</li>
-	</ul>
-</div>
 
 
 

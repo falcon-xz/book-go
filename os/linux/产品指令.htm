@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>产品指令</title>
+<script type="text/javascript" src="../../other/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../other/css.js"/></script>
 <style>
 .table{
 	width:100%;
@@ -43,30 +45,7 @@ div{
 	margin-left:1%;
 }
 </style>
-<script>
-function hoverhidden(obj){
-	//obj.nextSibling 获取下一个同辈元素
-	var nextObj = obj.nextSibling ;
-	if(nextObj.style.display=="block"){
-		nextObj.style.display = "" ;
-		obj.style.background = "#FFCC99"
-	}else{
-		nextObj.style.display = "block" ;
-		obj.style.background = "#99FFCC"
-	}
-}
 
-function ss(id){
-	var s = document.getElementById(id).style.display ;
-	if(s=="none"){
-		document.getElementById(id).style.display="block" ;
-	}else{
-		document.getElementById(id).style.display="none" ;
-	}
-	
-	
-}
-</script>
 </head>
 
 <body>
@@ -165,7 +144,7 @@ yum源
 		</tr>
 		<tr>
 			<td colspan="10" rowspan="1" style="width:100%">
-			<a href="#" onclick="javascript:ss('hong')">查看 宏变量 </a>
+			<a href="#" onclick="javascript:hovershowhideById('hong')">查看 宏变量 </a>
 			<div id="hong" style="display:none">
 				<table class="table2">
 					<tr>
@@ -236,7 +215,7 @@ yum源
 		</tr>
 		<tr>
 			<td colspan="10" rowspan="1" style="width:100%">
-			<a href="#" onclick="javascript:ss('spec')">查看 kafka-manager.spec </a>
+			<a href="#" onclick="javascript:hovershowhideById('spec')">查看 kafka-manager.spec </a>
 			<div id="spec" style="display:none">
 %define _topdir /home/xingzhou/rpmbuild                                                                   <br/>
 Name:   kafka-manager-1.3.3.1                                                                             <br/>

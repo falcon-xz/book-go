@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>redis</title>
+<script type="text/javascript" src="../../other/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../other/css.js"/></script>
 <style>
 div{
 	padding-left:3%;
@@ -31,19 +33,7 @@ div{
 	padding-left:15px;
 }
 </style>
-<script>
-function hoverhidden(obj){
-	//obj.nextSibling 获取下一个同辈元素
-	var nextObj = obj.nextSibling ;
-	if(nextObj.style.display=="block"){
-		nextObj.style.display = "" ;
-		obj.style.background = "#FFCC99"
-	}else{
-		nextObj.style.display = "block" ;
-		obj.style.background = "#99FFCC"
-	}
-}
-</script>
+
 </head>
 
 <body>
@@ -63,6 +53,10 @@ function hoverhidden(obj){
 				<td style="width:70%;">含义</td>
 			</tr>
 			<tr>
+				<td style="width:30%;">auth [密码]</td>
+				<td style="width:70%;">验证密码</td>
+			</tr>
+			<tr>
 				<td style="width:30%;">info [section]</td>
 				<td style="width:70%;">redis信息 
 				包括
@@ -73,6 +67,10 @@ function hoverhidden(obj){
 			<tr>
 				<td style="width:30%;">select dbIndex</td>
 				<td style="width:70%;">切换库 建议多实例单库</td>
+			</tr>
+			<tr>
+				<td style="width:30%;">dbsize</td>
+				<td style="width:70%;">key个数</td>
 			</tr>
 			<tr>
 				<td style="width:30%;">flushdb/flushall</td>
@@ -91,8 +89,8 @@ function hoverhidden(obj){
 				<td style="width:70%;">查看key过期时间</td>
 			</tr>
 			<tr>
-				<td style="width:30%;">persist key</td>
-				<td style="width:70%;">删除key过期时间</td>
+				<td style="width:30%;">expire key</td>
+				<td style="width:70%;">设置key过期时间</td>
 			</tr>
 			<tr>
 				<td style="width:30%;">persist key</td>
@@ -105,74 +103,8 @@ function hoverhidden(obj){
 	</ul>
 </div>
 
-<h4></h4>
-<div class="divfirst"  onclick="javascript:hoverhidden(this)">
-优化
-</div>
-<div class="divnext" >
-	<ul style=" list-style-type: none;">
 
-	<li>
-	<br/>
-容量预估：http://www.redis.cn/redis_memory/ 
-	</li>
-	</ul>
-</div>
 
-<h4></h4>
-<div class="divfirst"  onclick="javascript:hoverhidden(this)">
-慢查询
-</div>
-<div class="divnext" >
-	<ul style=" list-style-type: decimal;">
-	<br/>
-	<li>
-		a.	slowlog-log-slower-than	预设阈值 生产10000 （10毫秒）<br/>
-		b.	slowlog-max-len			存储条数 生产1000以上
-		<br/><br/>
-		获取 slowlog get [n] ；获得list 每个element有4个属性：<br/>
-		a. 标识id<br/>
-		b. 时间戳<br/>
-		c. 命令耗时<br/>
-		d. 执行命令和参数<br/><br/>
-		<table class="table" style="font-size:large;width:90%">
-			<tr>
-
-				<td rowspan="2" style="width:15%;">参数</td>
-				<td style="width:40%;">slowlog-log-slower-than</td>
-				<td style="width:45%;">预设阈值 生产10000 （10毫秒）</td>
-			</tr>
-			
-			<tr>
-				<td style="width:40%;">slowlog-max-len</td>
-				<td style="width:45%;">存储条数 生产1000以上</td>
-			</tr>
-			
-			<tr>
-
-				<td rowspan="3" style="width:15%;">查询</td>
-				<td style="width:40%;">slowlog get [n]</td>
-				<td style="width:45%;">获得list 每个element有4个属性：<br/>
-		a. 标识id<br/>
-		b. 时间戳<br/>
-		c. 命令耗时<br/>
-		d. 执行命令和参数</td>
-			</tr>
-			
-			<tr>
-				<td style="width:40%;">slowlog len</td>
-				<td style="width:45%;">慢查询列表长度</td>
-			</tr>
-			<tr>
-				<td style="width:40%;">slowlog reset</td>
-				<td style="width:45%;">清理慢查询列表</td>
-			</tr>
-			
-
-		</table>
-	</li>
-	</ul>
-</div>
 
 <h4></h4>
 <div class="divfirst"  onclick="javascript:hoverhidden(this)">

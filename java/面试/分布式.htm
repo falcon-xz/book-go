@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>分布式</title>
+<script type="text/javascript" src="../../other/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../other/css.js"/></script>
 <style>
 .table{
 	width:100%;
@@ -40,19 +42,7 @@ div{
 	margin-left:1%;
 }
 </style>
-<script>
-function hoverhidden(obj){
-	//obj.nextSibling 获取下一个同辈元素
-	var nextObj = obj.nextSibling ;
-	if(nextObj.style.display=="block"){
-		nextObj.style.display = "" ;
-		obj.style.background = "#FFCC99"
-	}else{
-		nextObj.style.display = "block" ;
-		obj.style.background = "#99FFCC"
-	}
-}
-</script>
+
 </head>
 
 <body>
@@ -79,6 +69,32 @@ function hoverhidden(obj){
 	<li>
 		Partition tolerance （分区容错）<br/><br/>
 		一般来说，分区容错无法避免，因此可以认为 CAP 的 P 总是成立。CAP 定理告诉我们，剩下的 C 和 A 无法同时做到<br/>
+	</li>
+</ul>
+CA不能同时成立：因为存在通信失败<br/><br/>
+</div>
+
+<h4></h4>
+<div class="divfirst"  onclick="javascript:hoverhidden(this)">
+分布式事务
+</div>
+<div class="divnext" >
+<ul style=" list-style-type: decimal;">
+	<li>
+		2PC<br/><br/>
+		<br/><br/>
+	</li>
+	<li>
+		3PC<br/><br/>
+		<br/><br/>
+	</li>
+	<li>
+		TCC：try、confirm和cancel<br/><br/>
+		<br/><br/>
+	</li>
+	<li>
+		补偿事务<br/><br/>
+		<br/><br/>
 	</li>
 </ul>
 CA不能同时成立：因为存在通信失败<br/><br/>

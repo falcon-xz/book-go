@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <title>jvm</title>
+<script type="text/javascript" src="../../other/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../../other/css.js"/></script>
 <style>
 .table{
 	
@@ -45,19 +47,7 @@ div{
 	margin-left:1%;
 }
 </style>
-<script>
-function hoverhidden(obj){
-	//obj.nextSibling 获取下一个同辈元素
-	var nextObj = obj.nextSibling ;
-	if(nextObj.style.display=="block"){
-		nextObj.style.display = "" ;
-		obj.style.background = "#FFCC99"
-	}else{
-		nextObj.style.display = "block" ;
-		obj.style.background = "#99FFCC"
-	}
-}
-</script>
+
 </head>
 
 <body>
@@ -82,7 +72,7 @@ JVM 内存模型(参数 java -XX:+PrintFlagsFinal -version)
 	<li>
 	<h4>本地内存：</h4>
 	e.元数据区：线程隔离，元数据区取代了1.7版本及以前的永久代。存放虚拟机加载的类信息<br/>
-	f.直接内存：线程隔离，使用Native函数库直接分配堆外内存<br/>
+	f.直接内存：线程隔离，使用Native函数库直接分配堆外内存 -XX:MaxDirectMemorySize 设置最大堆外内存，由full GC 回收<br/>
 	</li>
 </ul>
 
@@ -255,6 +245,17 @@ JVM 堆
 		-XX:+UseConcMarkSweepGC"：指定使用CMS后，会默认使用ParNew作为新生代收集器；<br/>
 		-XX:+UseParNewGC"：强制指定使用ParNew；<br/>
 		-XX:ParallelGCThreads"：指定垃圾收集的线程数量，ParNew默认开启的收集线程与CPU的数量相同；<br/><br/>
+		</li>
+	</ul>
+	<br/>
+	</li>
+	
+	<li>
+	<h4>Parallel Scanvenge收集器（young） 多线程<span style="color:red">复制</span>收集算法</h4>
+	<ul>
+		
+		<li>
+		Parallel Scanvenge收集器的目的是达到一个可控制的吞吐量（吞吐量就是CPU用于运行用户代码的时间与CPU总消耗时间的比值）。Parallel Scanvenge收集器提供了两个参数用于精确控制吞吐量，分别是最大垃圾收集停顿时间的-XX:MaxGCPauseMillis参数以及直接设置吞吐量的大小的-XX:GCTimeRatio参数。MaxGCPauseMillis参数允许一个大于0的毫秒数，收集器将尽可能保证内存回收花费的时间不超过设定值。GC停顿时间缩短是以牺牲吞吐量和新生代空间来换取的，这也直接导致垃圾收集发生得更频繁。GCTimeRatio参数值应该是一个大于0且小于100的整数，即垃圾收集时间占总时间的比例。相当于吞吐量的倒数。Parallel Scanvenge的-XX:UseAdaptiveSizePolicy是一个开关参数。设置这个参数后，虚拟机会根据当前系统运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或最大的吞吐量，这种调节方式称为GC自适应的调节策略(GC Ergonomics)<br/><br/>
 		</li>
 	</ul>
 	<br/>
@@ -543,7 +544,7 @@ jvm参数 https://yq.aliyun.com/articles/368436
 	</li>
 	<li>
 		手动方式 :<br/>
-		jmap -dump:format=b,file=a.hprof <pid><br/>
+		jmap -dump:format=b,file=a.hprof  &lt;pid&gt;<br/>
 
 		file：保存路径及文件名<br/>
 		pid：进程编号
