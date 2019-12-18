@@ -88,7 +88,7 @@ hashmap结构
 	再好的哈希函数也不能保证得到的存储地址绝对不发生冲突。那么哈希冲突如何解决呢？哈希冲突的
 	解决方案有多种:开放定址法（发生冲突，继续寻找下一块未被占用的存储地址），再散列函数法，
 	链地址法，而HashMap即是采用了链地址法，也就是数组+链表的方式<br/><br/>
-	<img src="mianshi/hashmap结构.jpg"/>
+	<img src="mianshi/hashmap.jpg"/>
 		<br/><br/>
 		简单来说，HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，
 		如果定位到的数组位置不含链表（当前entry的next指向null）,那么对于查找，添加等操作很快，
@@ -388,7 +388,7 @@ CountDownLatch
 	
 	<li>
 		<h4>线程状态</h4>
-		<img src="mianshi/线程状态.png" width="800px" height="400px"/>
+		<img src="mianshi/threadstats.png" width="800px" height="400px"/>
 		<ul>
 	
 			<li>
